@@ -1,0 +1,805 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DAAD6E41E77ABD4004C09FA /* FSNetworkConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAD6E31E77ABD4004C09FA /* FSNetworkConfigure.m */; };
+		3DAAD6E91E77D55E004C09FA /* FSKeyHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAD6E81E77D55E004C09FA /* FSKeyHolder.m */; };
+		3DEAE05D1E7934CD008433E1 /* FSObjectArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE05C1E7934CD008433E1 /* FSObjectArchiver.m */; };
+		3DEAE0621E7A7C08008433E1 /* FSColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE0611E7A7C08008433E1 /* FSColors.m */; };
+		3DEAE0661E7A7E1D008433E1 /* FSElementUIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE0651E7A7E1D008433E1 /* FSElementUIFactory.m */; };
+		3DEAE0691E7A83C5008433E1 /* FSButtonElementUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE0681E7A83C5008433E1 /* FSButtonElementUI.m */; };
+		3DEAE06C1E7A85FF008433E1 /* FSTextFieldElementUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE06B1E7A85FF008433E1 /* FSTextFieldElementUI.m */; };
+		3F0D76351E73AB65002F025E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76341E73AB65002F025E /* main.m */; };
+		3F0D76381E73AB65002F025E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76371E73AB65002F025E /* AppDelegate.m */; };
+		3F0D76401E73AB65002F025E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0D763F1E73AB65002F025E /* Assets.xcassets */; };
+		3F0D76431E73AB65002F025E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0D76411E73AB65002F025E /* LaunchScreen.storyboard */; };
+		3F0D764E1E73AB65002F025E /* FinalTestChernigovskyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D764D1E73AB65002F025E /* FinalTestChernigovskyTests.m */; };
+		3F0D76591E73AB65002F025E /* FinalTestChernigovskyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76581E73AB65002F025E /* FinalTestChernigovskyUITests.m */; };
+		3F0D76701E73B338002F025E /* FSAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D766D1E73B338002F025E /* FSAppController.m */; };
+		3F0D76711E73B338002F025E /* FSScreenUIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D766F1E73B338002F025E /* FSScreenUIFactory.m */; };
+		3F0D76741E73B56F002F025E /* FSStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76731E73B56F002F025E /* FSStartViewController.m */; };
+		3F0D76771E73B629002F025E /* FSTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76761E73B629002F025E /* FSTweetsViewController.m */; };
+		3F0D767B1E73B73D002F025E /* FSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D767A1E73B73D002F025E /* FSBaseViewController.m */; };
+		3F0D767E1E73B9BC002F025E /* FSBasePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D767D1E73B9BC002F025E /* FSBasePresenter.m */; };
+		3F0D76811E73BBE0002F025E /* FSStartPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76801E73BBE0002F025E /* FSStartPresenter.m */; };
+		3F0D76841E73BC06002F025E /* FSTweetsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76831E73BC06002F025E /* FSTweetsPresenter.m */; };
+		3F0D76891E73C115002F025E /* FSTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76881E73C115002F025E /* FSTransitionDelegate.m */; };
+		3F0D768C1E73C14F002F025E /* FSAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D768B1E73C14F002F025E /* FSAnimationController.m */; };
+		3F0D76901E73C335002F025E /* FSBaseScreenUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D768F1E73C335002F025E /* FSBaseScreenUI.m */; };
+		3F0D76931E73C38D002F025E /* FSStartScreenUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76921E73C38D002F025E /* FSStartScreenUI.m */; };
+		3F0D76991E73C3F8002F025E /* FSTweetsScreenUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76981E73C3F8002F025E /* FSTweetsScreenUI.m */; };
+		D5B8F00A1E76C9C000A3D7BF /* FSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F0091E76C9C000A3D7BF /* FSNetwork.m */; };
+		D5B8F00E1E76CA7700A3D7BF /* FSTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */; };
+		D5B8F0131E76CC2600A3D7BF /* FSRequestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F0121E76CC2600A3D7BF /* FSRequestContext.m */; };
+		D5B8F0181E76CE5200A3D7BF /* FSDeserializerArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F0171E76CE5200A3D7BF /* FSDeserializerArray.m */; };
+		D5B8F01B1E76D46300A3D7BF /* FSDeserializerDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F01A1E76D46300A3D7BF /* FSDeserializerDictionary.m */; };
+		D5B8F01D1E76DA0500A3D7BF /* NetworkСonfigure.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5B8F01C1E76DA0500A3D7BF /* NetworkСonfigure.plist */; };
+		D5B8F0201E76F59800A3D7BF /* FSTwitterAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F0D764A1E73AB65002F025E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F0D76281E73AB64002F025E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F0D762F1E73AB64002F025E;
+			remoteInfo = FinalTestChernigovsky;
+		};
+		3F0D76551E73AB65002F025E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F0D76281E73AB64002F025E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F0D762F1E73AB64002F025E;
+			remoteInfo = FinalTestChernigovsky;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DAAD6E21E77ABD4004C09FA /* FSNetworkConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNetworkConfigure.h; path = Model/FSNetworkConfigure.h; sourceTree = "<group>"; };
+		3DAAD6E31E77ABD4004C09FA /* FSNetworkConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSNetworkConfigure.m; path = Model/FSNetworkConfigure.m; sourceTree = "<group>"; };
+		3DAAD6E51E77D267004C09FA /* PRKeyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRKeyEnumerator.h; path = Model/PRKeyEnumerator.h; sourceTree = "<group>"; };
+		3DAAD6E71E77D55E004C09FA /* FSKeyHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKeyHolder.h; path = Model/FSKeyHolder.h; sourceTree = "<group>"; };
+		3DAAD6E81E77D55E004C09FA /* FSKeyHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSKeyHolder.m; path = Model/FSKeyHolder.m; sourceTree = "<group>"; };
+		3DEAE05B1E7934CD008433E1 /* FSObjectArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSObjectArchiver.h; path = Model/FSObjectArchiver.h; sourceTree = "<group>"; };
+		3DEAE05C1E7934CD008433E1 /* FSObjectArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSObjectArchiver.m; path = Model/FSObjectArchiver.m; sourceTree = "<group>"; };
+		3DEAE0601E7A7C08008433E1 /* FSColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSColors.h; path = View/FSColors.h; sourceTree = "<group>"; };
+		3DEAE0611E7A7C08008433E1 /* FSColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSColors.m; path = View/FSColors.m; sourceTree = "<group>"; };
+		3DEAE0641E7A7E1D008433E1 /* FSElementUIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSElementUIFactory.h; sourceTree = "<group>"; };
+		3DEAE0651E7A7E1D008433E1 /* FSElementUIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSElementUIFactory.m; sourceTree = "<group>"; };
+		3DEAE0671E7A83C5008433E1 /* FSButtonElementUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSButtonElementUI.h; path = View/FSButtonElementUI.h; sourceTree = "<group>"; };
+		3DEAE0681E7A83C5008433E1 /* FSButtonElementUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSButtonElementUI.m; path = View/FSButtonElementUI.m; sourceTree = "<group>"; };
+		3DEAE06A1E7A85FF008433E1 /* FSTextFieldElementUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTextFieldElementUI.h; path = View/FSTextFieldElementUI.h; sourceTree = "<group>"; };
+		3DEAE06B1E7A85FF008433E1 /* FSTextFieldElementUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTextFieldElementUI.m; path = View/FSTextFieldElementUI.m; sourceTree = "<group>"; };
+		3F0D76301E73AB65002F025E /* FinalTestChernigovsky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalTestChernigovsky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0D76341E73AB65002F025E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F0D76361E73AB65002F025E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F0D76371E73AB65002F025E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F0D763F1E73AB65002F025E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F0D76421E73AB65002F025E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F0D76441E73AB65002F025E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0D76491E73AB65002F025E /* FinalTestChernigovskyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalTestChernigovskyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0D764D1E73AB65002F025E /* FinalTestChernigovskyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalTestChernigovskyTests.m; sourceTree = "<group>"; };
+		3F0D764F1E73AB65002F025E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0D76541E73AB65002F025E /* FinalTestChernigovskyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalTestChernigovskyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0D76581E73AB65002F025E /* FinalTestChernigovskyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalTestChernigovskyUITests.m; sourceTree = "<group>"; };
+		3F0D765A1E73AB65002F025E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0D766C1E73B338002F025E /* FSAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSAppController.h; path = View/FSAppController.h; sourceTree = "<group>"; };
+		3F0D766D1E73B338002F025E /* FSAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSAppController.m; path = View/FSAppController.m; sourceTree = "<group>"; };
+		3F0D766E1E73B338002F025E /* FSScreenUIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSScreenUIFactory.h; path = View/FSScreenUIFactory.h; sourceTree = "<group>"; };
+		3F0D766F1E73B338002F025E /* FSScreenUIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSScreenUIFactory.m; path = View/FSScreenUIFactory.m; sourceTree = "<group>"; };
+		3F0D76721E73B56F002F025E /* FSStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSStartViewController.h; path = View/FSStartViewController.h; sourceTree = "<group>"; };
+		3F0D76731E73B56F002F025E /* FSStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSStartViewController.m; path = View/FSStartViewController.m; sourceTree = "<group>"; };
+		3F0D76751E73B629002F025E /* FSTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTweetsViewController.h; path = View/FSTweetsViewController.h; sourceTree = "<group>"; };
+		3F0D76761E73B629002F025E /* FSTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTweetsViewController.m; path = View/FSTweetsViewController.m; sourceTree = "<group>"; };
+		3F0D76791E73B73D002F025E /* FSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseViewController.h; path = View/FSBaseViewController.h; sourceTree = "<group>"; };
+		3F0D767A1E73B73D002F025E /* FSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseViewController.m; path = View/FSBaseViewController.m; sourceTree = "<group>"; };
+		3F0D767C1E73B9BC002F025E /* FSBasePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBasePresenter.h; path = Presenter/FSBasePresenter.h; sourceTree = "<group>"; };
+		3F0D767D1E73B9BC002F025E /* FSBasePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBasePresenter.m; path = Presenter/FSBasePresenter.m; sourceTree = "<group>"; };
+		3F0D767F1E73BBE0002F025E /* FSStartPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSStartPresenter.h; path = Presenter/FSStartPresenter.h; sourceTree = "<group>"; };
+		3F0D76801E73BBE0002F025E /* FSStartPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSStartPresenter.m; path = Presenter/FSStartPresenter.m; sourceTree = "<group>"; };
+		3F0D76821E73BC06002F025E /* FSTweetsPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTweetsPresenter.h; path = Presenter/FSTweetsPresenter.h; sourceTree = "<group>"; };
+		3F0D76831E73BC06002F025E /* FSTweetsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTweetsPresenter.m; path = Presenter/FSTweetsPresenter.m; sourceTree = "<group>"; };
+		3F0D76851E73BD1E002F025E /* PRBaseScreenUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRBaseScreenUI.h; path = View/PRBaseScreenUI.h; sourceTree = "<group>"; };
+		3F0D76871E73C115002F025E /* FSTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTransitionDelegate.h; path = View/FSTransitionDelegate.h; sourceTree = "<group>"; };
+		3F0D76881E73C115002F025E /* FSTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTransitionDelegate.m; path = View/FSTransitionDelegate.m; sourceTree = "<group>"; };
+		3F0D768A1E73C14F002F025E /* FSAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSAnimationController.h; path = View/FSAnimationController.h; sourceTree = "<group>"; };
+		3F0D768B1E73C14F002F025E /* FSAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSAnimationController.m; path = View/FSAnimationController.m; sourceTree = "<group>"; };
+		3F0D768E1E73C335002F025E /* FSBaseScreenUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseScreenUI.h; path = View/FSBaseScreenUI.h; sourceTree = "<group>"; };
+		3F0D768F1E73C335002F025E /* FSBaseScreenUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseScreenUI.m; path = View/FSBaseScreenUI.m; sourceTree = "<group>"; };
+		3F0D76911E73C38D002F025E /* FSStartScreenUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSStartScreenUI.h; path = View/FSStartScreenUI.h; sourceTree = "<group>"; };
+		3F0D76921E73C38D002F025E /* FSStartScreenUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSStartScreenUI.m; path = View/FSStartScreenUI.m; sourceTree = "<group>"; };
+		3F0D76971E73C3F8002F025E /* FSTweetsScreenUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTweetsScreenUI.h; path = View/FSTweetsScreenUI.h; sourceTree = "<group>"; };
+		3F0D76981E73C3F8002F025E /* FSTweetsScreenUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTweetsScreenUI.m; path = View/FSTweetsScreenUI.m; sourceTree = "<group>"; };
+		D5B8F0081E76C9C000A3D7BF /* FSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNetwork.h; path = Model/FSNetwork.h; sourceTree = "<group>"; };
+		D5B8F0091E76C9C000A3D7BF /* FSNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSNetwork.m; path = Model/FSNetwork.m; sourceTree = "<group>"; };
+		D5B8F00C1E76CA7700A3D7BF /* FSTwitterPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTwitterPost.h; path = Model/FSTwitterPost.h; sourceTree = "<group>"; };
+		D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTwitterPost.m; path = Model/FSTwitterPost.m; sourceTree = "<group>"; };
+		D5B8F0101E76CB0000A3D7BF /* PRDeserializeable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRDeserializeable.h; path = Model/PRDeserializeable.h; sourceTree = "<group>"; };
+		D5B8F0111E76CC2600A3D7BF /* FSRequestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRequestContext.h; path = Model/FSRequestContext.h; sourceTree = "<group>"; };
+		D5B8F0121E76CC2600A3D7BF /* FSRequestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRequestContext.m; path = Model/FSRequestContext.m; sourceTree = "<group>"; };
+		D5B8F0151E76CD9500A3D7BF /* PRDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRDeserializer.h; path = Model/PRDeserializer.h; sourceTree = "<group>"; };
+		D5B8F0161E76CE5200A3D7BF /* FSDeserializerArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializerArray.h; path = Model/FSDeserializerArray.h; sourceTree = "<group>"; };
+		D5B8F0171E76CE5200A3D7BF /* FSDeserializerArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializerArray.m; path = Model/FSDeserializerArray.m; sourceTree = "<group>"; };
+		D5B8F0191E76D46300A3D7BF /* FSDeserializerDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializerDictionary.h; path = Model/FSDeserializerDictionary.h; sourceTree = "<group>"; };
+		D5B8F01A1E76D46300A3D7BF /* FSDeserializerDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializerDictionary.m; path = Model/FSDeserializerDictionary.m; sourceTree = "<group>"; };
+		D5B8F01C1E76DA0500A3D7BF /* NetworkСonfigure.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "NetworkСonfigure.plist"; path = "Model/NetworkСonfigure.plist"; sourceTree = "<group>"; };
+		D5B8F01E1E76F59800A3D7BF /* FSTwitterAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTwitterAuth.h; path = Model/FSTwitterAuth.h; sourceTree = "<group>"; };
+		D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTwitterAuth.m; path = Model/FSTwitterAuth.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F0D762D1E73AB64002F025E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F0D76461E73AB65002F025E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F0D76511E73AB65002F025E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DAAD6E61E77D27E004C09FA /* Configure */ = {
+			isa = PBXGroup;
+			children = (
+				D5B8F01C1E76DA0500A3D7BF /* NetworkСonfigure.plist */,
+				3DAAD6E21E77ABD4004C09FA /* FSNetworkConfigure.h */,
+				3DAAD6E31E77ABD4004C09FA /* FSNetworkConfigure.m */,
+			);
+			name = Configure;
+			sourceTree = "<group>";
+		};
+		3DEAE05A1E793457008433E1 /* Archiver */ = {
+			isa = PBXGroup;
+			children = (
+				3DEAE05B1E7934CD008433E1 /* FSObjectArchiver.h */,
+				3DEAE05C1E7934CD008433E1 /* FSObjectArchiver.m */,
+			);
+			name = Archiver;
+			sourceTree = "<group>";
+		};
+		3DEAE05E1E7935A5008433E1 /* KeyEnumerator */ = {
+			isa = PBXGroup;
+			children = (
+				3DAAD6E51E77D267004C09FA /* PRKeyEnumerator.h */,
+				3DAAD6E71E77D55E004C09FA /* FSKeyHolder.h */,
+				3DAAD6E81E77D55E004C09FA /* FSKeyHolder.m */,
+			);
+			name = KeyEnumerator;
+			sourceTree = "<group>";
+		};
+		3DEAE05F1E7A7BE4008433E1 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				3DEAE0601E7A7C08008433E1 /* FSColors.h */,
+				3DEAE0611E7A7C08008433E1 /* FSColors.m */,
+			);
+			name = Colors;
+			sourceTree = "<group>";
+		};
+		3DEAE0631E7A7D34008433E1 /* ElementsUI */ = {
+			isa = PBXGroup;
+			children = (
+				3DEAE0671E7A83C5008433E1 /* FSButtonElementUI.h */,
+				3DEAE0681E7A83C5008433E1 /* FSButtonElementUI.m */,
+				3DEAE06A1E7A85FF008433E1 /* FSTextFieldElementUI.h */,
+				3DEAE06B1E7A85FF008433E1 /* FSTextFieldElementUI.m */,
+			);
+			name = ElementsUI;
+			sourceTree = "<group>";
+		};
+		3F0D76271E73AB64002F025E = {
+			isa = PBXGroup;
+			children = (
+				3F0D76321E73AB65002F025E /* FinalTestChernigovsky */,
+				3F0D764C1E73AB65002F025E /* FinalTestChernigovskyTests */,
+				3F0D76571E73AB65002F025E /* FinalTestChernigovskyUITests */,
+				3F0D76311E73AB65002F025E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F0D76311E73AB65002F025E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76301E73AB65002F025E /* FinalTestChernigovsky.app */,
+				3F0D76491E73AB65002F025E /* FinalTestChernigovskyTests.xctest */,
+				3F0D76541E73AB65002F025E /* FinalTestChernigovskyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F0D76321E73AB65002F025E /* FinalTestChernigovsky */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76661E73B0DD002F025E /* Model */,
+				3F0D76671E73B0E8002F025E /* View */,
+				3F0D76681E73B0F2002F025E /* Presenter */,
+				3F0D76361E73AB65002F025E /* AppDelegate.h */,
+				3F0D76371E73AB65002F025E /* AppDelegate.m */,
+				3F0D763F1E73AB65002F025E /* Assets.xcassets */,
+				3F0D76411E73AB65002F025E /* LaunchScreen.storyboard */,
+				3F0D76441E73AB65002F025E /* Info.plist */,
+				3F0D76331E73AB65002F025E /* Supporting Files */,
+			);
+			path = FinalTestChernigovsky;
+			sourceTree = "<group>";
+		};
+		3F0D76331E73AB65002F025E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76341E73AB65002F025E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F0D764C1E73AB65002F025E /* FinalTestChernigovskyTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D764D1E73AB65002F025E /* FinalTestChernigovskyTests.m */,
+				3F0D764F1E73AB65002F025E /* Info.plist */,
+			);
+			path = FinalTestChernigovskyTests;
+			sourceTree = "<group>";
+		};
+		3F0D76571E73AB65002F025E /* FinalTestChernigovskyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76581E73AB65002F025E /* FinalTestChernigovskyUITests.m */,
+				3F0D765A1E73AB65002F025E /* Info.plist */,
+			);
+			path = FinalTestChernigovskyUITests;
+			sourceTree = "<group>";
+		};
+		3F0D76661E73B0DD002F025E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3DEAE05E1E7935A5008433E1 /* KeyEnumerator */,
+				3DEAE05A1E793457008433E1 /* Archiver */,
+				D5B8F0141E76CC4500A3D7BF /* Deserializer */,
+				D5B8F00F1E76CAA300A3D7BF /* Network */,
+				D5B8F00B1E76CA4A00A3D7BF /* Objects */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3F0D76671E73B0E8002F025E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D766C1E73B338002F025E /* FSAppController.h */,
+				3F0D766D1E73B338002F025E /* FSAppController.m */,
+				3F0D76781E73B703002F025E /* ViewController */,
+				3F0D766E1E73B338002F025E /* FSScreenUIFactory.h */,
+				3F0D766F1E73B338002F025E /* FSScreenUIFactory.m */,
+				3F0D768D1E73C1AA002F025E /* ScreenUI */,
+				D5B8F0211E76F86100A3D7BF /* TableUI */,
+				3DEAE0641E7A7E1D008433E1 /* FSElementUIFactory.h */,
+				3DEAE0651E7A7E1D008433E1 /* FSElementUIFactory.m */,
+				3DEAE0631E7A7D34008433E1 /* ElementsUI */,
+				3DEAE05F1E7A7BE4008433E1 /* Colors */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3F0D76681E73B0F2002F025E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D767C1E73B9BC002F025E /* FSBasePresenter.h */,
+				3F0D767D1E73B9BC002F025E /* FSBasePresenter.m */,
+				3F0D767F1E73BBE0002F025E /* FSStartPresenter.h */,
+				3F0D76801E73BBE0002F025E /* FSStartPresenter.m */,
+				3F0D76821E73BC06002F025E /* FSTweetsPresenter.h */,
+				3F0D76831E73BC06002F025E /* FSTweetsPresenter.m */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		3F0D76781E73B703002F025E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76861E73C03E002F025E /* Transition */,
+				3F0D76791E73B73D002F025E /* FSBaseViewController.h */,
+				3F0D767A1E73B73D002F025E /* FSBaseViewController.m */,
+				3F0D76721E73B56F002F025E /* FSStartViewController.h */,
+				3F0D76731E73B56F002F025E /* FSStartViewController.m */,
+				3F0D76751E73B629002F025E /* FSTweetsViewController.h */,
+				3F0D76761E73B629002F025E /* FSTweetsViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		3F0D76861E73C03E002F025E /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76871E73C115002F025E /* FSTransitionDelegate.h */,
+				3F0D76881E73C115002F025E /* FSTransitionDelegate.m */,
+				3F0D768A1E73C14F002F025E /* FSAnimationController.h */,
+				3F0D768B1E73C14F002F025E /* FSAnimationController.m */,
+			);
+			name = Transition;
+			sourceTree = "<group>";
+		};
+		3F0D768D1E73C1AA002F025E /* ScreenUI */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76851E73BD1E002F025E /* PRBaseScreenUI.h */,
+				3F0D768E1E73C335002F025E /* FSBaseScreenUI.h */,
+				3F0D768F1E73C335002F025E /* FSBaseScreenUI.m */,
+				3F0D76911E73C38D002F025E /* FSStartScreenUI.h */,
+				3F0D76921E73C38D002F025E /* FSStartScreenUI.m */,
+				3F0D76971E73C3F8002F025E /* FSTweetsScreenUI.h */,
+				3F0D76981E73C3F8002F025E /* FSTweetsScreenUI.m */,
+			);
+			name = ScreenUI;
+			sourceTree = "<group>";
+		};
+		D5B8F00B1E76CA4A00A3D7BF /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D5B8F0101E76CB0000A3D7BF /* PRDeserializeable.h */,
+				D5B8F00C1E76CA7700A3D7BF /* FSTwitterPost.h */,
+				D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */,
+				D5B8F01E1E76F59800A3D7BF /* FSTwitterAuth.h */,
+				D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		D5B8F00F1E76CAA300A3D7BF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3DAAD6E61E77D27E004C09FA /* Configure */,
+				D5B8F0081E76C9C000A3D7BF /* FSNetwork.h */,
+				D5B8F0091E76C9C000A3D7BF /* FSNetwork.m */,
+				D5B8F0111E76CC2600A3D7BF /* FSRequestContext.h */,
+				D5B8F0121E76CC2600A3D7BF /* FSRequestContext.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		D5B8F0141E76CC4500A3D7BF /* Deserializer */ = {
+			isa = PBXGroup;
+			children = (
+				D5B8F0151E76CD9500A3D7BF /* PRDeserializer.h */,
+				D5B8F0161E76CE5200A3D7BF /* FSDeserializerArray.h */,
+				D5B8F0171E76CE5200A3D7BF /* FSDeserializerArray.m */,
+				D5B8F0191E76D46300A3D7BF /* FSDeserializerDictionary.h */,
+				D5B8F01A1E76D46300A3D7BF /* FSDeserializerDictionary.m */,
+			);
+			name = Deserializer;
+			sourceTree = "<group>";
+		};
+		D5B8F0211E76F86100A3D7BF /* TableUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TableUI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F0D762F1E73AB64002F025E /* FinalTestChernigovsky */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F0D765D1E73AB65002F025E /* Build configuration list for PBXNativeTarget "FinalTestChernigovsky" */;
+			buildPhases = (
+				3F0D762C1E73AB64002F025E /* Sources */,
+				3F0D762D1E73AB64002F025E /* Frameworks */,
+				3F0D762E1E73AB64002F025E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FinalTestChernigovsky;
+			productName = FinalTestChernigovsky;
+			productReference = 3F0D76301E73AB65002F025E /* FinalTestChernigovsky.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F0D76481E73AB65002F025E /* FinalTestChernigovskyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F0D76601E73AB65002F025E /* Build configuration list for PBXNativeTarget "FinalTestChernigovskyTests" */;
+			buildPhases = (
+				3F0D76451E73AB65002F025E /* Sources */,
+				3F0D76461E73AB65002F025E /* Frameworks */,
+				3F0D76471E73AB65002F025E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F0D764B1E73AB65002F025E /* PBXTargetDependency */,
+			);
+			name = FinalTestChernigovskyTests;
+			productName = FinalTestChernigovskyTests;
+			productReference = 3F0D76491E73AB65002F025E /* FinalTestChernigovskyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3F0D76531E73AB65002F025E /* FinalTestChernigovskyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F0D76631E73AB65002F025E /* Build configuration list for PBXNativeTarget "FinalTestChernigovskyUITests" */;
+			buildPhases = (
+				3F0D76501E73AB65002F025E /* Sources */,
+				3F0D76511E73AB65002F025E /* Frameworks */,
+				3F0D76521E73AB65002F025E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F0D76561E73AB65002F025E /* PBXTargetDependency */,
+			);
+			name = FinalTestChernigovskyUITests;
+			productName = FinalTestChernigovskyUITests;
+			productReference = 3F0D76541E73AB65002F025E /* FinalTestChernigovskyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F0D76281E73AB64002F025E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "CFT:FocusStart";
+				TargetAttributes = {
+					3F0D762F1E73AB64002F025E = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					3F0D76481E73AB65002F025E = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3F0D762F1E73AB64002F025E;
+					};
+					3F0D76531E73AB65002F025E = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3F0D762F1E73AB64002F025E;
+					};
+				};
+			};
+			buildConfigurationList = 3F0D762B1E73AB64002F025E /* Build configuration list for PBXProject "FinalTestChernigovsky" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F0D76271E73AB64002F025E;
+			productRefGroup = 3F0D76311E73AB65002F025E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F0D762F1E73AB64002F025E /* FinalTestChernigovsky */,
+				3F0D76481E73AB65002F025E /* FinalTestChernigovskyTests */,
+				3F0D76531E73AB65002F025E /* FinalTestChernigovskyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F0D762E1E73AB64002F025E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0D76431E73AB65002F025E /* LaunchScreen.storyboard in Resources */,
+				D5B8F01D1E76DA0500A3D7BF /* NetworkСonfigure.plist in Resources */,
+				3F0D76401E73AB65002F025E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F0D76471E73AB65002F025E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F0D76521E73AB65002F025E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F0D762C1E73AB64002F025E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0D767E1E73B9BC002F025E /* FSBasePresenter.m in Sources */,
+				3DEAE05D1E7934CD008433E1 /* FSObjectArchiver.m in Sources */,
+				3DEAE0691E7A83C5008433E1 /* FSButtonElementUI.m in Sources */,
+				D5B8F0201E76F59800A3D7BF /* FSTwitterAuth.m in Sources */,
+				3F0D76901E73C335002F025E /* FSBaseScreenUI.m in Sources */,
+				D5B8F0131E76CC2600A3D7BF /* FSRequestContext.m in Sources */,
+				3F0D76841E73BC06002F025E /* FSTweetsPresenter.m in Sources */,
+				3F0D76931E73C38D002F025E /* FSStartScreenUI.m in Sources */,
+				3F0D767B1E73B73D002F025E /* FSBaseViewController.m in Sources */,
+				3DEAE0621E7A7C08008433E1 /* FSColors.m in Sources */,
+				D5B8F00E1E76CA7700A3D7BF /* FSTwitterPost.m in Sources */,
+				3F0D76741E73B56F002F025E /* FSStartViewController.m in Sources */,
+				3F0D76381E73AB65002F025E /* AppDelegate.m in Sources */,
+				3F0D76711E73B338002F025E /* FSScreenUIFactory.m in Sources */,
+				3F0D76771E73B629002F025E /* FSTweetsViewController.m in Sources */,
+				3DAAD6E41E77ABD4004C09FA /* FSNetworkConfigure.m in Sources */,
+				D5B8F00A1E76C9C000A3D7BF /* FSNetwork.m in Sources */,
+				3DEAE0661E7A7E1D008433E1 /* FSElementUIFactory.m in Sources */,
+				3F0D76811E73BBE0002F025E /* FSStartPresenter.m in Sources */,
+				3DEAE06C1E7A85FF008433E1 /* FSTextFieldElementUI.m in Sources */,
+				D5B8F0181E76CE5200A3D7BF /* FSDeserializerArray.m in Sources */,
+				3F0D76351E73AB65002F025E /* main.m in Sources */,
+				D5B8F01B1E76D46300A3D7BF /* FSDeserializerDictionary.m in Sources */,
+				3F0D76891E73C115002F025E /* FSTransitionDelegate.m in Sources */,
+				3F0D76991E73C3F8002F025E /* FSTweetsScreenUI.m in Sources */,
+				3F0D76701E73B338002F025E /* FSAppController.m in Sources */,
+				3F0D768C1E73C14F002F025E /* FSAnimationController.m in Sources */,
+				3DAAD6E91E77D55E004C09FA /* FSKeyHolder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F0D76451E73AB65002F025E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0D764E1E73AB65002F025E /* FinalTestChernigovskyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F0D76501E73AB65002F025E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0D76591E73AB65002F025E /* FinalTestChernigovskyUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F0D764B1E73AB65002F025E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F0D762F1E73AB64002F025E /* FinalTestChernigovsky */;
+			targetProxy = 3F0D764A1E73AB65002F025E /* PBXContainerItemProxy */;
+		};
+		3F0D76561E73AB65002F025E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F0D762F1E73AB64002F025E /* FinalTestChernigovsky */;
+			targetProxy = 3F0D76551E73AB65002F025E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F0D76411E73AB65002F025E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F0D76421E73AB65002F025E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F0D765B1E73AB65002F025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3F0D765C1E73AB65002F025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F0D765E1E73AB65002F025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = FinalTestChernigovsky/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovsky;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F0D765F1E73AB65002F025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = FinalTestChernigovsky/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovsky;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3F0D76611E73AB65002F025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FinalTestChernigovskyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovskyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalTestChernigovsky.app/FinalTestChernigovsky";
+			};
+			name = Debug;
+		};
+		3F0D76621E73AB65002F025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FinalTestChernigovskyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovskyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalTestChernigovsky.app/FinalTestChernigovsky";
+			};
+			name = Release;
+		};
+		3F0D76641E73AB65002F025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FinalTestChernigovskyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovskyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FinalTestChernigovsky;
+			};
+			name = Debug;
+		};
+		3F0D76651E73AB65002F025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FinalTestChernigovskyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovskyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FinalTestChernigovsky;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F0D762B1E73AB64002F025E /* Build configuration list for PBXProject "FinalTestChernigovsky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0D765B1E73AB65002F025E /* Debug */,
+				3F0D765C1E73AB65002F025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F0D765D1E73AB65002F025E /* Build configuration list for PBXNativeTarget "FinalTestChernigovsky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0D765E1E73AB65002F025E /* Debug */,
+				3F0D765F1E73AB65002F025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F0D76601E73AB65002F025E /* Build configuration list for PBXNativeTarget "FinalTestChernigovskyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0D76611E73AB65002F025E /* Debug */,
+				3F0D76621E73AB65002F025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F0D76631E73AB65002F025E /* Build configuration list for PBXNativeTarget "FinalTestChernigovskyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0D76641E73AB65002F025E /* Debug */,
+				3F0D76651E73AB65002F025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F0D76281E73AB64002F025E /* Project object */;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>accountNameKey</key>
+	<string>accountName</string>
+	<key>accessTokenKey</key>
+	<string>accessToken</string>
+	<key>headerKey</key>
+	<string>Authorization</string>
+	<key>userUrl</key>
+	<string>/1.1/statuses/user_timeline.json?</string>
+	<key>authHttpBody</key>
+	<string>grant_type=client_credentials</string>
+	<key>authUrl</key>
+	<string>/oauth2/token?oauth_token=</string>
+	<key>baseUrl</key>
+	<string>https://api.twitter.com</string>
+	<key>consumerKey</key>
+	<string>EJemeWTwyvHnGqdzWIKFZy6fn</string>
+	<key>consumerSecret</key>
+	<string>UKARzwzWBeXdxyxQZzYLDtqomqsy7aRlcbCxpEnVC1XeY246mx</string>
+</dict>
+</plist>
