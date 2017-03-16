@@ -10,10 +10,10 @@
 
 @interface FSTextFieldElementUI : NSObject
 
-+ (UITextField *) fieldWithFrame:(CGRect)frame
-                            text:(NSString *)text
-                       textColor:(UIColor *)textColor
-                      fieldColor:(UIColor *)fieldColor;
-- (instancetype) init NS_UNAVAILABLE;
++ (UITextField *)fieldWithFrame:(CGRect)frame
+                           text:(NSString *)text
+                      textColor:(UIColor *)textColor
+                     fieldColor:(UIColor *)fieldColor;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end

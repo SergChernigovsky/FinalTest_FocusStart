@@ -10,10 +10,10 @@
 
 @implementation FSTextFieldElementUI
 
-+ (UITextField *) fieldWithFrame:(CGRect)frame
-                            text:(NSString *)text
-                       textColor:(UIColor *)textColor
-                      fieldColor:(UIColor *)fieldColor
++ (UITextField *)fieldWithFrame:(CGRect)frame
+                           text:(NSString *)text
+                      textColor:(UIColor *)textColor
+                     fieldColor:(UIColor *)fieldColor
 {
     UITextField *textField = [[UITextField alloc] initWithFrame:frame];
     textField.text = text;
@@ -22,6 +22,12 @@
     textField.layer.cornerRadius = 4.f;
     textField.textAlignment = NSTextAlignmentCenter;
     return textField;
+}
+
+- (instancetype)init
+{
+    assert( NO );
+    return nil;
 }
 
 @end

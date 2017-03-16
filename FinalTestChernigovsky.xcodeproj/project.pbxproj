@@ -40,6 +40,7 @@
 		D5B8F01B1E76D46300A3D7BF /* FSDeserializerDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F01A1E76D46300A3D7BF /* FSDeserializerDictionary.m */; };
 		D5B8F01D1E76DA0500A3D7BF /* NetworkСonfigure.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5B8F01C1E76DA0500A3D7BF /* NetworkСonfigure.plist */; };
 		D5B8F0201E76F59800A3D7BF /* FSTwitterAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */; };
+		D5E08CDD1E7AFFD90081B97B /* FSIndicatorElementUI.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E08CDC1E7AFFD90081B97B /* FSIndicatorElementUI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,8 @@
 		D5B8F01C1E76DA0500A3D7BF /* NetworkСonfigure.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "NetworkСonfigure.plist"; path = "Model/NetworkСonfigure.plist"; sourceTree = "<group>"; };
 		D5B8F01E1E76F59800A3D7BF /* FSTwitterAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTwitterAuth.h; path = Model/FSTwitterAuth.h; sourceTree = "<group>"; };
 		D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTwitterAuth.m; path = Model/FSTwitterAuth.m; sourceTree = "<group>"; };
+		D5E08CDB1E7AFFD90081B97B /* FSIndicatorElementUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSIndicatorElementUI.h; path = Model/FSIndicatorElementUI.h; sourceTree = "<group>"; };
+		D5E08CDC1E7AFFD90081B97B /* FSIndicatorElementUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSIndicatorElementUI.m; path = Model/FSIndicatorElementUI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,8 @@
 				3DEAE0681E7A83C5008433E1 /* FSButtonElementUI.m */,
 				3DEAE06A1E7A85FF008433E1 /* FSTextFieldElementUI.h */,
 				3DEAE06B1E7A85FF008433E1 /* FSTextFieldElementUI.m */,
+				D5E08CDB1E7AFFD90081B97B /* FSIndicatorElementUI.h */,
+				D5E08CDC1E7AFFD90081B97B /* FSIndicatorElementUI.m */,
 			);
 			name = ElementsUI;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 			files = (
 				3F0D767E1E73B9BC002F025E /* FSBasePresenter.m in Sources */,
 				3DEAE05D1E7934CD008433E1 /* FSObjectArchiver.m in Sources */,
+				D5E08CDD1E7AFFD90081B97B /* FSIndicatorElementUI.m in Sources */,
 				3DEAE0691E7A83C5008433E1 /* FSButtonElementUI.m in Sources */,
 				D5B8F0201E76F59800A3D7BF /* FSTwitterAuth.m in Sources */,
 				3F0D76901E73C335002F025E /* FSBaseScreenUI.m in Sources */,

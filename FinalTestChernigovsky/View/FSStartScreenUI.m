@@ -18,7 +18,6 @@ CGFloat const textFieldWidth = 200.f;
 
 @implementation FSStartScreenUI
 {
-    UIButton *button;
     UITextField *textField;
     FSAnimationController *animationController;
     NSArray *arrayNormalElements;
@@ -48,46 +47,56 @@ CGFloat const textFieldWidth = 200.f;
                                                   text:@"chucknorris"
                                              textColor:[UIColor blackColor]
                                             fieldColor:[UIColor whiteColor]];
-    button = [FSElementUIFactory makeButtonWithFrame:buttonRect
-                                                text:@"Search"
-                                           textColor:[UIColor whiteColor]
-                                         buttonColor:[FSColors blueTwitterColor]];
+    UIButton *button = [FSElementUIFactory makeButtonWithFrame:buttonRect
+                                                          text:@"Search"
+                                                     textColor:[UIColor whiteColor]
+                                                   buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
     arrayNormalElements = @[button, textField];
-    arrayLoadingElements = @[];
+    CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
+                                         170.f);
+    arrayLoadingElements = @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
+                                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
     [self enumerateNormalElementsWithComletion:^(UIView *elementView)
     {
-        
+        [self.rootView addSubview:elementView];
     }
     LoadingElementsComletion:^(UIView *elementView)
     {
-        
+//        elementView.hidden = YES;
+        [self.rootView addSubview:elementView];
     }];
 }
 
 
 - (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
-                    LoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements{
+                    LoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements
+{
     assert( arrayNormalElements );
     assert( arrayLoadingElements );
-    [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        comletionNormalElements((UIView *)obj);
-    }];
-    [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        comletionLoadingElements((UIView *)obj);
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+        [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+        {
+            comletionNormalElements((UIView *)obj);
+        }];
+        [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+        {
+            comletionLoadingElements((UIView *)obj);
+        }];
+    });
 }
 
-- (void)stateIsNormal:(BOOL)normal
+- (void)stateIsNormal:(BOOL)isNormal
 {
-    BOOL __block normalState = normal;
-    [self enumerateElements:arrayNormalElements comletion:^(id element) {
-        UIView *view = (UIView *)element;
-        view.hidden = normalState;
-    }];
-    [self enumerateElements:arrayLoadingElements comletion:^(id element) {
-        UIView *view = (UIView *)element;
-        view.hidden = normalState;
+    [self enumerateNormalElementsWithComletion:^(UIView *elementView)
+    {
+        elementView.hidden = ( NO != isNormal );
+    }
+    LoadingElementsComletion:^(UIView *elementView)
+    {
+        elementView.hidden = ( YES != isNormal );
+        [self.rootView addSubview:elementView];
     }];
 }
 
@@ -95,7 +104,6 @@ CGFloat const textFieldWidth = 200.f;
 {
     if( nil != self.buttonClickHandler )
     {
-        [self]
         self.buttonClickHandler(textField.text);
     }
 }

@@ -10,10 +10,10 @@
 
 @interface FSButtonElementUI : NSObject
 
-+ (UIButton *) buttonWithFrame:(CGRect)frame
++ (UIButton *)buttonWithFrame:(CGRect)frame
                           text:(NSString *)text
                      textColor:(UIColor *)textColor
                    buttonColor:(UIColor *)buttonColor;
-- (instancetype) init NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end

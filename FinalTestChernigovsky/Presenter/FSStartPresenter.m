@@ -90,6 +90,7 @@
         return NO;
     }
     twitterAuth = (FSTwitterAuth *)data;
+    NSLog(@"%@", twitterAuth.description);
     [networkConfigure saveAccessToken:twitterAuth.access_token];
     return YES;
 }

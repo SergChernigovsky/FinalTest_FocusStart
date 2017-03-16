@@ -9,13 +9,14 @@
 #import "FSElementUIFactory.h"
 #import "FSButtonElementUI.h"
 #import "FSTextFieldElementUI.h"
+#import "FSIndicatorElementUI.h"
 
 @implementation FSElementUIFactory
 
-+ (UIButton *) makeButtonWithFrame:(CGRect)frame
-                              text:(NSString *)text
-                         textColor:(UIColor *)textColor
-                       buttonColor:(UIColor *)buttonColor
++ (UIButton *)makeButtonWithFrame:(CGRect)frame
+                             text:(NSString *)text
+                        textColor:(UIColor *)textColor
+                      buttonColor:(UIColor *)buttonColor
 {
     return [FSButtonElementUI buttonWithFrame:frame
                                          text:text
@@ -23,15 +24,28 @@
                                   buttonColor:buttonColor];
 }
 
-+ (UITextField *) makeFieldWithFrame:(CGRect)frame
-                                text:(NSString *)text
-                           textColor:(UIColor *)textColor
-                          fieldColor:(UIColor *)fieldColor
++ (UITextField *)makeFieldWithFrame:(CGRect)frame
+                               text:(NSString *)text
+                          textColor:(UIColor *)textColor
+                         fieldColor:(UIColor *)fieldColor
 {
     return [FSTextFieldElementUI fieldWithFrame:frame
                                            text:text
                                       textColor:textColor
                                      fieldColor:fieldColor];;
+}
+
++ (UIActivityIndicatorView *)makeIndicatorWithCenter:(CGPoint)center
+                                  style:(UIActivityIndicatorViewStyle)style
+{
+    return [FSIndicatorElementUI activityIndicatorWithCenter:(CGPoint)center
+                                                      style:(UIActivityIndicatorViewStyle)style];
+}
+
+- (instancetype)init
+{
+    assert( NO );
+    return nil;
 }
 
 @end

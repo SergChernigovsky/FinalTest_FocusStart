@@ -10,10 +10,10 @@
 
 @implementation FSButtonElementUI
 
-+ (UIButton *) buttonWithFrame:(CGRect)frame
-                          text:(NSString *)text
-                     textColor:(UIColor *)textColor
-                   buttonColor:(UIColor *)buttonColor
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    textColor:(UIColor *)textColor
+                  buttonColor:(UIColor *)buttonColor
 {
     UIButton *button = [[UIButton alloc] initWithFrame:frame];
     [button setTitle:text forState:UIControlStateNormal];
@@ -23,6 +23,12 @@
     button.backgroundColor = buttonColor;
     button.layer.cornerRadius = 4.f;
     return button;
+}
+
+- (instancetype)init
+{
+    assert( NO );
+    return nil;
 }
 
 @end
