@@ -8,17 +8,13 @@
 
 #import "FSBaseScreenUI.h"
 
-@interface FSBaseScreenUI()
-@property (nonatomic, copy, readwrite) NSArray *arrayNormalElements;
-@property (nonatomic, copy, readwrite) NSArray *arrayLoadingElements;
-@end
-
 @implementation FSBaseScreenUI
 {
+    NSArray *arrayNormalElements;
+    NSArray *arrayLoadingElements;
     UIView *view;
 }
-@synthesize arrayNormalElements;
-@synthesize arrayLoadingElements;
+@synthesize installUIInteractionHandler;
 
 - (instancetype)init
 {
@@ -33,6 +29,14 @@
     view.backgroundColor = [UIColor whiteColor];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [view addGestureRecognizer:tapGesture];
+    typeof(self) __weak weakSelf = self;
+    installUIInteractionHandler = ^(BOOL isNormal){
+        [weakSelf installUIInteraction:isNormal];
+    };
+    [self enumerateNormalElementsWithComletion:^(UIView *elementView)
+    {
+        [view addSubview:elementView];
+    }];
 }
 
 - (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
@@ -73,7 +77,7 @@
             [elementView removeFromSuperview];
             return;
         }
-        [self.rootView addSubview:elementView];
+        [view addSubview:elementView];
     }];
 }
 
@@ -82,14 +86,20 @@
     return;
 }
 
-- (UIView *)rootView
+- (NSArray *)arrayNormalElements
+{
+    return nil;
+}
+
+- (NSArray *)arrayLoadingElements
+{
+    return nil;
+}
+
+- (id<PRBaseScreenUI>)rootView
 {
     return view;
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)transitionController
-{
-    return nil;
-}
 
 @end

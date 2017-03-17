@@ -11,8 +11,6 @@
 
 @interface FSBaseScreenUI : NSObject<PRBaseScreenUI>
 
-@property (nonatomic, copy, readonly) NSArray *arrayNormalElements;
-@property (nonatomic, copy, readonly) NSArray *arrayLoadingElements;
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
 
 @end

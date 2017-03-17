@@ -20,9 +20,9 @@ CGFloat const textFieldWidth = 200.f;
 {
     UITextField *textField;
     FSAnimationController *animationController;
+    NSArray *arrayNormalElements;
+    NSArray *arrayLoadingElements;
 }
-@synthesize arrayNormalElements;
-@synthesize arrayLoadingElements;
 
 #pragma mark - init
 
@@ -30,11 +30,6 @@ CGFloat const textFieldWidth = 200.f;
 {
     self = [super init];
     [self makeView];
-    typeof(self) __weak weakSelf = self;
-    self.installUIInteractionHandler = ^(BOOL isNormal)
-    {
-        [weakSelf installUIInteraction:isNormal];
-    };
     animationController = [[FSAnimationController alloc] init];
     return self;
 }
@@ -61,56 +56,12 @@ CGFloat const textFieldWidth = 200.f;
                                                      textColor:[UIColor whiteColor]
                                                    buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+    
     arrayNormalElements = @[button, textField];
     arrayLoadingElements = @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
                                                                    style:UIActivityIndicatorViewStyleWhiteLarge]];
-    [self enumerateNormalElementsWithComletion:^(UIView *elementView)
-    {
-        [self.rootView addSubview:elementView];
-    }];
-    [self installUIInteraction:NO];
-}
-
-- (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
-{
-    dispatch_async(dispatch_get_main_queue(), ^(void)
-    {
-       assert( arrayNormalElements );
-       [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-       {
-            comletionNormalElements((UIView *)obj);
-       }];
-    });
-}
-
-- (void)enumerateLoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements
-{
-    dispatch_async(dispatch_get_main_queue(), ^(void)
-    {
-        assert( arrayLoadingElements );
-        [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-        {
-            comletionLoadingElements((UIView *)obj);
-        }];
-    });
-}
-
-- (void)installUIInteraction:(BOOL)isNormal
-{
-
-    [self enumerateNormalElementsWithComletion:^(UIView *elementView)
-    {
-        elementView.userInteractionEnabled = ( NO != isNormal );
-    }];
-    [self enumerateLoadingElementsComletion:^(UIView *elementView)
-    {
-        if( NO != isNormal )
-        {
-            [elementView removeFromSuperview];
-            return;
-        }
-        [self.rootView addSubview:elementView];
-    }];
+    
+    self.installUIInteractionHandler(NO);
 }
 
 #pragma mark - UIActions
@@ -119,7 +70,7 @@ CGFloat const textFieldWidth = 200.f;
 {
     if( nil != self.buttonClickHandler )
     {
-        [self installUIInteraction:NO];
+        self.installUIInteractionHandler(NO);
         self.buttonClickHandler(textField.text);
     }
 }
@@ -131,7 +82,7 @@ CGFloat const textFieldWidth = 200.f;
     [textField resignFirstResponder];
 }
 
-#pragma mark - UIAnimationController
+#pragma mark - FSBaseScreenUI
 
 - (id<UIViewControllerAnimatedTransitioning>)transitionController
 {
