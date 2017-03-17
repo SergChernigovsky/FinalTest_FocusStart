@@ -13,10 +13,6 @@
 @implementation FSStartPresenter
 {
     FSStartScreenUI *screenUI;
-    
-    FSNetwork *network;
-    FSNetworkConfigure *networkConfigure;
-    FSRequestContext *requestContext;
     FSTwitterAuth *twitterAuth;
 }
 
@@ -30,17 +26,13 @@
     {
         [weakSelf completeButtonClick:accountName];
     };
-    network = [[FSNetwork alloc] init];
-    networkConfigure = [[FSNetworkConfigure alloc] init];
-    requestContext = [self makeRequestContextWithConfigure:networkConfigure];
-    [network requestWithContext:requestContext completion:^(NSError *error, id data)
-    {
-        [weakSelf completeNetworkWithData:data error:error];
-    }];
+    [self makeRequestWithCompletion:^{}];
     return self;
 }
 
-- (FSRequestContext *)makeRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
+#pragma mark - FSBasePresenter
+
+- (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
 {
     FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
     [aKeyHolder addObject:[aNetworkConfigure authUrl] forKey:@"URL"];
@@ -57,40 +49,34 @@
     return screenUI;
 }
 
+- (void)successResponseWithData:(NSData *)data
+{
+    twitterAuth = (FSTwitterAuth *)data;
+    NSLog(@"%@", twitterAuth.description);
+    [self.networkConfigure saveAccessToken:twitterAuth.access_token];
+    screenUI.installUIInteractionHandler(YES);
+}
+
+- (void)errorResponse:(NSError *)error
+{
+    [super errorResponse:error];
+    screenUI.installUIInteractionHandler(YES);
+}
+
 #pragma mark - Completions
 
 - (void)completeButtonClick:(NSString *)accountName
 {
-    [networkConfigure saveAccountName:accountName];
+    [self.networkConfigure saveAccountName:accountName];
     if( nil != twitterAuth )
     {
         screenUI.installUIInteractionHandler(YES);
         [self handlePushToTweets];
         return;
     }
-    typeof(self) __weak weakSelf = self;
-    [network requestWithContext:requestContext completion:^(NSError *error, id data)
-    {
-        if( [weakSelf completeNetworkWithData:data error:error] )
-        {
-            [weakSelf handlePushToTweets];
-        }
+    [self makeRequestWithCompletion:^{
+        [self handlePushToTweets];
     }];
-}
-
-- (BOOL)completeNetworkWithData:(NSData *)data
-                          error:(NSError *)error
-{
-    screenUI.installUIInteractionHandler(YES);
-    if( nil != error )
-    {
-        [self handleError:error];
-        return NO;
-    }
-    twitterAuth = (FSTwitterAuth *)data;
-    NSLog(@"%@", twitterAuth.description);
-    [networkConfigure saveAccessToken:twitterAuth.access_token];
-    return YES;
 }
 
 #pragma mark - Handlers

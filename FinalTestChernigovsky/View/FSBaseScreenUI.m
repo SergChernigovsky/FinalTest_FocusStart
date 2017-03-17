@@ -10,11 +10,13 @@
 
 @implementation FSBaseScreenUI
 {
-    NSMutableArray *arrayNormalElements;
-    NSMutableArray *arrayLoadingElements;
+    NSArray *arrayNormalElements;
+    NSArray *arrayLoadingElements;
     UIView *view;
 }
 @synthesize installUIInteractionHandler;
+
+#pragma mark - init
 
 - (instancetype)init
 {
@@ -37,8 +39,9 @@
     {
         [view addSubview:elementView];
     }];
-    arrayNormalElements = [[NSMutableArray alloc] init];
-    arrayLoadingElements = [[NSMutableArray alloc] init];
+    arrayNormalElements = [self arrayNormalElements];
+    arrayLoadingElements = [self arrayLoadingElements];
+    installUIInteractionHandler(NO);
 }
 
 #pragma mark - UIStates
@@ -85,23 +88,14 @@
     }];
 }
 
-#pragma mark - Gestures
-
-- (void)handleTap:(UITapGestureRecognizer*) tapGesture
+- (NSArray *)arrayNormalElements
 {
-    return;
+    return [[NSArray alloc] init];
 }
 
-#pragma mark - PRBaseScreenUI
-
-- (NSMutableArray *) arrayNormalElements
+- (NSArray *)arrayLoadingElements
 {
-    return arrayNormalElements;
-}
-
-- (NSMutableArray *)arrayLoadingElements
-{
-    return arrayLoadingElements;
+    return [[NSArray alloc] init];
 }
 
 - (UIView *)rootView
@@ -114,5 +108,11 @@
     return nil;
 }
 
+#pragma mark - Gestures
+
+- (void)handleTap:(UITapGestureRecognizer*) tapGesture
+{
+    return;
+}
 
 @end

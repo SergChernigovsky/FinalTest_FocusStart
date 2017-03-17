@@ -10,8 +10,7 @@
 
 @interface FSStartPresenter : FSBasePresenter
 
-@property (nonatomic, copy) void (^errorHandler)(NSError *errorr);
-@property (nonatomic, copy) void (^pushToTweetsHandler)(void);
+@property (nonatomic, copy, readwrite) void (^pushToTweetsHandler)(void);
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory;
 

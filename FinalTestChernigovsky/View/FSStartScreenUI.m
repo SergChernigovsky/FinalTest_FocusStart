@@ -27,14 +27,15 @@ CGFloat const textFieldWidth = 200.f;
 - (instancetype)init
 {
     self = [super init];
-    [self makeView];
+    self.rootView.backgroundColor = [UIColor lightGrayColor];
     animationController = [[FSAnimationController alloc] init];
     return self;
 }
 
-- (void)makeView
+#pragma mark - PRBaseScreenUI
+
+- (NSArray *)arrayNormalElements
 {
-    self.rootView.backgroundColor = [UIColor lightGrayColor];
     CGRect fieldRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - textFieldWidth/2,
                                   CGRectGetMidY(self.rootView.bounds) - textFieldHeight/2 - 50.f,
                                   textFieldWidth,
@@ -43,8 +44,6 @@ CGFloat const textFieldWidth = 200.f;
                                    CGRectGetMidY(self.rootView.bounds) - buttonHeight/2,
                                    buttonWidth,
                                    buttonHeight);
-    CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
-                                         170.f);
     textField = [FSElementUIFactory makeFieldWithFrame:fieldRect
                                                   text:@"chucknorris"
                                              textColor:[UIColor blackColor]
@@ -54,10 +53,25 @@ CGFloat const textFieldWidth = 200.f;
                                                      textColor:[UIColor whiteColor]
                                                    buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.arrayNormalElements addObjectsFromArray:@[button, textField]];
-    [self.arrayLoadingElements addObject:[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
-                                                                               style:UIActivityIndicatorViewStyleWhiteLarge]];
-    self.installUIInteractionHandler(NO);
+    return @[button, textField];
+}
+
+- (NSArray *)arrayLoadingElements
+{
+    CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
+                                         170.f);
+    return @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
+                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)transitionController
+{
+    return animationController;
+}
+
+- (void)handleTap:(UITapGestureRecognizer*) tapGesture
+{
+    [textField resignFirstResponder];
 }
 
 #pragma mark - UIActions
@@ -69,20 +83,6 @@ CGFloat const textFieldWidth = 200.f;
         self.installUIInteractionHandler(NO);
         self.buttonClickHandler(textField.text);
     }
-}
-
-#pragma mark - UIGestures
-
-- (void)handleTap:(UITapGestureRecognizer*) tapGesture
-{
-    [textField resignFirstResponder];
-}
-
-#pragma mark - FSBaseScreenUI
-
-- (id<UIViewControllerAnimatedTransitioning>)transitionController
-{
-    return animationController;
 }
 
 @end

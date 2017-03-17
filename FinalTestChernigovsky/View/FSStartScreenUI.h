@@ -10,7 +10,7 @@
 
 @interface FSStartScreenUI : FSBaseScreenUI
 
-@property (nonatomic, copy) void (^buttonClickHandler)(NSString* accountName);
+@property (nonatomic, copy, readwrite) void (^buttonClickHandler)(NSString* accountName);
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 

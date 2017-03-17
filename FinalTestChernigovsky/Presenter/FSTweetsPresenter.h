@@ -10,7 +10,7 @@
 
 @interface FSTweetsPresenter : FSBasePresenter
 
-@property (nonatomic, copy) void (^buttonClickHandler)(void);
+@property (nonatomic, copy, readwrite) void (^buttonClickHandler)(void);
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory;
 

@@ -12,5 +12,7 @@
 @interface FSBaseScreenUI : NSObject<PRBaseScreenUI>
 
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
+- (NSArray *)arrayNormalElements;
+- (NSArray *)arrayLoadingElements;
 
 @end

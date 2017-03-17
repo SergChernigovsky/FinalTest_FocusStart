@@ -17,9 +17,16 @@
 
 @interface FSBasePresenter : NSObject
 
-@property (nonatomic, strong, readonly) id<PRBaseScreenUI> screenUI;
+@property (nonatomic, strong, readwrite) id<PRBaseScreenUI> screenUI;
+@property (nonatomic, copy, readwrite) void (^errorHandler)(NSError *errorr);
+@property (nonatomic, strong, readonly) FSNetwork *network;
+@property (nonatomic, strong, readonly) FSNetworkConfigure *networkConfigure;
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
+- (void)makeRequestWithCompletion:(void(^)(void))completion;
+- (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure;
+- (void)successResponseWithData:(NSData *)data;
+- (void)errorResponse:(NSError *)error;
 
 @end
