@@ -28,5 +28,6 @@
 - (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure;
 - (void)successResponseWithData:(NSData *)data;
 - (void)errorResponse:(NSError *)error;
+- (void)transition;
 
 @end

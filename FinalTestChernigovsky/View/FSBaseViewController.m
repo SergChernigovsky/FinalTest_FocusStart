@@ -39,6 +39,11 @@
 {
     assert( nil != screenPresenter );
     _screenPresenter = screenPresenter;
+    typeof(self) __weak weakSelf = self;
+    _screenPresenter.errorHandler = ^(NSError *error)
+    {
+        [weakSelf completeError:error];
+    };
 }
 
 - (id<UIViewControllerTransitioningDelegate>)transitioningDelegate
@@ -57,7 +62,13 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC
 {
+    [_screenPresenter transition];
     return self.screenPresenter.screenUI.transitionController;
+}
+
+- (void)completeError:(NSError *)error
+{
+    return;
 }
 
 - (instancetype)init

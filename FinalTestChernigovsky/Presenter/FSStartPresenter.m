@@ -26,7 +26,10 @@
     {
         [weakSelf completeButtonClick:accountName];
     };
-    [self makeRequestWithCompletion:^{}];
+    [self makeRequestWithCompletion:^
+    {
+        screenUI.installUIInteractionHandler(YES);
+    }];
     return self;
 }
 
@@ -52,7 +55,6 @@
 - (void)successResponseWithData:(NSData *)data
 {
     twitterAuth = (FSTwitterAuth *)data;
-    NSLog(@"%@", twitterAuth.description);
     [self.networkConfigure saveAccessToken:twitterAuth.access_token];
     screenUI.installUIInteractionHandler(YES);
 }
@@ -63,6 +65,11 @@
     screenUI.installUIInteractionHandler(YES);
 }
 
+- (void)transition
+{
+    screenUI.installUIInteractionHandler(YES);
+}
+
 #pragma mark - Completions
 
 - (void)completeButtonClick:(NSString *)accountName
@@ -70,11 +77,11 @@
     [self.networkConfigure saveAccountName:accountName];
     if( nil != twitterAuth )
     {
-        screenUI.installUIInteractionHandler(YES);
         [self handlePushToTweets];
         return;
     }
-    [self makeRequestWithCompletion:^{
+    [self makeRequestWithCompletion:^
+    {
         [self handlePushToTweets];
     }];
 }

@@ -26,46 +26,39 @@
     self = [super initWithScreenUIFactory:screenFactory];
     factory = screenFactory;
     
-    FSStartPresenter *presenter = [[FSStartPresenter alloc]  initWithScreenFactory:factory];
+    FSStartPresenter *presenter = [[FSStartPresenter alloc]initWithScreenFactory:factory];
     typeof(self) __weak weakSelf = self;
     presenter.pushToTweetsHandler = ^
     {
         [weakSelf completePushToTweets];
     };
-    presenter.errorHandler = ^(NSError *error)
-    {
-        [weakSelf completeError:error];
-    };
     self.screenPresenter = presenter;
     return self;
 }
 
-- (void)alertWithTitle:(NSString *)title text:(NSString *)text
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
-                                                                             message:text
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
-                                                        style:UIAlertActionStyleCancel
-                                                      handler:^(UIAlertAction *action){}]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-#pragma mark - Completions
-
 - (void)completePushToTweets
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
         FSTweetsViewController *secondViewController = [[FSTweetsViewController alloc] initWithScreenUIFactory:factory];
         [self.navigationController pushViewController:secondViewController
                                              animated:YES];
     });
 }
 
+#pragma mark - FSBaseViewController
+
 - (void)completeError:(NSError *)error
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        [self alertWithTitle:@"Error" text:error.localizedDescription];
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                 message:error.localizedDescription
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction *action){}]];
+        [self presentViewController:alertController animated:YES completion:nil];
     });
 }
 

@@ -32,7 +32,8 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [view addGestureRecognizer:tapGesture];
     typeof(self) __weak weakSelf = self;
-    installUIInteractionHandler = ^(BOOL isNormal){
+    installUIInteractionHandler = ^(BOOL isNormal)
+    {
         [weakSelf installUIInteraction:isNormal];
     };
     [self enumerateNormalElementsWithComletion:^(UIView *elementView)

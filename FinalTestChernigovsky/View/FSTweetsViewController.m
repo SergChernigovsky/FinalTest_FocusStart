@@ -19,7 +19,7 @@
     assert( nil != screenFactory );
     self = [super initWithScreenUIFactory:screenFactory];
     factory = screenFactory;
-    FSTweetsPresenter *presenter = [[FSTweetsPresenter alloc]  initWithScreenFactory:factory];
+    FSTweetsPresenter *presenter = [[FSTweetsPresenter alloc]initWithScreenFactory:factory];
     self.screenPresenter = presenter;
     return self;
 }

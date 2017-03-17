@@ -24,7 +24,8 @@
     return self;
 }
 
-- (void)makeRequestWithCompletion:(void(^)(void))completion{
+- (void)makeRequestWithCompletion:(void(^)(void))completion
+{
     typeof(self) __weak weakSelf = self;
     FSRequestContext *requestContext = [self requestContextWithConfigure:self.networkConfigure];
     [self.network requestWithContext:requestContext
@@ -51,6 +52,11 @@
 }
 
 - (void)successResponseWithData:(NSData *)data
+{
+    return;
+}
+
+-(void)transition
 {
     return;
 }
