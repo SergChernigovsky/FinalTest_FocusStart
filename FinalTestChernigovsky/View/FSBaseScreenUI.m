@@ -10,8 +10,8 @@
 
 @implementation FSBaseScreenUI
 {
-    NSArray *arrayNormalElements;
-    NSArray *arrayLoadingElements;
+    NSMutableArray *arrayNormalElements;
+    NSMutableArray *arrayLoadingElements;
     UIView *view;
 }
 @synthesize installUIInteractionHandler;
@@ -37,11 +37,15 @@
     {
         [view addSubview:elementView];
     }];
+    arrayNormalElements = [[NSMutableArray alloc] init];
+    arrayLoadingElements = [[NSMutableArray alloc] init];
 }
+
+#pragma mark - UIStates
 
 - (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void)
+    dispatch_async(dispatch_get_main_queue(),^(void)
    {
        assert( arrayNormalElements );
        [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
@@ -53,7 +57,7 @@
 
 - (void)enumerateLoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void)
+    dispatch_async(dispatch_get_main_queue(),^(void)
     {
        assert( arrayLoadingElements );
        [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
@@ -81,24 +85,33 @@
     }];
 }
 
+#pragma mark - Gestures
+
 - (void)handleTap:(UITapGestureRecognizer*) tapGesture
 {
     return;
 }
 
-- (NSArray *)arrayNormalElements
+#pragma mark - PRBaseScreenUI
+
+- (NSMutableArray *) arrayNormalElements
 {
-    return nil;
+    return arrayNormalElements;
 }
 
-- (NSArray *)arrayLoadingElements
+- (NSMutableArray *)arrayLoadingElements
 {
-    return nil;
+    return arrayLoadingElements;
 }
 
-- (id<PRBaseScreenUI>)rootView
+- (UIView *)rootView
 {
     return view;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)transitionController
+{
+    return nil;
 }
 
 

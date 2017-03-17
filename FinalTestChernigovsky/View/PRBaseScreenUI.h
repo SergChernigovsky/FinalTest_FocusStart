@@ -14,5 +14,7 @@
 @property (nonatomic, strong, readonly, nonnull) UIView *rootView;
 @property (nonatomic, strong, readonly, nullable) id<UIViewControllerAnimatedTransitioning> transitionController;
 @property (nonatomic, copy, readonly, nonnull) void (^installUIInteractionHandler)(BOOL isNormal);
+@property (nonatomic, strong, readonly, nonnull) NSMutableArray *arrayNormalElements;
+@property (nonatomic, strong, readonly, nonnull) NSMutableArray *arrayLoadingElements;
 
 @end

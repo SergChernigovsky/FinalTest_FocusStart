@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "FSScreenUIFactory.h"
+#import "FSNetwork.h"
+#import "FSNetworkConfigure.h"
+#import "FSRequestContext.h"
+#import "FSKeyHolder.h"
 
 @protocol PRBaseScreenUI;
 

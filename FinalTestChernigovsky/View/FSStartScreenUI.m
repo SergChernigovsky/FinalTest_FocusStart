@@ -20,8 +20,6 @@ CGFloat const textFieldWidth = 200.f;
 {
     UITextField *textField;
     FSAnimationController *animationController;
-    NSArray *arrayNormalElements;
-    NSArray *arrayLoadingElements;
 }
 
 #pragma mark - init
@@ -56,11 +54,9 @@ CGFloat const textFieldWidth = 200.f;
                                                      textColor:[UIColor whiteColor]
                                                    buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    arrayNormalElements = @[button, textField];
-    arrayLoadingElements = @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
-                                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
-    
+    [self.arrayNormalElements addObjectsFromArray:@[button, textField]];
+    [self.arrayLoadingElements addObject:[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
+                                                                               style:UIActivityIndicatorViewStyleWhiteLarge]];
     self.installUIInteractionHandler(NO);
 }
 
