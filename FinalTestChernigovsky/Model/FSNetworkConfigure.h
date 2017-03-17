@@ -14,8 +14,7 @@
 - (NSURL *)authUrl;
 - (NSDictionary *)authHttpHeaders;
 - (NSData *)authHttpBody;
-- (NSURL *)contentUrlForAccount:(NSString *)account
-                    numberPosts:(NSUInteger)numberPosts;
+- (NSURL *)contentUrlWithNumberPosts:(NSUInteger)numberPosts;
 - (NSDictionary *)contentHttpHeaders;
 - (void)saveAccessToken:(NSString *)string;
 - (void)saveAccountName:(NSString *)name;

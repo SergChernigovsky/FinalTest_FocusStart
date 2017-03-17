@@ -27,7 +27,6 @@
     UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
     toView.alpha = 0.0f;
     CGAffineTransform transform = CGAffineTransformIdentity;
-//    transform = CGAffineTransformRotate(transform, M_PI);
     transform = CGAffineTransformScale(transform, 0.001f, 0.001f);
     toView.transform = transform;
     [transitionContext.containerView addSubview:toView];

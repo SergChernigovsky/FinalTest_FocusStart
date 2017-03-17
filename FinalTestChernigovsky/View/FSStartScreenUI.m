@@ -20,14 +20,21 @@ CGFloat const textFieldWidth = 200.f;
 {
     UITextField *textField;
     FSAnimationController *animationController;
-    NSArray *arrayNormalElements;
-    NSArray *arrayLoadingElements;
 }
+@synthesize arrayNormalElements;
+@synthesize arrayLoadingElements;
+
+#pragma mark - init
 
 - (instancetype)init
 {
     self = [super init];
     [self makeView];
+    typeof(self) __weak weakSelf = self;
+    self.installUIInteractionHandler = ^(BOOL isNormal)
+    {
+        [weakSelf installUIInteraction:isNormal];
+    };
     animationController = [[FSAnimationController alloc] init];
     return self;
 }
@@ -43,6 +50,8 @@ CGFloat const textFieldWidth = 200.f;
                                    CGRectGetMidY(self.rootView.bounds) - buttonHeight/2,
                                    buttonWidth,
                                    buttonHeight);
+    CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
+                                         170.f);
     textField = [FSElementUIFactory makeFieldWithFrame:fieldRect
                                                   text:@"chucknorris"
                                              textColor:[UIColor blackColor]
@@ -53,33 +62,32 @@ CGFloat const textFieldWidth = 200.f;
                                                    buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
     arrayNormalElements = @[button, textField];
-    CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
-                                         170.f);
     arrayLoadingElements = @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
                                                                    style:UIActivityIndicatorViewStyleWhiteLarge]];
     [self enumerateNormalElementsWithComletion:^(UIView *elementView)
     {
         [self.rootView addSubview:elementView];
-    }
-    LoadingElementsComletion:^(UIView *elementView)
-    {
-//        elementView.hidden = YES;
-        [self.rootView addSubview:elementView];
     }];
+    [self installUIInteraction:NO];
 }
 
-
 - (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
-                    LoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements
 {
-    assert( arrayNormalElements );
-    assert( arrayLoadingElements );
     dispatch_async(dispatch_get_main_queue(), ^(void)
     {
-        [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-        {
+       assert( arrayNormalElements );
+       [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+       {
             comletionNormalElements((UIView *)obj);
-        }];
+       }];
+    });
+}
+
+- (void)enumerateLoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements
+{
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+        assert( arrayLoadingElements );
         [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
         {
             comletionLoadingElements((UIView *)obj);
@@ -87,26 +95,43 @@ CGFloat const textFieldWidth = 200.f;
     });
 }
 
-- (void)stateIsNormal:(BOOL)isNormal
+- (void)installUIInteraction:(BOOL)isNormal
 {
+
     [self enumerateNormalElementsWithComletion:^(UIView *elementView)
     {
-        elementView.hidden = ( NO != isNormal );
-    }
-    LoadingElementsComletion:^(UIView *elementView)
+        elementView.userInteractionEnabled = ( NO != isNormal );
+    }];
+    [self enumerateLoadingElementsComletion:^(UIView *elementView)
     {
-        elementView.hidden = ( YES != isNormal );
+        if( NO != isNormal )
+        {
+            [elementView removeFromSuperview];
+            return;
+        }
         [self.rootView addSubview:elementView];
     }];
 }
+
+#pragma mark - UIActions
 
 - (void)buttonClick
 {
     if( nil != self.buttonClickHandler )
     {
+        [self installUIInteraction:NO];
         self.buttonClickHandler(textField.text);
     }
 }
+
+#pragma mark - UIGestures
+
+- (void)handleTap:(UITapGestureRecognizer*) tapGesture
+{
+    [textField resignFirstResponder];
+}
+
+#pragma mark - UIAnimationController
 
 - (id<UIViewControllerAnimatedTransitioning>)transitionController
 {

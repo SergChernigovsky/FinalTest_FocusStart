@@ -465,6 +465,7 @@
 				TargetAttributes = {
 					3F0D762F1E73AB64002F025E = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5P8LN26W8F;
 						ProvisioningStyle = Automatic;
 					};
 					3F0D76481E73AB65002F025E = {
@@ -700,7 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5P8LN26W8F;
 				INFOPLIST_FILE = FinalTestChernigovsky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovsky;
@@ -712,7 +713,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5P8LN26W8F;
 				INFOPLIST_FILE = FinalTestChernigovsky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.cft.FinalTestChernigovsky;

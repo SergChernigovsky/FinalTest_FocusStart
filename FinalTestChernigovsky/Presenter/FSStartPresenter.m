@@ -68,6 +68,7 @@
     [networkConfigure saveAccountName:accountName];
     if( nil != twitterAuth )
     {
+        screenUI.installUIInteractionHandler(YES);
         [self handlePushToTweets];
         return;
     }
@@ -84,6 +85,7 @@
 - (BOOL)completeNetworkWithData:(NSData *)data
                           error:(NSError *)error
 {
+    screenUI.installUIInteractionHandler(YES);
     if( nil != error )
     {
         [self handleError:error];
