@@ -27,7 +27,7 @@ CGFloat const textFieldWidth = 200.f;
 - (instancetype)init
 {
     self = [super init];
-    self.rootView.backgroundColor = [UIColor lightGrayColor];
+    self.rootView.backgroundColor = [UIColor grayColor];
     animationController = [[FSAnimationController alloc] init];
     return self;
 }
@@ -69,7 +69,7 @@ CGFloat const textFieldWidth = 200.f;
     return animationController;
 }
 
-- (void)handleTap:(UITapGestureRecognizer*) tapGesture
+- (void)handleTap:(UITapGestureRecognizer*)tapGesture
 {
     [textField resignFirstResponder];
 }

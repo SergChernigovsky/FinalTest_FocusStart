@@ -26,10 +26,7 @@
     {
         [weakSelf completeButtonClick:accountName];
     };
-    [self makeRequestWithCompletion:^
-    {
-        screenUI.installUIInteractionHandler(YES);
-    }];
+    [self makeRequestWithCompletion:^{}];
     return self;
 }
 
@@ -55,6 +52,7 @@
 - (void)successResponseWithData:(NSData *)data
 {
     twitterAuth = (FSTwitterAuth *)data;
+    NSLog(@"%@", twitterAuth.description);
     [self.networkConfigure saveAccessToken:twitterAuth.access_token];
     screenUI.installUIInteractionHandler(YES);
 }

@@ -24,4 +24,24 @@
     return self;
 }
 
+#pragma mark - FSBaseViewController
+
+- (void)completeError:(NSError *)error
+{
+    typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                message:error.localizedDescription
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+       [alertController addAction:[UIAlertAction actionWithTitle:@"Back"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action)
+        {
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }]];
+       [self presentViewController:alertController animated:YES completion:nil];
+    });
+}
+
 @end

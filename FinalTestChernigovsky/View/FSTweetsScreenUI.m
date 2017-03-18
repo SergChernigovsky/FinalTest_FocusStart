@@ -10,6 +10,7 @@
 #import "FSAnimationController.h"
 #import "FSElementUIFactory.h"
 
+
 @implementation FSTweetsScreenUI
 {
     UILabel *label;
@@ -21,18 +22,24 @@
 - (instancetype)init
 {
     self = [super init];
-    [self makeView];
+    self.rootView.backgroundColor = [UIColor grayColor];
     animationController = [[FSAnimationController alloc] init];
     return self;
 }
 
-- (void)makeView
+#pragma mark - PRBaseScreenUI
+
+- (NSArray *)arrayNormalElements
 {
-    self.rootView.backgroundColor = [UIColor lightGrayColor];
+    return @[];
+}
+
+- (NSArray *)arrayLoadingElements
+{
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          170.f);
-    arrayLoadingElements = @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
-                                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
+    return @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
+                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)transitionController
