@@ -21,20 +21,4 @@
              NSStringFromSelector(@selector(token_type))];
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    return self;
-}
-
-- (NSString *)description
-{
-    NSArray<NSString *> *keys = [[self class] deserializeableProperties];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [keys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [dictionary setObject:[self valueForKey:obj] forKey:obj];
-    }];
-    return dictionary.description;
-}
-
 @end

@@ -37,20 +37,14 @@
              NSStringFromSelector(@selector(profile_image))];
 }
 
-- (instancetype)init
+- (SEL)deserializeSelector
 {
-    self = [super init];
-    return self;
+    return @selector(setVal:forKey:);
 }
 
-- (NSString *)description
+- (void)setVal:(id)value forKey:(NSString *)key
 {
-    NSArray<NSString *> *keys = [[self class] deserializeableProperties];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [keys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [dictionary setObject:[self valueForKey:obj] forKey:obj];
-    }];
-    return dictionary.description;
+    
 }
 
 @end

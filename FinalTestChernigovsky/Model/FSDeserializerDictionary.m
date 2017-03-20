@@ -20,18 +20,15 @@
 -(id)parseResponse:(id)json expectedClass:(Class)class
 {
     id result = [[class alloc] init];
-    if( NO == [result conformsToProtocol:@protocol(PRDeserializeable)] )
-    {
-        assert( NO );
-        return nil;
-    }
+    assert( NO != [result conformsToProtocol:@protocol(PRDeserializeable)] );
     NSArray<NSString *> *properies = [class deserializeableProperties];
+    SEL selector = [class deserializeableSelector];
     [properies enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
         NSString *proretyKey = obj;
         id value = json[proretyKey];
         assert( nil != value );
-        [result setValue:value forKey:proretyKey];
+        [result performSelector:selector withObject:value withObject:proretyKey];
     }];
     return result;
 }

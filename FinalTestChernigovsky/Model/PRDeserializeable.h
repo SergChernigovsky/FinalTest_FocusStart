@@ -11,5 +11,6 @@
 @protocol PRDeserializeable <NSObject>
 
 + (NSArray<NSString *> *)deserializeableProperties;
++ (SEL)deserializeableSelector;
 
 @end

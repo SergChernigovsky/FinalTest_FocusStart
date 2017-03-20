@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PRDeserializeable.h"
+#import "FSBaseObject.h"
 
-@interface FSTwitterAuth : NSObject<PRDeserializeable>
+@interface FSTwitterAuth : FSBaseObject
 
 @property (nonatomic, copy, readonly) NSString *access_token;
 @property (nonatomic, copy, readonly) NSString *token_type;
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 @end

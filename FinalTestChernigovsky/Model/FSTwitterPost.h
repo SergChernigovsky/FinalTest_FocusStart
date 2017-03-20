@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "PRDeserializeable.h"
+#import "FSBaseObject.h"
 
-@interface FSTwitterPost : NSObject<PRDeserializeable>
+@interface FSTwitterPost : FSBaseObject
 
 @property (nonatomic, strong, readonly) NSDate *created_at;
 @property (nonatomic, copy, readonly) NSString *text;
@@ -22,6 +22,5 @@
 @property (nonatomic, strong, readonly) NSURL *profile_image_url;
 @property (nonatomic, strong, readonly) NSURL *url;
 @property (nonatomic, strong, readonly) UIImage *profile_image;
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 @end
