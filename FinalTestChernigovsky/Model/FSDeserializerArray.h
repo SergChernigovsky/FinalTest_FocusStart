@@ -6,11 +6,8 @@
 //  Copyright © 2017 CFT:FocusStart. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "PRDeserializer.h"
+#import "FSDeserializer.h"
 
-@interface FSDeserializerArray : NSObject<PRDeserializer>
-
-- (instancetype)init;
+@interface FSDeserializerArray : FSDeserializer
 
 @end

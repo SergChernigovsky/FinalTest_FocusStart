@@ -9,6 +9,7 @@
 #import "FSTweetsPresenter.h"
 #import "FSTweetsScreenUI.h"
 #import "FSTwitterPost.h"
+#import "NSDate+FSDate.h"
 
 @implementation FSTweetsPresenter
 {
@@ -30,7 +31,7 @@
 - (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
 {
     FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:3] forKey:@"URL"];
+    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:20] forKey:@"URL"];
     [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
     [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
     return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder

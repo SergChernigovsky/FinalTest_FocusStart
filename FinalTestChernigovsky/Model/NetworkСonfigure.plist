@@ -10,9 +10,9 @@
 	<string>Authorization</string>
 	<key>userUrl</key>
 	<string>/1.1/statuses/user_timeline.json?</string>
-	<key>authHttpBody</key>
+	<key>authorizationHttpBody</key>
 	<string>grant_type=client_credentials</string>
-	<key>authUrl</key>
+	<key>authorizationUrl</key>
 	<string>/oauth2/token?oauth_token=</string>
 	<key>baseUrl</key>
 	<string>https://api.twitter.com</string>

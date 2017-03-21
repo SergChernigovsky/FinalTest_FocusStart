@@ -7,29 +7,30 @@
 //
 
 #import "FSDeserializerArray.h"
-#import "PRDeserializeable.h"
 
 @implementation FSDeserializerArray
 
-- (instancetype)init
+- (id)parseResponse:(id)json expectedClass:(Class)class
 {
-    self = [super init];
-    return self;
+//    assert( NO != [class conformsToProtocol:@protocol(PRDeserializeable)]);
+//    NSArray<NSDictionary *> *jsonArray = (NSArray *)json;
+//    NSArray<NSString *> *properies = [class deserializeableProperties];
+//    NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+//    
+//    [jsonArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSDictionary *dictionaryObject = obj;
+//        id object = [[class alloc] init];
+//        [properies enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+//        {
+//            NSString *propertyKey = obj;
+//            id value = dictionaryObject[propertyKey];
+//            assert( nil != value );
+//            
+//        }];
+//    }];
+    return json;
 }
 
--(id)parseResponse:(id)json expectedClass:(Class)class
-{
-    assert( NO != [class conformsToProtocol:@protocol(PRDeserializeable)]);
-    NSArray<NSDictionary *> *jsonArray = (NSArray *)json;
-    NSMutableArray *resultArray = [[NSMutableArray alloc] init];
-    [jsonArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSDictionary *dictionaryObject = obj;
-        id object = [[class alloc] init];
-        [dictionaryObject enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            [object setValue:<#(nullable id)#> forKey:<#(nonnull NSString *)#>];
-        }];
-    }];
-    return [resultArray copy];
-}
+
 
 @end

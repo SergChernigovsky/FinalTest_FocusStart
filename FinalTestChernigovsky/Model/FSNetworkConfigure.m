@@ -8,23 +8,25 @@
 
 #import "FSNetworkConfigure.h"
 #import "FSObjectArchiver.h"
-#import "FSDeserializerDictionary.h"
+#import "NSURL+FSURL.h"
+
+@interface FSNetworkConfigure()
+//Plist keys
+@property (nonatomic, copy, readwrite, nonnull) NSString *consumerKey;
+@property (nonatomic, copy, readwrite, nonnull) NSString *consumerSecret;
+@property (nonatomic, copy, readwrite, nonnull) NSString *baseUrl;
+@property (nonatomic, copy, readwrite, nonnull) NSString *authorizationUrl;
+@property (nonatomic, copy, readwrite, nonnull) NSString *authorizationHttpBody;
+@property (nonatomic, copy, readwrite, nonnull) NSString *userUrl;
+@property (nonatomic, copy, readwrite, nonnull) NSString *headerKey;
+@property (nonatomic, copy, readwrite, nonnull) NSString *accessTokenKey;
+@property (nonatomic, copy, readwrite, nonnull) NSString *accountNameKey;
+@end
 
 @implementation FSNetworkConfigure
 {
-    NSDictionary *configure;
+    NSDictionary<NSString *, NSString *> *configure;
     NSString *authTokenBase64;
-    
-    //Plist keys
-    NSString *consumerKey;
-    NSString *consumerSecret;
-    NSString *baseUrl;
-    NSString *authUrl;
-    NSString *authHttpBody;
-    NSString *userUrl;
-    NSString *headerKey;
-    NSString *accessTokenKey;
-    NSString *accountNameKey;
 }
 
 - (instancetype)init
@@ -34,20 +36,14 @@
                                                      ofType:@"plist"];
     assert( nil != path );
     configure = [[NSDictionary alloc] initWithContentsOfFile:path];
-    [configure enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [configure enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop)
+    {
+        assert( NO == [obj isEqualToString:@""] );
+        assert( NO != [self respondsToSelector:NSSelectorFromString(key)]);
         [self setValue:obj forKey:key];
     }];
-    assert( nil != consumerKey );
-    assert( nil != consumerSecret );
-    assert( nil != baseUrl );
-    assert( nil != authUrl );
-    assert( nil != authHttpBody );
-    assert( nil != userUrl );
-    assert( nil != headerKey );
-    assert( nil != accessTokenKey );
-    assert( nil != accountNameKey );
-    authTokenBase64 = [self tokenBase64WithKey:consumerKey
-                                        secret:consumerSecret];
+    authTokenBase64 = [self tokenBase64WithKey:self.consumerKey
+                                        secret:self.consumerSecret];
     return self;
 }
 
@@ -63,7 +59,7 @@
 
 - (NSURL *)authUrl
 {
-    NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", baseUrl, authUrl, authTokenBase64];
+    NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", self.baseUrl, self.authorizationUrl, authTokenBase64];
     NSURL *url = [NSURL URLWithString:stringUrl];
     assert( nil != url );
     return url;
@@ -71,38 +67,38 @@
 
 - (NSDictionary *)authHttpHeaders
 {
-    return @{headerKey : [NSString stringWithFormat:@"Basic %@", authTokenBase64]};
+    return @{self.headerKey : [NSString stringWithFormat:@"Basic %@", authTokenBase64]};
 }
 
 - (NSData *)authHttpBody
 {
-    return [authHttpBody dataUsingEncoding:NSUTF8StringEncoding];
+    return [self.authorizationHttpBody dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (NSURL *)contentUrlWithNumberPosts:(NSUInteger)numberPosts
 {
     assert( 0 != numberPosts );
-    NSString *params = [NSString stringWithFormat:@"count=%ld&screen_name=%@", (unsigned long)numberPosts, [FSObjectArchiver stringForKey:accountNameKey]];
-    NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", baseUrl, userUrl, params];
-    NSURL *url = [NSURL URLWithString:stringUrl];
+    NSString *params = [NSString stringWithFormat:@"count=%ld&screen_name=%@", (unsigned long)numberPosts, [FSObjectArchiver stringForKey:self.accountNameKey]];
+    NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", self.baseUrl, self.userUrl, params];
+    NSURL *url = [NSURL fs_URLWithString:stringUrl];
     assert( nil != url );
     return url;
 }
 
 - (NSDictionary *)contentHttpHeaders
 {
-    NSString *accessToken = [FSObjectArchiver stringForKey:accessTokenKey];
-    return @{headerKey : [NSString stringWithFormat:@"Bearer %@", accessToken]};
+    NSString *accessToken = [FSObjectArchiver stringForKey:self.accessTokenKey];
+    return @{self.headerKey : [NSString stringWithFormat:@"Bearer %@", accessToken]};
 }
 
 - (void)saveAccessToken:(NSString *)string
 {
-    [FSObjectArchiver archiveString:string forKey:accessTokenKey];
+    [FSObjectArchiver archiveString:string forKey:self.accessTokenKey];
 }
 
 - (void)saveAccountName:(NSString *)name
 {
-    [FSObjectArchiver archiveString:name forKey:accountNameKey];
+    [FSObjectArchiver archiveString:name forKey:self.accountNameKey];
 }
 
 @end

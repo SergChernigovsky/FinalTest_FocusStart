@@ -11,7 +11,6 @@
 		3DAAD6E91E77D55E004C09FA /* FSKeyHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAD6E81E77D55E004C09FA /* FSKeyHolder.m */; };
 		3DEAE05D1E7934CD008433E1 /* FSObjectArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE05C1E7934CD008433E1 /* FSObjectArchiver.m */; };
 		3DEAE0621E7A7C08008433E1 /* FSColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE0611E7A7C08008433E1 /* FSColors.m */; };
-		3DEAE0661E7A7E1D008433E1 /* FSElementUIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE0651E7A7E1D008433E1 /* FSElementUIFactory.m */; };
 		3DEAE0691E7A83C5008433E1 /* FSButtonElementUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE0681E7A83C5008433E1 /* FSButtonElementUI.m */; };
 		3DEAE06C1E7A85FF008433E1 /* FSTextFieldElementUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAE06B1E7A85FF008433E1 /* FSTextFieldElementUI.m */; };
 		3F0D76351E73AB65002F025E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76341E73AB65002F025E /* main.m */; };
@@ -33,6 +32,15 @@
 		3F0D76901E73C335002F025E /* FSBaseScreenUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D768F1E73C335002F025E /* FSBaseScreenUI.m */; };
 		3F0D76931E73C38D002F025E /* FSStartScreenUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76921E73C38D002F025E /* FSStartScreenUI.m */; };
 		3F0D76991E73C3F8002F025E /* FSTweetsScreenUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D76981E73C3F8002F025E /* FSTweetsScreenUI.m */; };
+		D50B52571E812D470054F884 /* FSDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D50B52561E812D470054F884 /* FSDeserializer.m */; };
+		D527A1E41E801F0A00524A10 /* FSDeserializeableProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1E31E801F0A00524A10 /* FSDeserializeableProperty.m */; };
+		D527A1E71E80CAD000524A10 /* FSTwitterEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1E61E80CAD000524A10 /* FSTwitterEntities.m */; };
+		D527A1EA1E80CC3C00524A10 /* FSRetweetedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1E91E80CC3C00524A10 /* FSRetweetedStatus.m */; };
+		D527A1ED1E80CC8500524A10 /* FSTwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1EC1E80CC8500524A10 /* FSTwitterUser.m */; };
+		D527A1F01E80DCD000524A10 /* FSTwitterUrls.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1EF1E80DCD000524A10 /* FSTwitterUrls.m */; };
+		D527A1F71E8100EC00524A10 /* FSElementUIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1F61E8100EC00524A10 /* FSElementUIFactory.m */; };
+		D527A1FA1E81012D00524A10 /* NSURL+FSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1F91E81012D00524A10 /* NSURL+FSURL.m */; };
+		D527A1FD1E81096800524A10 /* NSDate+FSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1FC1E81096800524A10 /* NSDate+FSDate.m */; };
 		D5B82A871E7D1D2E00435BC4 /* FSBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */; };
 		D5B8F00A1E76C9C000A3D7BF /* FSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F0091E76C9C000A3D7BF /* FSNetwork.m */; };
 		D5B8F00E1E76CA7700A3D7BF /* FSTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */; };
@@ -71,8 +79,6 @@
 		3DEAE05C1E7934CD008433E1 /* FSObjectArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSObjectArchiver.m; path = Model/FSObjectArchiver.m; sourceTree = "<group>"; };
 		3DEAE0601E7A7C08008433E1 /* FSColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSColors.h; path = View/FSColors.h; sourceTree = "<group>"; };
 		3DEAE0611E7A7C08008433E1 /* FSColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSColors.m; path = View/FSColors.m; sourceTree = "<group>"; };
-		3DEAE0641E7A7E1D008433E1 /* FSElementUIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSElementUIFactory.h; sourceTree = "<group>"; };
-		3DEAE0651E7A7E1D008433E1 /* FSElementUIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSElementUIFactory.m; sourceTree = "<group>"; };
 		3DEAE0671E7A83C5008433E1 /* FSButtonElementUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSButtonElementUI.h; path = View/FSButtonElementUI.h; sourceTree = "<group>"; };
 		3DEAE0681E7A83C5008433E1 /* FSButtonElementUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSButtonElementUI.m; path = View/FSButtonElementUI.m; sourceTree = "<group>"; };
 		3DEAE06A1E7A85FF008433E1 /* FSTextFieldElementUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTextFieldElementUI.h; path = View/FSTextFieldElementUI.h; sourceTree = "<group>"; };
@@ -117,6 +123,24 @@
 		3F0D76921E73C38D002F025E /* FSStartScreenUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSStartScreenUI.m; path = View/FSStartScreenUI.m; sourceTree = "<group>"; };
 		3F0D76971E73C3F8002F025E /* FSTweetsScreenUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTweetsScreenUI.h; path = View/FSTweetsScreenUI.h; sourceTree = "<group>"; };
 		3F0D76981E73C3F8002F025E /* FSTweetsScreenUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTweetsScreenUI.m; path = View/FSTweetsScreenUI.m; sourceTree = "<group>"; };
+		D50B52551E812D470054F884 /* FSDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializer.h; path = Model/FSDeserializer.h; sourceTree = "<group>"; };
+		D50B52561E812D470054F884 /* FSDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializer.m; path = Model/FSDeserializer.m; sourceTree = "<group>"; };
+		D527A1E21E801F0A00524A10 /* FSDeserializeableProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializeableProperty.h; path = Model/FSDeserializeableProperty.h; sourceTree = "<group>"; };
+		D527A1E31E801F0A00524A10 /* FSDeserializeableProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializeableProperty.m; path = Model/FSDeserializeableProperty.m; sourceTree = "<group>"; };
+		D527A1E51E80CAD000524A10 /* FSTwitterEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTwitterEntities.h; path = Model/FSTwitterEntities.h; sourceTree = "<group>"; };
+		D527A1E61E80CAD000524A10 /* FSTwitterEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTwitterEntities.m; path = Model/FSTwitterEntities.m; sourceTree = "<group>"; };
+		D527A1E81E80CC3C00524A10 /* FSRetweetedStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRetweetedStatus.h; path = Model/FSRetweetedStatus.h; sourceTree = "<group>"; };
+		D527A1E91E80CC3C00524A10 /* FSRetweetedStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRetweetedStatus.m; path = Model/FSRetweetedStatus.m; sourceTree = "<group>"; };
+		D527A1EB1E80CC8500524A10 /* FSTwitterUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTwitterUser.h; path = Model/FSTwitterUser.h; sourceTree = "<group>"; };
+		D527A1EC1E80CC8500524A10 /* FSTwitterUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTwitterUser.m; path = Model/FSTwitterUser.m; sourceTree = "<group>"; };
+		D527A1EE1E80DCD000524A10 /* FSTwitterUrls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTwitterUrls.h; path = Model/FSTwitterUrls.h; sourceTree = "<group>"; };
+		D527A1EF1E80DCD000524A10 /* FSTwitterUrls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTwitterUrls.m; path = Model/FSTwitterUrls.m; sourceTree = "<group>"; };
+		D527A1F51E8100EC00524A10 /* FSElementUIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSElementUIFactory.h; path = View/FSElementUIFactory.h; sourceTree = "<group>"; };
+		D527A1F61E8100EC00524A10 /* FSElementUIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSElementUIFactory.m; path = View/FSElementUIFactory.m; sourceTree = "<group>"; };
+		D527A1F81E81012D00524A10 /* NSURL+FSURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+FSURL.h"; path = "Model/NSURL+FSURL.h"; sourceTree = "<group>"; };
+		D527A1F91E81012D00524A10 /* NSURL+FSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+FSURL.m"; path = "Model/NSURL+FSURL.m"; sourceTree = "<group>"; };
+		D527A1FB1E81096800524A10 /* NSDate+FSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+FSDate.h"; path = "Model/NSDate+FSDate.h"; sourceTree = "<group>"; };
+		D527A1FC1E81096800524A10 /* NSDate+FSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+FSDate.m"; path = "Model/NSDate+FSDate.m"; sourceTree = "<group>"; };
 		D5B82A851E7D1D2E00435BC4 /* FSBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseObject.h; path = Model/FSBaseObject.h; sourceTree = "<group>"; };
 		D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseObject.m; path = Model/FSBaseObject.m; sourceTree = "<group>"; };
 		D5B8F0081E76C9C000A3D7BF /* FSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNetwork.h; path = Model/FSNetwork.h; sourceTree = "<group>"; };
@@ -279,6 +303,7 @@
 		3F0D76661E73B0DD002F025E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D527A1F11E80FE3900524A10 /* Category */,
 				3DEAE05E1E7935A5008433E1 /* KeyEnumerator */,
 				3DEAE05A1E793457008433E1 /* Archiver */,
 				D5B8F0141E76CC4500A3D7BF /* Deserializer */,
@@ -298,8 +323,8 @@
 				3F0D766F1E73B338002F025E /* FSScreenUIFactory.m */,
 				3F0D768D1E73C1AA002F025E /* ScreenUI */,
 				D5B8F0211E76F86100A3D7BF /* TableUI */,
-				3DEAE0641E7A7E1D008433E1 /* FSElementUIFactory.h */,
-				3DEAE0651E7A7E1D008433E1 /* FSElementUIFactory.m */,
+				D527A1F51E8100EC00524A10 /* FSElementUIFactory.h */,
+				D527A1F61E8100EC00524A10 /* FSElementUIFactory.m */,
 				3DEAE0631E7A7D34008433E1 /* ElementsUI */,
 				3DEAE05F1E7A7BE4008433E1 /* Colors */,
 			);
@@ -367,14 +392,51 @@
 			name = Context;
 			sourceTree = "<group>";
 		};
+		D527A1E01E800B2500524A10 /* TwitterPost */ = {
+			isa = PBXGroup;
+			children = (
+				D5B8F00C1E76CA7700A3D7BF /* FSTwitterPost.h */,
+				D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */,
+				D527A1E51E80CAD000524A10 /* FSTwitterEntities.h */,
+				D527A1E61E80CAD000524A10 /* FSTwitterEntities.m */,
+				D527A1EE1E80DCD000524A10 /* FSTwitterUrls.h */,
+				D527A1EF1E80DCD000524A10 /* FSTwitterUrls.m */,
+				D527A1E81E80CC3C00524A10 /* FSRetweetedStatus.h */,
+				D527A1E91E80CC3C00524A10 /* FSRetweetedStatus.m */,
+				D527A1EB1E80CC8500524A10 /* FSTwitterUser.h */,
+				D527A1EC1E80CC8500524A10 /* FSTwitterUser.m */,
+			);
+			name = TwitterPost;
+			sourceTree = "<group>";
+		};
+		D527A1E11E801E5A00524A10 /* Deserializeable */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Deserializeable;
+			sourceTree = "<group>";
+		};
+		D527A1F11E80FE3900524A10 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D527A1F81E81012D00524A10 /* NSURL+FSURL.h */,
+				D527A1F91E81012D00524A10 /* NSURL+FSURL.m */,
+				D527A1FB1E81096800524A10 /* NSDate+FSDate.h */,
+				D527A1FC1E81096800524A10 /* NSDate+FSDate.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		D5B8F00B1E76CA4A00A3D7BF /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D527A1E11E801E5A00524A10 /* Deserializeable */,
 				D5B8F0101E76CB0000A3D7BF /* PRDeserializeable.h */,
+				D527A1E21E801F0A00524A10 /* FSDeserializeableProperty.h */,
+				D527A1E31E801F0A00524A10 /* FSDeserializeableProperty.m */,
 				D5B82A851E7D1D2E00435BC4 /* FSBaseObject.h */,
 				D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */,
-				D5B8F00C1E76CA7700A3D7BF /* FSTwitterPost.h */,
-				D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */,
+				D527A1E01E800B2500524A10 /* TwitterPost */,
 				D5B8F01E1E76F59800A3D7BF /* FSTwitterAuth.h */,
 				D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */,
 			);
@@ -396,6 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				D5B8F0151E76CD9500A3D7BF /* PRDeserializer.h */,
+				D50B52551E812D470054F884 /* FSDeserializer.h */,
+				D50B52561E812D470054F884 /* FSDeserializer.m */,
 				D5B8F0161E76CE5200A3D7BF /* FSDeserializerArray.h */,
 				D5B8F0171E76CE5200A3D7BF /* FSDeserializerArray.m */,
 				D5B8F0191E76D46300A3D7BF /* FSDeserializerDictionary.h */,
@@ -547,6 +611,7 @@
 			files = (
 				3F0D767E1E73B9BC002F025E /* FSBasePresenter.m in Sources */,
 				3DEAE05D1E7934CD008433E1 /* FSObjectArchiver.m in Sources */,
+				D527A1F71E8100EC00524A10 /* FSElementUIFactory.m in Sources */,
 				D5E08CDD1E7AFFD90081B97B /* FSIndicatorElementUI.m in Sources */,
 				3DEAE0691E7A83C5008433E1 /* FSButtonElementUI.m in Sources */,
 				D5B8F0201E76F59800A3D7BF /* FSTwitterAuth.m in Sources */,
@@ -556,25 +621,32 @@
 				3F0D76931E73C38D002F025E /* FSStartScreenUI.m in Sources */,
 				3F0D767B1E73B73D002F025E /* FSBaseViewController.m in Sources */,
 				3DEAE0621E7A7C08008433E1 /* FSColors.m in Sources */,
+				D527A1FD1E81096800524A10 /* NSDate+FSDate.m in Sources */,
+				D527A1EA1E80CC3C00524A10 /* FSRetweetedStatus.m in Sources */,
 				D5B8F00E1E76CA7700A3D7BF /* FSTwitterPost.m in Sources */,
 				3F0D76741E73B56F002F025E /* FSStartViewController.m in Sources */,
 				3F0D76381E73AB65002F025E /* AppDelegate.m in Sources */,
 				3F0D76711E73B338002F025E /* FSScreenUIFactory.m in Sources */,
 				3F0D76771E73B629002F025E /* FSTweetsViewController.m in Sources */,
+				D50B52571E812D470054F884 /* FSDeserializer.m in Sources */,
+				D527A1F01E80DCD000524A10 /* FSTwitterUrls.m in Sources */,
 				3DAAD6E41E77ABD4004C09FA /* FSNetworkConfigure.m in Sources */,
 				D5B8F00A1E76C9C000A3D7BF /* FSNetwork.m in Sources */,
-				3DEAE0661E7A7E1D008433E1 /* FSElementUIFactory.m in Sources */,
 				3F0D76811E73BBE0002F025E /* FSStartPresenter.m in Sources */,
 				3DEAE06C1E7A85FF008433E1 /* FSTextFieldElementUI.m in Sources */,
 				D5B8F0181E76CE5200A3D7BF /* FSDeserializerArray.m in Sources */,
 				3F0D76351E73AB65002F025E /* main.m in Sources */,
+				D527A1E41E801F0A00524A10 /* FSDeserializeableProperty.m in Sources */,
+				D527A1ED1E80CC8500524A10 /* FSTwitterUser.m in Sources */,
 				D5B8F01B1E76D46300A3D7BF /* FSDeserializerDictionary.m in Sources */,
 				3F0D76891E73C115002F025E /* FSTransitionDelegate.m in Sources */,
 				3F0D76991E73C3F8002F025E /* FSTweetsScreenUI.m in Sources */,
 				3F0D76701E73B338002F025E /* FSAppController.m in Sources */,
+				D527A1FA1E81012D00524A10 /* NSURL+FSURL.m in Sources */,
 				D5B82A871E7D1D2E00435BC4 /* FSBaseObject.m in Sources */,
 				3F0D768C1E73C14F002F025E /* FSAnimationController.m in Sources */,
 				3DAAD6E91E77D55E004C09FA /* FSKeyHolder.m in Sources */,
+				D527A1E71E80CAD000524A10 /* FSTwitterEntities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

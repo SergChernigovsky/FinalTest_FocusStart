@@ -15,10 +15,14 @@
 
 @implementation FSTwitterAuth
 
-+ (NSArray<NSString *> *)deserializeableProperties
++ (NSArray<FSDeserializeableProperty *> *)deserializeableProperties
 {
-    return @[NSStringFromSelector(@selector(access_token)),
-             NSStringFromSelector(@selector(token_type))];
+    return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(access_token))
+                                                       class:[NSString class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(token_type))
+                                                       class:[NSString class]
+                                                       keyId:nil],];
 }
 
 @end

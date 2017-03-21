@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FSDeserializeableProperty;
 
 @protocol PRDeserializeable <NSObject>
 
-+ (NSArray<NSString *> *)deserializeableProperties;
-+ (SEL)deserializeableSelector;
++ (NSArray<FSDeserializeableProperty *> *)deserializeableProperties;
 
 @end

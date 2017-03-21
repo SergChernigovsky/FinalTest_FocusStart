@@ -10,13 +10,8 @@
 
 @implementation FSBaseObject
 
-+ (NSArray<NSString *> *)deserializeableProperties{
++ (NSArray<FSDeserializeableProperty *> *)deserializeableProperties{
     return @[];
-}
-
-+ (SEL)deserializeableSelector
-{
-    return @selector(deserializeSelector);
 }
 
 - (instancetype)init
@@ -25,17 +20,12 @@
     return self;
 }
 
-- (SEL)deserializeSelector
-{
-    return @selector(setValue:forKey:);
-}
-
 - (NSString *)description
 {
-    NSArray<NSString *> *keys = [[self class] deserializeableProperties];
+    NSArray<FSDeserializeableProperty *> *keys = [[self class] deserializeableProperties];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [keys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [dictionary setObject:[self valueForKey:obj] forKey:obj];
+    [keys enumerateObjectsUsingBlock:^(FSDeserializeableProperty * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [dictionary setObject:[self valueForKey:obj.name] forKey:obj.name];
     }];
     return dictionary.description;
 }

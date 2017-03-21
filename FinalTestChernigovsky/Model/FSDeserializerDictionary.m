@@ -7,28 +7,19 @@
 //
 
 #import "FSDeserializerDictionary.h"
-#import "PRDeserializeable.h"
 
 @implementation FSDeserializerDictionary
-
-- (instancetype)init
-{
-    self = [super init];
-    return self;
-}
 
 -(id)parseResponse:(id)json expectedClass:(Class)class
 {
     id result = [[class alloc] init];
     assert( NO != [result conformsToProtocol:@protocol(PRDeserializeable)] );
-    NSArray<NSString *> *properies = [class deserializeableProperties];
-    SEL selector = [class deserializeableSelector];
-    [properies enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-    {
-        NSString *proretyKey = obj;
-        id value = json[proretyKey];
+    NSArray<FSDeserializeableProperty *> *properies = [class deserializeableProperties];
+    [properies enumerateObjectsUsingBlock:^(FSDeserializeableProperty * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        FSDeserializeableProperty *prorety = obj;
+        id value = (nil != prorety.key) ? json[prorety.key] : json[prorety.name];
         assert( nil != value );
-        [result performSelector:selector withObject:value withObject:proretyKey];
+        [result setValue:value forKey:prorety.name];
     }];
     return result;
 }
