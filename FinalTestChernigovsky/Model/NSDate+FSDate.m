@@ -12,6 +12,10 @@
 
 + (NSDate *)fs_dateWithTwitterString:(NSString *)string
 {
+    if ( nil == string || NO != [string isKindOfClass:[NSNull class]])
+    {
+        return nil;
+    }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"E MM dd HH:mm:ss ZZZ yyyy";
     return [dateFormatter dateFromString:string];

@@ -12,6 +12,10 @@
 
 + (NSURL *)fs_URLWithString:(NSString *)string
 {
+    if ( nil == string || NO != [string isKindOfClass:[NSNull class]])
+    {
+        return nil;
+    }
     NSCharacterSet *characterSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString* webStringURL = [string stringByAddingPercentEncodingWithAllowedCharacters:characterSet];
     return [NSURL URLWithString:webStringURL];

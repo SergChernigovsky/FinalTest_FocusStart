@@ -11,13 +11,29 @@
 
 @interface FSRetweetedStatus()
 
-@property (nonatomic, assign, readwrite) long favorite_count;
-@property (nonatomic, assign, readwrite) long retweet_count;
+@property (nonatomic, strong, readwrite) NSNumber *favorite_count;
+@property (nonatomic, strong, readwrite) NSNumber *retweet_count;
 @property (nonatomic, strong, readwrite) FSTwitterUser *user;
 @property (nonatomic, copy, readwrite) NSString *text;
 
 @end
 
 @implementation FSRetweetedStatus
+
++ (NSArray<FSDeserializeableProperty *> *)deserializeableProperties
+{
+    return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(favorite_count))
+                                                       class:[NSNumber class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(retweet_count))
+                                                       class:[NSNumber class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(user))
+                                                       class:[FSTwitterUser class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(text))
+                                                       class:[NSString class]
+                                                       keyId:nil]];
+}
 
 @end

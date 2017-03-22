@@ -12,8 +12,8 @@
 
 @interface FSRetweetedStatus : FSBaseObject
 
-@property (nonatomic, assign, readonly) long favorite_count;
-@property (nonatomic, assign, readonly) long retweet_count;
+@property (nonatomic, strong, readonly) NSNumber *favorite_count;
+@property (nonatomic, strong, readonly) NSNumber *retweet_count;
 @property (nonatomic, strong, readonly) FSTwitterUser *user;
 @property (nonatomic, copy, readonly) NSString *text;
 

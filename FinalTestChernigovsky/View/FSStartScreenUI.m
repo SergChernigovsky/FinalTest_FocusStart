@@ -33,7 +33,7 @@ CGFloat const textFieldWidth = 200.f;
 }
 
 #pragma mark - PRBaseScreenUI
-
+//@"chucknorris"
 - (NSArray *)arrayNormalElements
 {
     CGRect fieldRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - textFieldWidth/2,
@@ -45,7 +45,7 @@ CGFloat const textFieldWidth = 200.f;
                                    buttonWidth,
                                    buttonHeight);
     textField = [FSElementUIFactory makeFieldWithFrame:fieldRect
-                                                  text:@"chucknorris"
+                                                  text:@"sergeymeza"
                                              textColor:[UIColor blackColor]
                                             fieldColor:[UIColor whiteColor]];
     UIButton *button = [FSElementUIFactory makeButtonWithFrame:buttonRect

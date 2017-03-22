@@ -9,16 +9,18 @@
 #import "FSTwitterPost.h"
 #import "FSRetweetedStatus.h"
 #import "FSTwitterUser.h"
+#import "FSTwitterEntities.h"
 
 @interface FSTwitterPost()
 
-@property (nonatomic, assign, readwrite) long favorite_count;
-@property (nonatomic, strong, readwrite, nullable) FSRetweetedStatus *retweeted_status;
-@property (nonatomic, assign, readwrite) long retweet_count;
-@property (nonatomic, assign, readwrite) long id;
-@property (nonatomic, strong, readwrite, nonnull) FSTwitterUser *user;
-@property (nonatomic, copy, readwrite, nonnull) NSString *text;
-@property (nonatomic, strong, readwrite, nonnull) NSDate *created_at;
+@property (nonatomic, strong, readwrite) NSNumber *favorite_count;
+@property (nonatomic, strong, readwrite) FSRetweetedStatus *retweeted_status;
+//@property (nonatomic, strong, readwrite, nullable) FSTwitterEntities *entities;
+@property (nonatomic, strong, readwrite) NSNumber *retweet_count;
+@property (nonatomic, strong, readwrite) NSNumber *id;
+@property (nonatomic, strong, readwrite) FSTwitterUser *user;
+@property (nonatomic, copy, readwrite) NSString *text;
+@property (nonatomic, strong, readwrite) NSDate *created_at;
 
 @end
 
@@ -28,16 +30,19 @@
 {
     
     return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(favorite_count))
-                                                       class:nil
+                                                       class:[NSNumber class]
                                                        keyId:nil],
              [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(retweeted_status))
                                                        class:[FSRetweetedStatus class]
                                                        keyId:nil],
+//             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(entities))
+//                                                       class:[FSTwitterEntities class]
+//                                                       keyId:nil],
              [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(retweet_count))
-                                                       class:nil
+                                                       class:[NSNumber class]
                                                        keyId:nil],
              [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(id))
-                                                       class:nil
+                                                       class:[NSNumber class]
                                                        keyId:nil],
              [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(user))
                                                        class:[FSTwitterUser class]
