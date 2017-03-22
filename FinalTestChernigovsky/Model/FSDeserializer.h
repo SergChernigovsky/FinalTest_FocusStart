@@ -10,6 +10,8 @@
 #import "PRDeserializer.h"
 #import "PRDeserializeable.h"
 #import "FSDeserializeableProperty.h"
+#import "NSDate+FSDate.h"
+#import "NSURL+FSURL.h"
 
 @interface FSDeserializer : NSObject<PRDeserializer>
 

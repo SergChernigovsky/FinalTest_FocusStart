@@ -41,6 +41,11 @@
 		D527A1F71E8100EC00524A10 /* FSElementUIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1F61E8100EC00524A10 /* FSElementUIFactory.m */; };
 		D527A1FA1E81012D00524A10 /* NSURL+FSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1F91E81012D00524A10 /* NSURL+FSURL.m */; };
 		D527A1FD1E81096800524A10 /* NSDate+FSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = D527A1FC1E81096800524A10 /* NSDate+FSDate.m */; };
+		D596BA541E824A5700F807BF /* FSTwitterUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = D596BA531E824A5700F807BF /* FSTwitterUrl.m */; };
+		D596BA571E826F0700F807BF /* FSNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D596BA561E826F0700F807BF /* FSNetworkHelper.m */; };
+		D596BA5B1E82A6AC00F807BF /* FSDeserializerClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = D596BA5A1E82A6AC00F807BF /* FSDeserializerClasses.m */; };
+		D596BA5E1E82ABC000F807BF /* FSDeserializerURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D596BA5D1E82ABC000F807BF /* FSDeserializerURL.m */; };
+		D596BA611E82ABF500F807BF /* FSDeserializerDate.m in Sources */ = {isa = PBXBuildFile; fileRef = D596BA601E82ABF500F807BF /* FSDeserializerDate.m */; };
 		D5B82A871E7D1D2E00435BC4 /* FSBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */; };
 		D5B8F00A1E76C9C000A3D7BF /* FSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F0091E76C9C000A3D7BF /* FSNetwork.m */; };
 		D5B8F00E1E76CA7700A3D7BF /* FSTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */; };
@@ -141,6 +146,16 @@
 		D527A1F91E81012D00524A10 /* NSURL+FSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+FSURL.m"; path = "Model/NSURL+FSURL.m"; sourceTree = "<group>"; };
 		D527A1FB1E81096800524A10 /* NSDate+FSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+FSDate.h"; path = "Model/NSDate+FSDate.h"; sourceTree = "<group>"; };
 		D527A1FC1E81096800524A10 /* NSDate+FSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+FSDate.m"; path = "Model/NSDate+FSDate.m"; sourceTree = "<group>"; };
+		D596BA521E824A5700F807BF /* FSTwitterUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTwitterUrl.h; sourceTree = "<group>"; };
+		D596BA531E824A5700F807BF /* FSTwitterUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTwitterUrl.m; sourceTree = "<group>"; };
+		D596BA551E826F0700F807BF /* FSNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNetworkHelper.h; path = Model/FSNetworkHelper.h; sourceTree = "<group>"; };
+		D596BA561E826F0700F807BF /* FSNetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSNetworkHelper.m; path = Model/FSNetworkHelper.m; sourceTree = "<group>"; };
+		D596BA591E82A6AC00F807BF /* FSDeserializerClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializerClasses.h; path = Model/FSDeserializerClasses.h; sourceTree = "<group>"; };
+		D596BA5A1E82A6AC00F807BF /* FSDeserializerClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializerClasses.m; path = Model/FSDeserializerClasses.m; sourceTree = "<group>"; };
+		D596BA5C1E82ABC000F807BF /* FSDeserializerURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializerURL.h; path = Model/FSDeserializerURL.h; sourceTree = "<group>"; };
+		D596BA5D1E82ABC000F807BF /* FSDeserializerURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializerURL.m; path = Model/FSDeserializerURL.m; sourceTree = "<group>"; };
+		D596BA5F1E82ABF500F807BF /* FSDeserializerDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSDeserializerDate.h; path = Model/FSDeserializerDate.h; sourceTree = "<group>"; };
+		D596BA601E82ABF500F807BF /* FSDeserializerDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSDeserializerDate.m; path = Model/FSDeserializerDate.m; sourceTree = "<group>"; };
 		D5B82A851E7D1D2E00435BC4 /* FSBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseObject.h; path = Model/FSBaseObject.h; sourceTree = "<group>"; };
 		D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseObject.m; path = Model/FSBaseObject.m; sourceTree = "<group>"; };
 		D5B8F0081E76C9C000A3D7BF /* FSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSNetwork.h; path = Model/FSNetwork.h; sourceTree = "<group>"; };
@@ -397,10 +412,7 @@
 			children = (
 				D5B8F00C1E76CA7700A3D7BF /* FSTwitterPost.h */,
 				D5B8F00D1E76CA7700A3D7BF /* FSTwitterPost.m */,
-				D527A1E51E80CAD000524A10 /* FSTwitterEntities.h */,
-				D527A1E61E80CAD000524A10 /* FSTwitterEntities.m */,
-				D527A1EE1E80DCD000524A10 /* FSTwitterUrls.h */,
-				D527A1EF1E80DCD000524A10 /* FSTwitterUrls.m */,
+				D596BA511E8249FA00F807BF /* Entities */,
 				D527A1E81E80CC3C00524A10 /* FSRetweetedStatus.h */,
 				D527A1E91E80CC3C00524A10 /* FSRetweetedStatus.m */,
 				D527A1EB1E80CC8500524A10 /* FSTwitterUser.h */,
@@ -412,6 +424,9 @@
 		D527A1E11E801E5A00524A10 /* Deserializeable */ = {
 			isa = PBXGroup;
 			children = (
+				D5B8F0101E76CB0000A3D7BF /* PRDeserializeable.h */,
+				D527A1E21E801F0A00524A10 /* FSDeserializeableProperty.h */,
+				D527A1E31E801F0A00524A10 /* FSDeserializeableProperty.m */,
 			);
 			name = Deserializeable;
 			sourceTree = "<group>";
@@ -427,13 +442,41 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		D596BA511E8249FA00F807BF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D527A1E51E80CAD000524A10 /* FSTwitterEntities.h */,
+				D527A1E61E80CAD000524A10 /* FSTwitterEntities.m */,
+				D527A1EE1E80DCD000524A10 /* FSTwitterUrls.h */,
+				D527A1EF1E80DCD000524A10 /* FSTwitterUrls.m */,
+				D596BA521E824A5700F807BF /* FSTwitterUrl.h */,
+				D596BA531E824A5700F807BF /* FSTwitterUrl.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		D596BA581E82A64600F807BF /* DeserializerClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D5B8F0151E76CD9500A3D7BF /* PRDeserializer.h */,
+				D50B52551E812D470054F884 /* FSDeserializer.h */,
+				D50B52561E812D470054F884 /* FSDeserializer.m */,
+				D5B8F0161E76CE5200A3D7BF /* FSDeserializerArray.h */,
+				D5B8F0171E76CE5200A3D7BF /* FSDeserializerArray.m */,
+				D5B8F0191E76D46300A3D7BF /* FSDeserializerDictionary.h */,
+				D5B8F01A1E76D46300A3D7BF /* FSDeserializerDictionary.m */,
+				D596BA5C1E82ABC000F807BF /* FSDeserializerURL.h */,
+				D596BA5D1E82ABC000F807BF /* FSDeserializerURL.m */,
+				D596BA5F1E82ABF500F807BF /* FSDeserializerDate.h */,
+				D596BA601E82ABF500F807BF /* FSDeserializerDate.m */,
+			);
+			name = DeserializerClasses;
+			sourceTree = "<group>";
+		};
 		D5B8F00B1E76CA4A00A3D7BF /* Objects */ = {
 			isa = PBXGroup;
 			children = (
 				D527A1E11E801E5A00524A10 /* Deserializeable */,
-				D5B8F0101E76CB0000A3D7BF /* PRDeserializeable.h */,
-				D527A1E21E801F0A00524A10 /* FSDeserializeableProperty.h */,
-				D527A1E31E801F0A00524A10 /* FSDeserializeableProperty.m */,
 				D5B82A851E7D1D2E00435BC4 /* FSBaseObject.h */,
 				D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */,
 				D527A1E01E800B2500524A10 /* TwitterPost */,
@@ -450,6 +493,8 @@
 				D50BFE201E7FD1A800B034E4 /* Context */,
 				D5B8F0081E76C9C000A3D7BF /* FSNetwork.h */,
 				D5B8F0091E76C9C000A3D7BF /* FSNetwork.m */,
+				D596BA551E826F0700F807BF /* FSNetworkHelper.h */,
+				D596BA561E826F0700F807BF /* FSNetworkHelper.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -457,13 +502,9 @@
 		D5B8F0141E76CC4500A3D7BF /* Deserializer */ = {
 			isa = PBXGroup;
 			children = (
-				D5B8F0151E76CD9500A3D7BF /* PRDeserializer.h */,
-				D50B52551E812D470054F884 /* FSDeserializer.h */,
-				D50B52561E812D470054F884 /* FSDeserializer.m */,
-				D5B8F0161E76CE5200A3D7BF /* FSDeserializerArray.h */,
-				D5B8F0171E76CE5200A3D7BF /* FSDeserializerArray.m */,
-				D5B8F0191E76D46300A3D7BF /* FSDeserializerDictionary.h */,
-				D5B8F01A1E76D46300A3D7BF /* FSDeserializerDictionary.m */,
+				D596BA591E82A6AC00F807BF /* FSDeserializerClasses.h */,
+				D596BA5A1E82A6AC00F807BF /* FSDeserializerClasses.m */,
+				D596BA581E82A64600F807BF /* DeserializerClasses */,
 			);
 			name = Deserializer;
 			sourceTree = "<group>";
@@ -620,9 +661,12 @@
 				3F0D76841E73BC06002F025E /* FSTweetsPresenter.m in Sources */,
 				3F0D76931E73C38D002F025E /* FSStartScreenUI.m in Sources */,
 				3F0D767B1E73B73D002F025E /* FSBaseViewController.m in Sources */,
+				D596BA5E1E82ABC000F807BF /* FSDeserializerURL.m in Sources */,
+				D596BA541E824A5700F807BF /* FSTwitterUrl.m in Sources */,
 				3DEAE0621E7A7C08008433E1 /* FSColors.m in Sources */,
 				D527A1FD1E81096800524A10 /* NSDate+FSDate.m in Sources */,
 				D527A1EA1E80CC3C00524A10 /* FSRetweetedStatus.m in Sources */,
+				D596BA571E826F0700F807BF /* FSNetworkHelper.m in Sources */,
 				D5B8F00E1E76CA7700A3D7BF /* FSTwitterPost.m in Sources */,
 				3F0D76741E73B56F002F025E /* FSStartViewController.m in Sources */,
 				3F0D76381E73AB65002F025E /* AppDelegate.m in Sources */,
@@ -631,12 +675,14 @@
 				D50B52571E812D470054F884 /* FSDeserializer.m in Sources */,
 				D527A1F01E80DCD000524A10 /* FSTwitterUrls.m in Sources */,
 				3DAAD6E41E77ABD4004C09FA /* FSNetworkConfigure.m in Sources */,
+				D596BA611E82ABF500F807BF /* FSDeserializerDate.m in Sources */,
 				D5B8F00A1E76C9C000A3D7BF /* FSNetwork.m in Sources */,
 				3F0D76811E73BBE0002F025E /* FSStartPresenter.m in Sources */,
 				3DEAE06C1E7A85FF008433E1 /* FSTextFieldElementUI.m in Sources */,
 				D5B8F0181E76CE5200A3D7BF /* FSDeserializerArray.m in Sources */,
 				3F0D76351E73AB65002F025E /* main.m in Sources */,
 				D527A1E41E801F0A00524A10 /* FSDeserializeableProperty.m in Sources */,
+				D596BA5B1E82A6AC00F807BF /* FSDeserializerClasses.m in Sources */,
 				D527A1ED1E80CC8500524A10 /* FSTwitterUser.m in Sources */,
 				D5B8F01B1E76D46300A3D7BF /* FSDeserializerDictionary.m in Sources */,
 				3F0D76891E73C115002F025E /* FSTransitionDelegate.m in Sources */,

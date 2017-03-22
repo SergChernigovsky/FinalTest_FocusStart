@@ -10,7 +10,7 @@
 #import "FSTwitterUrls.h"
 
 @interface FSTwitterEntities()
-@property (nonatomic, strong, readwrite) FSTwitterUrls *urls;
+@property (nonatomic, strong, readwrite) NSArray<FSTwitterUrls *> *urls;
 @end
 
 @implementation FSTwitterEntities

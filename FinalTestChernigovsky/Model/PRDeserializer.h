@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FSDeserializerClasses.h"
 
 @protocol PRDeserializer <NSObject>
 

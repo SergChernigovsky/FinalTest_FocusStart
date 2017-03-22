@@ -20,41 +20,31 @@
 {
     assert( nil != factory );
     self = [super initWithScreenFactory:factory];
-    screenUI = [factory makeStartScreenUI];
     typeof(self) __weak weakSelf = self;
+    screenUI = [factory makeStartScreenUI];
     screenUI.buttonClickHandler = ^(NSString *accountName)
     {
         [weakSelf completeButtonClick:accountName];
     };
-    [self makeRequestWithCompletion:^{}];
+    [self.networkHelper authRequestWithCompletion:^(id data) {
+        [weakSelf successResponseWithData:data];
+    }];
     return self;
+}
+
+- (void)successResponseWithData:(id)data
+{
+    twitterAuth = (FSTwitterAuth *)data;
+    NSLog(@"%@", twitterAuth.description);
+    [self.networkHelper saveAccessToken:twitterAuth.access_token];
+    screenUI.installUIInteractionHandler(YES);
 }
 
 #pragma mark - FSBasePresenter
 
-- (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
-{
-    FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure authUrl] forKey:@"URL"];
-    [aKeyHolder addObject:[aNetworkConfigure authHttpHeaders] forKey:@"allHTTPHeaderFields"];
-    [aKeyHolder addObject:@"POST" forKey:@"HTTPMethod"];
-    [aKeyHolder addObject:[aNetworkConfigure authHttpBody] forKey:@"HTTPBody"];
-    return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder
-                                             expectedClass:[FSTwitterAuth class]
-                                          responseDataType:ResponseDataTypeDictionary];
-}
-
 - (id<PRBaseScreenUI>)screenUI
 {
     return screenUI;
-}
-
-- (void)successResponseWithData:(NSData *)data
-{
-    twitterAuth = (FSTwitterAuth *)data;
-    NSLog(@"%@", twitterAuth.description);
-    [self.networkConfigure saveAccessToken:twitterAuth.access_token];
-    screenUI.installUIInteractionHandler(YES);
 }
 
 - (void)errorResponse:(NSError *)error
@@ -72,14 +62,16 @@
 
 - (void)completeButtonClick:(NSString *)accountName
 {
-    [self.networkConfigure saveAccountName:accountName];
+    [self.networkHelper saveAccountName:accountName];
     if( nil != twitterAuth )
     {
         [self handlePushToTweets];
         return;
     }
-    [self makeRequestWithCompletion:^
+    typeof(self) __weak weakSelf = self;
+    [self.networkHelper authRequestWithCompletion:^(id data)
     {
+        [weakSelf successResponseWithData:data];
         [self handlePushToTweets];
     }];
 }
@@ -90,12 +82,6 @@
 {
     assert( nil != self.pushToTweetsHandler );
     self.pushToTweetsHandler();
-}
-
-- (void)handleError:(NSError *)error
-{
-    assert( nil != self.errorHandler );
-    self.errorHandler(error);
 }
 
 @end

@@ -11,6 +11,7 @@
 @interface FSTwitterUser : FSBaseObject
 
 @property (nonatomic, strong, readonly) NSURL *profile_image_url;
+@property (nonatomic, strong, readonly) NSURL *url;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *screen_name;
 

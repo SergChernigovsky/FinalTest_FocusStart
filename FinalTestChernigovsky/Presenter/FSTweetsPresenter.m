@@ -21,27 +21,24 @@
 {
     assert( nil != factory );
     self = [super initWithScreenFactory:factory];
+    typeof(self) __weak weakSelf = self;
     screenUI = [factory makeTweetsScreenUI];
-    [self makeRequestWithCompletion:^{}];
+    [self.networkHelper userRequestWithCompletion:^(id data) {
+        [weakSelf successResponseWithData:data];
+    }];
     return self;
+}
+
+- (void)successResponseWithData:(id)data
+{
+    screenUI.installUIInteractionHandler(YES);
 }
 
 #pragma mark - FSBasePresenter
 
-- (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
+- (void)errorResponse:(NSError *)error
 {
-    FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:20] forKey:@"URL"];
-    [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
-    [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
-    return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder
-                                             expectedClass:[FSTwitterPost class]
-                                          responseDataType:ResponseDataTypeArray];
-}
-
-- (void)successResponseWithData:(NSData *)data
-{
-    NSLog(@"%@", (NSArray *)data);
+    [super errorResponse:error];
     screenUI.installUIInteractionHandler(YES);
 }
 
@@ -53,11 +50,5 @@
 #pragma mark - Completions
 
 #pragma mark - Handlers
-
-- (void)handleError:(NSError *)error
-{
-    assert( nil != self.errorHandler );
-    self.errorHandler(error);
-}
 
 @end

@@ -24,6 +24,14 @@
     return self;
 }
 
+- (void)completePushToStart
+{
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    });
+}
+
 #pragma mark - FSBaseViewController
 
 - (void)completeError:(NSError *)error
@@ -38,7 +46,7 @@
                                                            style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction *action)
         {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [weakSelf completePushToStart];
         }]];
        [self presentViewController:alertController animated:YES completion:nil];
     });

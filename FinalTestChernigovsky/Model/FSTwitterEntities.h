@@ -12,6 +12,6 @@
 
 @interface FSTwitterEntities : FSBaseObject
 
-@property (nonatomic, strong, readonly) FSTwitterUrls *urls;
+@property (nonatomic, strong, readonly) NSArray<FSTwitterUrls *> *urls;
 
 @end

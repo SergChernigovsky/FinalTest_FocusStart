@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FSScreenUIFactory.h"
-#import "FSNetwork.h"
-#import "FSNetworkConfigure.h"
-#import "FSRequestContext.h"
-#import "FSKeyHolder.h"
+#import "FSNetworkHelper.h"
 
 @protocol PRBaseScreenUI;
 
@@ -19,14 +16,10 @@
 
 @property (nonatomic, strong, readwrite) id<PRBaseScreenUI> screenUI;
 @property (nonatomic, copy, readwrite) void (^errorHandler)(NSError *errorr);
-@property (nonatomic, strong, readonly) FSNetwork *network;
-@property (nonatomic, strong, readonly) FSNetworkConfigure *networkConfigure;
+@property (nonatomic, strong, readonly) FSNetworkHelper *networkHelper;
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
-- (void)makeRequestWithCompletion:(void(^)(void))completion;
-- (FSRequestContext *)requestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure;
-- (void)successResponseWithData:(NSData *)data;
 - (void)errorResponse:(NSError *)error;
 - (void)transition;
 

@@ -10,6 +10,7 @@
 
 @interface FSTwitterUser()
 @property (nonatomic, strong, readwrite) NSURL *profile_image_url;
+@property (nonatomic, strong, readwrite) NSURL *url;
 @property (nonatomic, copy, readwrite) NSString *name;
 @property (nonatomic, copy, readwrite) NSString *screen_name;
 @end
@@ -19,6 +20,9 @@
 + (NSArray<FSDeserializeableProperty *> *)deserializeableProperties
 {
     return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(profile_image_url))
+                                                       class:[NSURL class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(url))
                                                        class:[NSURL class]
                                                        keyId:nil],
              [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(name))

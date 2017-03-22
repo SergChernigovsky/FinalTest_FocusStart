@@ -8,9 +8,10 @@
 
 #import "FSBaseObject.h"
 
+@class FSTwitterUrl;
+
 @interface FSTwitterUrls : FSBaseObject
 
-@property (nonatomic, copy, readonly) NSString *display_url;
-@property (nonatomic, strong, readonly) NSURL *url;
+@property (nonatomic, strong, readonly) FSTwitterUrl *twitterUrls;
 
 @end

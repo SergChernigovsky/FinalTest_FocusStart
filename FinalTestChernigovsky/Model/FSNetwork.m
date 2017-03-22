@@ -77,6 +77,22 @@
         completion(error, nil);
         return;
     }
+    if ( NO != [json isKindOfClass:[NSDictionary class]] )
+    {
+        if ( nil != json[@"error"] ) {
+            completion([[NSError alloc] initWithDomain:json[@"error"]
+                                                  code:0
+                                              userInfo:nil], nil);
+            return;
+        }
+        else if( nil != json[@"errors"] )
+        {
+            completion([[NSError alloc] initWithDomain:json[@"errors"][0][@"message"]
+                                                  code:[json[@"errors"][0][@"code"] integerValue]
+                                              userInfo:nil], nil);
+            return;
+        }
+    }
     completion(nil, [_responseParser parseResponse:json expectedClass:expectedClass]);
 }
 

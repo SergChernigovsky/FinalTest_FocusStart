@@ -42,8 +42,12 @@
                                                       style:(UIActivityIndicatorViewStyle)style];
 }
 
+
+
 - (instancetype)init
 {
+//    const NSUInteger path[] = {0, index};
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:path inSection:2];
     assert( NO );
     return nil;
 }
