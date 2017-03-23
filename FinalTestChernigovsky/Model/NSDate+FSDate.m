@@ -17,7 +17,9 @@
         return nil;
     }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en"];
     dateFormatter.dateFormat = @"E MM dd HH:mm:ss ZZZ yyyy";
+    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     return [dateFormatter dateFromString:string];
 }
 

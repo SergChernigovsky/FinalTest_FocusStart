@@ -7,8 +7,7 @@
 //
 
 #import "FSNetwork.h"
-#import "FSDeserializerArray.h"
-#import "FSDeserializerDictionary.h"
+#import "FSDeserializerClasses.h"
 #import "PRKeyEnumerator.h"
 
 @interface FSNetwork()
@@ -18,6 +17,7 @@
 {
     NSURLSession *session;
     Class expectedClass;
+    id<PRDeserializer> responseParser;
 }
 
 - (instancetype)init
@@ -29,18 +29,19 @@
 -(void)requestWithContext:(FSRequestContext *)context
                completion:(NetworkHandler)completion
 {
-    switch( context.responseDataType )
-    {
-        case ResponseDataTypeDictionary:
-            _responseParser = [[FSDeserializerDictionary alloc] init];
-            break;
-        case ResponseDataTypeArray:
-            _responseParser = [[FSDeserializerArray alloc] init];
-            break;
-        default:
-            assert( NO );
-            break;
-    }
+//    switch( context.responseDataType )
+//    {
+//        case ResponseDataTypeDictionary:
+//            _responseParser = [[FSDeserializerDictionary alloc] init];
+//            break;
+//        case ResponseDataTypeArray:
+//            _responseParser = [[FSDeserializerArray alloc] init];
+//            break;
+//        default:
+//            assert( NO );
+//            break;
+//    }
+    responseParser = [FSDeserializerClasses deserializerForClass:context.expectedClass];
     
     assert( nil != context.expectedClass );
     expectedClass = context.expectedClass;
@@ -93,7 +94,7 @@
             return;
         }
     }
-    completion(nil, [_responseParser parseResponse:json expectedClass:expectedClass]);
+    completion(nil, [responseParser parseResponse:json expectedClass:expectedClass]);
 }
 
 - (NSMutableURLRequest *)urlRequestWithEnumerator:(id<PRKeyEnumerator>)keyEnumerator
