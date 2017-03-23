@@ -29,21 +29,8 @@
 -(void)requestWithContext:(FSRequestContext *)context
                completion:(NetworkHandler)completion
 {
-//    switch( context.responseDataType )
-//    {
-//        case ResponseDataTypeDictionary:
-//            _responseParser = [[FSDeserializerDictionary alloc] init];
-//            break;
-//        case ResponseDataTypeArray:
-//            _responseParser = [[FSDeserializerArray alloc] init];
-//            break;
-//        default:
-//            assert( NO );
-//            break;
-//    }
-    responseParser = [FSDeserializerClasses deserializerForClass:context.expectedClass];
-    
     assert( nil != context.expectedClass );
+    responseParser = [FSDeserializerClasses deserializerForClass:context.expectedClass];
     expectedClass = context.expectedClass;
     
     assert( nil != context.keyEnumerator );

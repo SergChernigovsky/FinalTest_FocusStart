@@ -14,8 +14,6 @@ typedef void (^NetworkHandler)(NSError *error, id data);
 
 @interface FSNetwork : NSObject
 
-@property (nonatomic, strong, readonly) id<PRDeserializer> responseParser;
-
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
 -(void)requestWithContext:(FSRequestContext *)context completion:(NetworkHandler)completion;
 
