@@ -8,15 +8,16 @@
 
 #import "FSTableElementFactory.h"
 #import "FSTweetCellUI.h"
+#import "FSBaseTableUI.h"
 
 @implementation FSTableElementFactory
 
 + (id<PRTableUI>)tableWithFrame:(CGRect)frame
               sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells
 {
+    assert( nil != sectionsWithCells );
     id<PRTableUI> table = [[FSBaseTableUI alloc] initWithFrame:frame
                                              sectionsWithCells:sectionsWithCells];
-    assert( nil != sectionsWithCells );
     return table;
 }
 

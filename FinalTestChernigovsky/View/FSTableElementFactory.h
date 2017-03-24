@@ -6,7 +6,11 @@
 //  Copyright © 2017 CFT:FocusStart. All rights reserved.
 //
 
-#import "FSBaseTableUI.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@protocol PRCellUI;
+@protocol PRTableUI;
 
 @interface FSTableElementFactory : NSObject
 

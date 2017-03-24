@@ -11,11 +11,14 @@
 #import "FSTwitterPost.h"
 #import "FSTwitterUser.h"
 #import "NSDate+FSDate.h"
+#import "FSTableElementFactory.h"
+#import "PRTableUI.h"
 
 @implementation FSTweetsPresenter
 {
     FSTweetsScreenUI *screenUI;
     NSArray<FSTwitterPost *> *twitterPosts;
+    id<PRTableUI> table;
 }
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory
@@ -33,12 +36,26 @@
 - (void)successResponseWithData:(id)data
 {
     twitterPosts = (NSArray<FSTwitterPost *> *)data;
-    NSMutableArray *mutableKeys = [[NSMutableArray alloc] init];
+    NSMutableArray *section = [[NSMutableArray alloc] init];
     [twitterPosts enumerateObjectsUsingBlock:^(FSTwitterPost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
-//        [mutableKeys addObject:[self]];
+        id<PRCellUI> cellUI = [FSTableElementFactory twittCellWithKeys:[self dictionaryFromPost:obj]];
+        [section addObject:cellUI];
     }];
+    table = [screenUI tableWithSections:[NSArray arrayWithObject:[section copy]]];
     screenUI.installUIInteractionHandler(YES);
+}
+
+- (NSDictionary *)dictionaryFromPost:(FSTwitterPost *)post
+{
+    FSTwitterUser *user = ( nil != post.retweeted_status ) ? post.retweeted_status.user : post.user;
+    NSString *text = ( nil != post.retweeted_status ) ? post.retweeted_status.text : post.text;
+    return @{@"name" : user.name,
+             @"screen_name" : user.screen_name,
+             @"retweet_count" : post.retweet_count,
+             @"favorite_count" : post.favorite_count,
+             @"text" : text,
+             @"created_at" : [NSDate fs_stringFromDate:post.created_at]};
 }
 
 #pragma mark - FSBasePresenter

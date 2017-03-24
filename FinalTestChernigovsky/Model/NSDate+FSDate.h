@@ -11,5 +11,6 @@
 @interface NSDate (FSDate)
 
 + (NSDate *)fs_dateWithTwitterString:(NSString *)string;
++ (NSString *)fs_stringFromDate:(NSDate *)date;
 
 @end

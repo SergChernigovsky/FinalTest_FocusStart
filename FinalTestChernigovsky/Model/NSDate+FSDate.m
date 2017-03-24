@@ -23,4 +23,17 @@
     return [dateFormatter dateFromString:string];
 }
 
++ (NSString *)fs_stringFromDate:(NSDate *)date
+{
+    if ( nil == date || NO != [date isKindOfClass:[NSNull class]])
+    {
+        return nil;
+    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en"];
+    dateFormatter.dateFormat = @"dd.MM.yy";
+    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
+    return [dateFormatter stringFromDate:date];
+}
+
 @end

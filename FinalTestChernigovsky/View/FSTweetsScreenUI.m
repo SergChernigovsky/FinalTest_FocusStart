@@ -9,38 +9,48 @@
 #import "FSTweetsScreenUI.h"
 #import "FSAnimationController.h"
 #import "FSElementUIFactory.h"
-
+#import "FSTableElementFactory.h"
+#import "PRTableUI.h"
+#import "FSColors.h"
 
 @implementation FSTweetsScreenUI
 {
-    UILabel *label;
     FSAnimationController *animationController;
-    NSArray *arrayNormalElements;
-    NSArray *arrayLoadingElements;
 }
 
 - (instancetype)init
 {
     self = [super init];
     self.rootView.backgroundColor = [UIColor grayColor];
+    [self makeLoadingElements];
     animationController = [[FSAnimationController alloc] init];
+    self.installUIInteractionHandler(NO);
     return self;
 }
 
-#pragma mark - PRBaseScreenUI
-
-- (NSArray *)arrayNormalElements
+- (id<PRTableUI>)tableWithSections:(NSArray<NSArray *> *)sections
 {
-    return @[];
+    assert( nil != sections);
+    CGRect tableRect = CGRectMake(0, 60.f, CGRectGetWidth(self.rootView.bounds), CGRectGetHeight(self.rootView.bounds) - 60.f);
+    id<PRTableUI> table = [FSTableElementFactory tableWithFrame:tableRect
+                                              sectionsWithCells:sections];
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.rootView.bounds), 40.f)];
+    footerView.backgroundColor = [FSColors blueTwitterColor];
+    table.tableView.backgroundColor = [FSColors blueTwitterColor];
+    table.tableView.tableFooterView = footerView;
+    [self addFinalElement:table.tableView];
+    return table;
 }
 
-- (NSArray *)arrayLoadingElements
+- (void)makeLoadingElements
 {
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          CGRectGetMidY(self.rootView.bounds));
-    return @[[FSElementUIFactory indicatorWithCenter:indicatorPoint
-                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
+    [self addLoadingElement:[FSElementUIFactory indicatorWithCenter:indicatorPoint
+                                                              style:UIActivityIndicatorViewStyleWhiteLarge]];
 }
+
+#pragma mark - PRBaseScreenUI
 
 - (id<UIViewControllerAnimatedTransitioning>)transitionController
 {

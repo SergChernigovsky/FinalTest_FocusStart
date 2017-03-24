@@ -10,7 +10,7 @@
 
 @implementation FSBaseScreenUI
 {
-    NSArray *arrayNormalElements;
+    NSArray *arrayFinalElements;
     NSArray *arrayLoadingElements;
     UIView *view;
 }
@@ -36,13 +36,8 @@
     {
         [weakSelf installUIInteraction:isNormal];
     };
-    [self enumerateNormalElementsWithComletion:^(UIView *elementView)
-    {
-        [view addSubview:elementView];
-    }];
-    arrayNormalElements = [self arrayNormalElements];
-    arrayLoadingElements = [self arrayLoadingElements];
-    installUIInteractionHandler(NO);
+    arrayFinalElements = [[NSArray alloc] init];
+    arrayLoadingElements = [[NSArray alloc] init];
 }
 
 #pragma mark - UIStates
@@ -51,8 +46,8 @@
 {
     dispatch_async(dispatch_get_main_queue(),^(void)
    {
-       assert( arrayNormalElements );
-       [arrayNormalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+       assert( arrayFinalElements );
+       [arrayFinalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
         {
             comletionNormalElements((UIView *)obj);
         }];
@@ -89,14 +84,22 @@
     }];
 }
 
-- (NSArray *)arrayNormalElements
+- (void)addFinalElement:(UIView *)element
 {
-    return [[NSArray alloc] init];
+    dispatch_async(dispatch_get_main_queue(),^(void)
+    {
+        [view addSubview:element];
+    });
+    NSMutableArray *mutableElements = [arrayFinalElements mutableCopy];
+    [mutableElements addObject:element];
+    arrayFinalElements = [mutableElements copy];
 }
 
-- (NSArray *)arrayLoadingElements
+- (void)addLoadingElement:(UIView *)element
 {
-    return [[NSArray alloc] init];
+    NSMutableArray *mutableElements = [arrayLoadingElements mutableCopy];
+    [mutableElements addObject:element];
+    arrayLoadingElements = [mutableElements copy];
 }
 
 - (UIView *)rootView

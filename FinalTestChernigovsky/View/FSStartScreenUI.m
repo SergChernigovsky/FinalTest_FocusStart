@@ -29,12 +29,14 @@ CGFloat const textFieldWidth = 200.f;
     self = [super init];
     self.rootView.backgroundColor = [UIColor grayColor];
     animationController = [[FSAnimationController alloc] init];
+    [self makeNormalElements];
+    [self makeLoadingElements];
+    self.installUIInteractionHandler(NO);
     return self;
 }
 
-#pragma mark - PRBaseScreenUI
 //@"chucknorris"
-- (NSArray *)arrayNormalElements
+- (void)makeNormalElements
 {
     CGRect fieldRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - textFieldWidth/2,
                                   CGRectGetMidY(self.rootView.bounds) - textFieldHeight/2 - 50.f,
@@ -53,16 +55,19 @@ CGFloat const textFieldWidth = 200.f;
                                                  textColor:[UIColor whiteColor]
                                                buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    return @[button, textField];
+    [self addFinalElement:textField];
+    [self addFinalElement:button];
 }
 
-- (NSArray *)arrayLoadingElements
+- (void)makeLoadingElements
 {
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          170.f);
-    return @[[FSElementUIFactory indicatorWithCenter:indicatorPoint
-                                                   style:UIActivityIndicatorViewStyleWhiteLarge]];
+    [self addLoadingElement:[FSElementUIFactory indicatorWithCenter:indicatorPoint
+                                                              style:UIActivityIndicatorViewStyleWhiteLarge]];
 }
+
+#pragma mark - PRBaseScreenUI
 
 - (id<UIViewControllerAnimatedTransitioning>)transitionController
 {

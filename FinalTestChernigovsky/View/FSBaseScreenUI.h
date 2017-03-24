@@ -13,8 +13,8 @@
 
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
 
-- (NSArray *)arrayNormalElements;
+- (void)addFinalElement:(UIView *)element;
 
-- (NSArray *)arrayLoadingElements;
+- (void)addLoadingElement:(UIView *)element;
 
 @end

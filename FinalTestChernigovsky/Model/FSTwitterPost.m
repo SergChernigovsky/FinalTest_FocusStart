@@ -53,14 +53,4 @@
                                                        keyId:nil]];
 }
 
-- (NSDictionary *)dictionary{
-    FSTwitterUser *user = ( nil != self.retweeted_status ) ? self.retweeted_status.user : self.user;
-    return @{@"name" : user.name,
-             @"screen_name" : user.screen_name,
-             @"retweet_count" : self.retweet_count,
-             @"favorite_count" : self.favorite_count,
-             @"text" : self.text,
-             @"created_at" : self.created_at};
-}
-
 @end

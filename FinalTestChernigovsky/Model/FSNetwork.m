@@ -31,6 +31,7 @@
 {
     assert( nil != context.expectedClass );
     responseParser = [FSDeserializerClasses deserializerForClass:context.expectedClass];
+    
     expectedClass = context.expectedClass;
     
     assert( nil != context.keyEnumerator );
