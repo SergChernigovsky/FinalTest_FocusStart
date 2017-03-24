@@ -44,14 +44,14 @@ CGFloat const textFieldWidth = 200.f;
                                    CGRectGetMidY(self.rootView.bounds) - buttonHeight/2,
                                    buttonWidth,
                                    buttonHeight);
-    textField = [FSElementUIFactory makeFieldWithFrame:fieldRect
-                                                  text:@"sergeymeza"
-                                             textColor:[UIColor blackColor]
-                                            fieldColor:[UIColor whiteColor]];
-    UIButton *button = [FSElementUIFactory makeButtonWithFrame:buttonRect
-                                                          text:@"Search"
-                                                     textColor:[UIColor whiteColor]
-                                                   buttonColor:[FSColors blueTwitterColor]];
+    textField = [FSElementUIFactory fieldWithFrame:fieldRect
+                                              text:@"sergeymeza"
+                                         textColor:[UIColor blackColor]
+                                        fieldColor:[UIColor whiteColor]];
+    UIButton *button = [FSElementUIFactory buttonWithFrame:buttonRect
+                                                      text:@"Search"
+                                                 textColor:[UIColor whiteColor]
+                                               buttonColor:[FSColors blueTwitterColor]];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
     return @[button, textField];
 }
@@ -60,7 +60,7 @@ CGFloat const textFieldWidth = 200.f;
 {
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          170.f);
-    return @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
+    return @[[FSElementUIFactory indicatorWithCenter:indicatorPoint
                                                    style:UIActivityIndicatorViewStyleWhiteLarge]];
 }
 

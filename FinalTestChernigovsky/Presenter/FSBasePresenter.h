@@ -19,8 +19,11 @@
 @property (nonatomic, strong, readonly) FSNetworkHelper *networkHelper;
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory NS_DESIGNATED_INITIALIZER;
+
 - (instancetype)init NS_UNAVAILABLE;
+
 - (void)errorResponse:(NSError *)error;
+
 - (void)transition;
 
 @end

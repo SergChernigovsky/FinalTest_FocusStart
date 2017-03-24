@@ -19,12 +19,12 @@
     if ( nil == class) {
         return nil;
     }
-    NSDictionary *deserializers = @{@"NSURL":[[FSDeserializerURL alloc] init],
-                                    @"NSDate":[[FSDeserializerDate alloc] init],
-                                    @"FSTwitterAuth":[[FSDeserializerDictionary alloc] init],
-                                    @"FSTwitterPost":[[FSDeserializerArray alloc] init],
-                                    @"FSTwitterUser":[[FSDeserializerDictionary alloc] init],
-                                    @"FSRetweetedStatus":[[FSDeserializerDictionary alloc] init]};
+    NSDictionary *deserializers =@{@"NSURL" : [[FSDeserializerURL alloc] init],
+                                    @"NSDate" : [[FSDeserializerDate alloc] init],
+                                    @"FSTwitterAuth" : [[FSDeserializerDictionary alloc] init],
+                                    @"FSTwitterPost" : [[FSDeserializerArray alloc] init],
+                                    @"FSTwitterUser" : [[FSDeserializerDictionary alloc] init],
+                                    @"FSRetweetedStatus" : [[FSDeserializerDictionary alloc] init]};
     return deserializers[NSStringFromClass(class)];
 }
 

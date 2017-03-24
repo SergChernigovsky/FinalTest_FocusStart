@@ -13,7 +13,7 @@
 
 @implementation FSElementUIFactory
 
-+ (UIButton *)makeButtonWithFrame:(CGRect)frame
++ (UIButton *)buttonWithFrame:(CGRect)frame
                              text:(NSString *)text
                         textColor:(UIColor *)textColor
                       buttonColor:(UIColor *)buttonColor
@@ -24,7 +24,7 @@
                                   buttonColor:buttonColor];
 }
 
-+ (UITextField *)makeFieldWithFrame:(CGRect)frame
++ (UITextField *)fieldWithFrame:(CGRect)frame
                                text:(NSString *)text
                           textColor:(UIColor *)textColor
                          fieldColor:(UIColor *)fieldColor
@@ -35,14 +35,12 @@
                                      fieldColor:fieldColor];;
 }
 
-+ (UIActivityIndicatorView *)makeIndicatorWithCenter:(CGPoint)center
++ (UIActivityIndicatorView *)indicatorWithCenter:(CGPoint)center
                                   style:(UIActivityIndicatorViewStyle)style
 {
     return [FSIndicatorElementUI activityIndicatorWithCenter:(CGPoint)center
-                                                      style:(UIActivityIndicatorViewStyle)style];
+                                                       style:(UIActivityIndicatorViewStyle)style];
 }
-
-
 
 - (instancetype)init
 {

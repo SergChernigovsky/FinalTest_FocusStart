@@ -9,6 +9,7 @@
 #import "FSTweetsPresenter.h"
 #import "FSTweetsScreenUI.h"
 #import "FSTwitterPost.h"
+#import "FSTwitterUser.h"
 #import "NSDate+FSDate.h"
 
 @implementation FSTweetsPresenter
@@ -31,6 +32,12 @@
 
 - (void)successResponseWithData:(id)data
 {
+    twitterPosts = (NSArray<FSTwitterPost *> *)data;
+    NSMutableArray *mutableKeys = [[NSMutableArray alloc] init];
+    [twitterPosts enumerateObjectsUsingBlock:^(FSTwitterPost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+//        [mutableKeys addObject:[self]];
+    }];
     screenUI.installUIInteractionHandler(YES);
 }
 

@@ -13,6 +13,7 @@
 @interface FSAppController : NSObject
 
 - (instancetype)initWithScreenUIFactory:(FSScreenUIFactory *)factory;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

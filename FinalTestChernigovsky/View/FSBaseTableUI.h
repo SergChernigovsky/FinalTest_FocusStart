@@ -8,11 +8,11 @@
 
 #import "PRTableUI.h"
 
-@class FSTableViewCell;
+@interface FSBaseTableUI : NSObject<PRTableUI>
 
-@interface FSTableUI : NSObject<PRTableUI>
+- (instancetype)initWithFrame:(CGRect)frame
+            sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithFrame:(CGRect)frame cells:(NSArray *)cells NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

@@ -12,6 +12,7 @@
 @interface FSKeyHolder : NSObject<PRKeyEnumerator>
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
+
 - (void) addObject:(id)object forKey:(NSString *)key;
 
 @end

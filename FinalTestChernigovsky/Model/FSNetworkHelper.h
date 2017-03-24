@@ -13,9 +13,13 @@
 @property (nonatomic, copy, readwrite) void (^errorHandler)(NSError *errorr);
 
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
+
 - (void)saveAccessToken:(NSString *)string;
+
 - (void)saveAccountName:(NSString *)name;
+
 - (void)authRequestWithCompletion:(void(^)(id data))completion;
+
 - (void)userRequestWithCompletion:(void(^)(id data))completion;
 
 @end

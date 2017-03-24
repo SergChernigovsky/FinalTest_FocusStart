@@ -11,7 +11,9 @@
 @interface FSObjectArchiver : NSObject
 
 + (void)archiveString:(NSString *)string forKey:(NSString *)key;
+
 + (NSString *)stringForKey:(NSString *)key;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

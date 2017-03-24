@@ -10,16 +10,19 @@
 
 @interface FSElementUIFactory : NSObject
 
-+ (UIButton *)makeButtonWithFrame:(CGRect)frame
-                             text:(NSString *)text
-                        textColor:(UIColor *)textColor
-                      buttonColor:(UIColor *)buttonColor;
-+ (UITextField *)makeFieldWithFrame:(CGRect)frame
-                               text:(NSString *)text
-                          textColor:(UIColor *)textColor
-                         fieldColor:(UIColor *)fieldColor;
-+ (UIActivityIndicatorView *)makeIndicatorWithCenter:(CGPoint)center
-                                               style:(UIActivityIndicatorViewStyle)style;
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    textColor:(UIColor *)textColor
+                  buttonColor:(UIColor *)buttonColor;
+
++ (UITextField *)fieldWithFrame:(CGRect)frame
+                           text:(NSString *)text
+                      textColor:(UIColor *)textColor
+                     fieldColor:(UIColor *)fieldColor;
+
++ (UIActivityIndicatorView *)indicatorWithCenter:(CGPoint)center
+                                           style:(UIActivityIndicatorViewStyle)style;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

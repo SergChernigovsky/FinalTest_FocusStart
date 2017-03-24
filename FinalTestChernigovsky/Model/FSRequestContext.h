@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, ResponseDataType)
 - (instancetype)initWithKeyEnumerator:(id<PRKeyEnumerator>)keyEnumerator
                         expectedClass:(Class)class
                      responseDataType:(ResponseDataType)responseDataType;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

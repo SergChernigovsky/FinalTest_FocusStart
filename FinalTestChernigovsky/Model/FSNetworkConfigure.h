@@ -11,12 +11,19 @@
 @interface FSNetworkConfigure : NSObject
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
+
 - (NSURL *)authUrl;
+
 - (NSDictionary *)authHttpHeaders;
+
 - (NSData *)authHttpBody;
+
 - (NSURL *)contentUrlWithNumberPosts:(NSUInteger)numberPosts;
+
 - (NSDictionary *)contentHttpHeaders;
+
 - (void)saveAccessToken:(NSString *)string;
+
 - (void)saveAccountName:(NSString *)name;
 
 @end

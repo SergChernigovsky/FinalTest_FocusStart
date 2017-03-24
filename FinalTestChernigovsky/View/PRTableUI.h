@@ -6,11 +6,11 @@
 //  Copyright © 2017 CFT:FocusStart. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "PRTableSectionUI.h"
 
 @protocol PRTableUI <NSObject>
 
 @property (nonatomic, strong, readonly) UITableView *tableView;
+@property (nonatomic, copy, readonly) NSArray<id<PRTableSectionUI>> *sections;
 
 @end

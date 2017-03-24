@@ -14,7 +14,9 @@
 @interface FSScreenUIFactory : NSObject
 
 - (instancetype) init NS_DESIGNATED_INITIALIZER;
+
 - (FSStartScreenUI *) makeStartScreenUI;
+
 - (FSTweetsScreenUI *) makeTweetsScreenUI;
 
 @end

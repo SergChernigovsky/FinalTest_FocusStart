@@ -38,7 +38,7 @@
 {
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          CGRectGetMidY(self.rootView.bounds));
-    return @[[FSElementUIFactory makeIndicatorWithCenter:indicatorPoint
+    return @[[FSElementUIFactory indicatorWithCenter:indicatorPoint
                                                    style:UIActivityIndicatorViewStyleWhiteLarge]];
 }
 
