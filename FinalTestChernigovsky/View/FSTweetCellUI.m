@@ -7,6 +7,7 @@
 //
 
 #import "FSTweetCellUI.h"
+#import "FSTweetTableViewCell.h"
 
 @interface FSTweetCellUI()
 @property (nonatomic, assign, readwrite) BOOL retweeted_status;
@@ -40,9 +41,13 @@
 
 - (UITableViewCell *)cell
 {
-    return (UITableViewCell *)[[[NSBundle mainBundle] loadNibNamed:@"FSTweetTableViewCell"
-                                                             owner:self
-                                                           options:nil] lastObject];
+    FSTweetTableViewCell *tweetCell;
+    tweetCell = (FSTweetTableViewCell *)[[[NSBundle mainBundle] loadNibNamed:@"FSTweetTableViewCell"
+                                                                     owner:self
+                                                                   options:nil] lastObject];
+    assert( nil != self.text );
+    tweetCell.labelText.text = self.text;
+    return tweetCell;
 }
 
 @end

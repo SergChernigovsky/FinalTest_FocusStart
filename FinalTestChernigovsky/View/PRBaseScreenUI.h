@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong, readonly, nonnull) UIView *rootView;
 @property (nonatomic, strong, readonly, nullable) id<UIViewControllerAnimatedTransitioning> transitionController;
-@property (nonatomic, copy, readonly, nonnull) void (^installUIInteractionHandler)(BOOL isNormal);
+@property (nonatomic, copy, readonly, nonnull) void (^installFinalUIHandler)(BOOL isNormal);
 
 @end

@@ -17,6 +17,6 @@
 + (id<PRTableUI>)tableWithFrame:(CGRect)frame
               sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells;
 
-+ (id<PRCellUI>)twittCellWithKeys:(NSDictionary<NSString *, id> *)keys;
++ (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
 
 @end

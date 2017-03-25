@@ -26,7 +26,7 @@ CGFloat const navigationBarHeight = 60.f;
     self.rootView.backgroundColor = [UIColor grayColor];
     [self makeLoadingElements];
     animationController = [[FSAnimationController alloc] init];
-    self.installUIInteractionHandler(NO);
+    self.installFinalUIHandler(NO);
     return self;
 }
 
@@ -56,9 +56,13 @@ CGFloat const navigationBarHeight = 60.f;
     footerView.backgroundColor = [FSColors blueTwitterColor];
     table.tableView.tableFooterView = footerView;
     table.tableView.backgroundColor = [FSColors blueTwitterColor];
-    [table.tableView setAutoresizesSubviews:YES];
     [self addFinalElement:table.tableView];
     return table;
+}
+
+- (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
+{
+    return [FSTableElementFactory tweetCellWithKeys:keys];
 }
 
 #pragma mark - PRBaseScreenUI

@@ -10,4 +10,6 @@
 
 @interface FSTweetTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *labelText;
+
 @end

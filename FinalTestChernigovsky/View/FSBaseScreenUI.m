@@ -14,7 +14,7 @@
     NSArray *arrayLoadingElements;
     UIView *view;
 }
-@synthesize installUIInteractionHandler;
+@synthesize installFinalUIHandler;
 
 #pragma mark - init
 
@@ -32,7 +32,7 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [view addGestureRecognizer:tapGesture];
     typeof(self) __weak weakSelf = self;
-    installUIInteractionHandler = ^(BOOL isNormal)
+    installFinalUIHandler = ^(BOOL isNormal)
     {
         [weakSelf installUIInteraction:isNormal];
     };

@@ -20,7 +20,8 @@
 
 - (instancetype)initWithScreenUIFactory:(FSScreenUIFactory *)screenFactory
 {
-    self = [super initWithNibName:nil bundle:nil]; 
+    self = [super initWithNibName:nil bundle:nil];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     return self;
 }
 
@@ -28,7 +29,6 @@
 {
     assert( nil != self.screenPresenter );
     self.view = self.screenPresenter.screenUI.rootView;
-    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent

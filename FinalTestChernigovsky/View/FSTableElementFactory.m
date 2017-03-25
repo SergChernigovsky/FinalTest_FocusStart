@@ -21,7 +21,7 @@
     return table;
 }
 
-+ (id<PRCellUI>)twittCellWithKeys:(NSDictionary<NSString *, id> *)keys
++ (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
 {
     id<PRCellUI> cellUI = [[FSTweetCellUI alloc] initWithKeys:keys];
     return cellUI;
