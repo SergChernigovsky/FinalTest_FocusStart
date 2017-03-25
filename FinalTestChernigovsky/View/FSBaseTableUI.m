@@ -27,13 +27,36 @@
 //    tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.showsVerticalScrollIndicator = NO;
     NSMutableArray *mutableSections = [[NSMutableArray alloc] init];
-    [sectionsWithCells enumerateObjectsUsingBlock:^(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [sectionsWithCells enumerateObjectsUsingBlock:^(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
         id<PRTableSectionUI> section = [[FSBaseTableSectionUI alloc] initWithCells:obj];
         [mutableSections addObject:section];
     }];
     sections = [mutableSections copy];
     return self;
+}
+
+- (void)rewriteSectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells
+{
+    NSMutableArray *mutableSections = [[NSMutableArray alloc] init];
+    [sectionsWithCells enumerateObjectsUsingBlock:^(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+     {
+         id<PRTableSectionUI> section = [[FSBaseTableSectionUI alloc] initWithCells:obj];
+         [mutableSections addObject:section];
+     }];
+    sections = [mutableSections copy];
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        [tableView reloadData];
+    });
+}
+
+- (instancetype)init
+{
+    assert( NO );
+    return nil;
 }
 
 #pragma mark - UITableViewDataSource
@@ -60,16 +83,11 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     id<PRTableSectionUI> sectionUI = sections[indexPath.section];
     UITableViewCell *cell = [sectionUI cellForIndex:indexPath.row];
     return CGRectGetHeight(cell.frame);
-}
-
-- (instancetype)init
-{
-    assert( NO );
-    return nil;
 }
 
 @end

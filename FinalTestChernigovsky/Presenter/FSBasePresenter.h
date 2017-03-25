@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "FSScreenUIFactory.h"
 #import "FSNetworkHelper.h"
+#import "PRBaseScreenUI.h"
 
 @protocol PRBaseScreenUI;
 
 @interface FSBasePresenter : NSObject
 
 @property (nonatomic, strong, readwrite) id<PRBaseScreenUI> screenUI;
-@property (nonatomic, copy, readwrite) void (^errorHandler)(NSError *errorr);
 @property (nonatomic, strong, readonly) FSNetworkHelper *networkHelper;
+@property (nonatomic, copy, readwrite) void(^errorHandler)(NSError *errorr);
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory NS_DESIGNATED_INITIALIZER;
 

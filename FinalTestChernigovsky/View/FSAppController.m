@@ -25,7 +25,7 @@
     FSStartViewController *vc = [[FSStartViewController alloc] initWithScreenUIFactory:factory];
     navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     window.rootViewController = navigationController;
-    [window  makeKeyAndVisible];
+    [window makeKeyAndVisible];
     return self;
 }
 

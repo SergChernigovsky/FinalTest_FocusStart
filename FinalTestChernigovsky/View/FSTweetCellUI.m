@@ -25,7 +25,8 @@
 - (instancetype)initWithKeys:(NSDictionary<NSString *, id> *)keys
 {
     self = [super init];
-    [keys enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [keys enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop)
+    {
         [self setValue:obj forKey:key];
     }];
     return self;

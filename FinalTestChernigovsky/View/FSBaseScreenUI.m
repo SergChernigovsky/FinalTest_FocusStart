@@ -44,49 +44,48 @@
 
 - (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
 {
-    dispatch_async(dispatch_get_main_queue(),^(void)
-   {
-       assert( arrayFinalElements );
-       [arrayFinalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-        {
-            comletionNormalElements((UIView *)obj);
-        }];
-   });
+    assert( arrayFinalElements );
+    [arrayFinalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        comletionNormalElements((UIView *)obj);
+    }];
 }
 
 - (void)enumerateLoadingElementsComletion:(void(^)(UIView *elementView))comletionLoadingElements
 {
-    dispatch_async(dispatch_get_main_queue(),^(void)
+    assert( arrayLoadingElements );
+    [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
-       assert( arrayLoadingElements );
-       [arrayLoadingElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-       {
-           comletionLoadingElements((UIView *)obj);
-       }];
-    });
+        comletionLoadingElements((UIView *)obj);
+    }];
 }
 
 - (void)installUIInteraction:(BOOL)isNormal
 {
-    
     [self enumerateNormalElementsWithComletion:^(UIView *elementView)
     {
-         elementView.userInteractionEnabled = ( NO != isNormal );
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            elementView.userInteractionEnabled = ( NO != isNormal );
+        });
     }];
     [self enumerateLoadingElementsComletion:^(UIView *elementView)
     {
-        if( NO != isNormal )
+        dispatch_async(dispatch_get_main_queue(), ^
         {
-            [elementView removeFromSuperview];
-            return;
-        }
-        [view addSubview:elementView];
+            if( NO != isNormal )
+            {
+                [elementView removeFromSuperview];
+                return;
+            }
+            [view addSubview:elementView];
+        });
     }];
 }
 
 - (void)addFinalElement:(UIView *)element
 {
-    dispatch_async(dispatch_get_main_queue(),^(void)
+    dispatch_async(dispatch_get_main_queue(), ^
     {
         [view addSubview:element];
     });

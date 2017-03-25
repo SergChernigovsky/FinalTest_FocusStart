@@ -20,14 +20,15 @@
 
 - (instancetype)initWithScreenUIFactory:(FSScreenUIFactory *)screenFactory
 {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithNibName:nil bundle:nil]; 
     return self;
 }
 
-- (void) loadView
+- (void)loadView
 {
     assert( nil != self.screenPresenter );
     self.view = self.screenPresenter.screenUI.rootView;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent

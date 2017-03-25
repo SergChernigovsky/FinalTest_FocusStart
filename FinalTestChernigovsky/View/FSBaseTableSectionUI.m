@@ -30,7 +30,8 @@
 
 #pragma mark - PRTableSectionUI
 
-- (UITableViewCell *)cellForIndex:(NSUInteger)index{
+- (UITableViewCell *)cellForIndex:(NSUInteger)index
+{
     id<PRCellUI> cellUI = cellsUI[index];
     return cellUI.cell;
 }

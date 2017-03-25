@@ -18,7 +18,7 @@
 {
     FSTweetsScreenUI *screenUI;
     NSArray<FSTwitterPost *> *twitterPosts;
-    id<PRTableUI> table;
+    id<PRTableUI> tableUI;
 }
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory
@@ -27,7 +27,8 @@
     self = [super initWithScreenFactory:factory];
     typeof(self) __weak weakSelf = self;
     screenUI = [factory makeTweetsScreenUI];
-    [self.networkHelper userRequestWithCompletion:^(id data) {
+    [self.networkHelper userRequestWithCompletion:^(id data)
+    {
         [weakSelf successResponseWithData:data];
     }];
     return self;
@@ -42,7 +43,7 @@
         id<PRCellUI> cellUI = [FSTableElementFactory twittCellWithKeys:[self dictionaryFromPost:obj]];
         [section addObject:cellUI];
     }];
-    table = [screenUI tableWithSections:[NSArray arrayWithObject:[section copy]]];
+    tableUI = [screenUI tableWithSections:[NSArray arrayWithObject:[section copy]]];
     screenUI.installUIInteractionHandler(YES);
 }
 

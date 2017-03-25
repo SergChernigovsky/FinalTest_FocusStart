@@ -38,8 +38,8 @@
     NSMutableURLRequest *request = [self urlRequestWithEnumerator:context.keyEnumerator];
 
     typeof(self) __weak weakSelf = self;
-    NSURLSessionTask *task;
     session = [NSURLSession sharedSession];
+    NSURLSessionTask *task;
     task = [session dataTaskWithRequest:request
                       completionHandler:^(NSData * _Nullable data,
                                           NSURLResponse * _Nullable response,
