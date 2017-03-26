@@ -19,8 +19,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelRetweet;
 @property (weak, nonatomic) IBOutlet UILabel *labelLike;
+@property (weak, nonatomic) IBOutlet UILabel *labelRetweetUser;
+@property (weak, nonatomic) IBOutlet UILabel *labelUrl;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageRetweetStatus;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUserIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *imageMedia;
+@property (weak, nonatomic) IBOutlet UIImageView *imageRetweet;
 
 @end

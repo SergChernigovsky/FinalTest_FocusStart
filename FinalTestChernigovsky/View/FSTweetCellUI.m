@@ -14,8 +14,9 @@
 @property (nonatomic, strong, readwrite) NSNumber *favoriteCount;
 @property (nonatomic, strong, readwrite) NSNumber *retweetCount;
 @property (nonatomic, copy, readwrite) NSString *text;
-@property (nonatomic, copy, readwrite) NSString *name;
-@property (nonatomic, copy, readwrite) NSString *screenName;
+@property (nonatomic, copy, readwrite) NSString *retweetedUserName;
+@property (nonatomic, copy, readwrite) NSString *tweetUserName;
+@property (nonatomic, copy, readwrite) NSString *tweetUserScreenName;
 @property (nonatomic, copy, readwrite) NSString *createdAt;
 @property (nonatomic, strong, readwrite) UIImage *userImage;
 @end
@@ -48,13 +49,17 @@
     assert( nil != self.text );
     tweetCell.labelText.text = self.text;
     tweetCell.labelDate.text = self.createdAt;
-    tweetCell.labelName.text = self.name;
+    tweetCell.labelName.text = self.tweetUserName;
     tweetCell.labelRetweet.text = [NSString stringWithFormat:@"%@", self.retweetCount];
     tweetCell.labelLike.text = [NSString stringWithFormat:@"%@", self.favoriteCount];
-    tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.screenName];
-    if ( YES == self.retweetedStatus) {
-        tweetCell.viewRetweet.frame = CGRectMake(0, 0, CGRectGetWidth(tweetCell.viewRetweet.frame), 0);
+    tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.tweetUserScreenName];
+    
+    if ( NO != self.retweetedStatus )
+    {
+        tweetCell.imageRetweet.image = nil;
+        return tweetCell;
     }
+    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.retweetedUserName];
     return tweetCell;
 }
 

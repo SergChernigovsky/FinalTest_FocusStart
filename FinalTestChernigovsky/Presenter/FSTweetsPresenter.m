@@ -48,13 +48,15 @@
 
 - (NSDictionary *)dictionaryFromPost:(FSTwitterPost *)post
 {
-    FSTwitterUser *user = ( nil != post.retweeted_status ) ? post.retweeted_status.user : post.user;
+    FSTwitterUser *tweetUser = ( nil != post.retweeted_status ) ? post.retweeted_status.user : post.user;
     NSString *text = ( nil != post.retweeted_status ) ? post.retweeted_status.text : post.text;
-    return @{@"name" : user.name,
-             @"screenName" : user.screen_name,
+    NSNumber *favoriteCount = ( nil != post.retweeted_status ) ? post.retweeted_status.favorite_count : post.favorite_count;
+    return @{@"retweetedUserName" : post.user.name,
+             @"tweetUserName" : tweetUser.name,
+             @"tweetUserScreenName" : tweetUser.screen_name,
              @"retweetedStatus" : @( nil == post.retweeted_status),
              @"retweetCount" : post.retweet_count,
-             @"favoriteCount" : post.favorite_count,
+             @"favoriteCount" : favoriteCount,
              @"text" : text,
              @"createdAt" : [NSDate fs_stringFromDate:post.created_at]};
 }

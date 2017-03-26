@@ -83,8 +83,7 @@
     [aKeyHolder addObject:@"POST" forKey:@"HTTPMethod"];
     [aKeyHolder addObject:[aNetworkConfigure authHttpBody] forKey:@"HTTPBody"];
     return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder
-                                             expectedClass:[FSTwitterAuth class]
-                                          responseDataType:ResponseDataTypeDictionary];
+                                             expectedClass:[FSTwitterAuth class]];
 }
 
 - (FSRequestContext *)userRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
@@ -94,8 +93,7 @@
     [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
     [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
     return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder
-                                             expectedClass:[FSTwitterPost class]
-                                          responseDataType:ResponseDataTypeArray];
+                                             expectedClass:[FSTwitterPost class]];
 }
 
 @end

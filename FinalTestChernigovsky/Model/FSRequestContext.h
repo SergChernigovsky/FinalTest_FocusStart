@@ -8,24 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, ResponseDataType)
-{
-    ResponseDataTypeDictionary = 1,
-    ResponseDataTypeArray,
-    ResponseDataTypeNil = 0
-};
-
 @protocol PRKeyEnumerator;
 
 @interface FSRequestContext : NSObject
 
 @property (nonatomic, strong, readonly) id<PRKeyEnumerator> keyEnumerator;
 @property (nonatomic, strong, readonly) Class expectedClass;
-@property (nonatomic, assign, readonly) ResponseDataType responseDataType;
 
 - (instancetype)initWithKeyEnumerator:(id<PRKeyEnumerator>)keyEnumerator
-                        expectedClass:(Class)class
-                     responseDataType:(ResponseDataType)responseDataType;
+                        expectedClass:(Class)class;
 
 - (instancetype)init NS_UNAVAILABLE;
 

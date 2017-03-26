@@ -45,15 +45,15 @@
                                                                   0,
                                                                   CGRectGetWidth(self.rootView.bounds),
                                                                   64.f)];
-    headerView.backgroundColor = [FSColors blueTwitterColor];
+    headerView.backgroundColor = [UIColor grayColor];
     table.tableView.tableHeaderView = headerView;
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                   0,
                                                                   CGRectGetWidth(self.rootView.bounds),
                                                                   40.f)];
-    footerView.backgroundColor = [FSColors blueTwitterColor];
+    footerView.backgroundColor = [UIColor grayColor];
     table.tableView.tableFooterView = footerView;
-    table.tableView.backgroundColor = [FSColors blueTwitterColor];
+    table.tableView.backgroundColor = [UIColor grayColor];
     [self addFinalElement:table.tableView];
     return table;
 }
