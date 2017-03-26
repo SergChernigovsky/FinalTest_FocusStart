@@ -23,11 +23,10 @@
     self = [super init];
     assert( nil != sectionsWithCells );
     tableView = [[UITableView alloc] initWithFrame:frame];
-    tableView.estimatedRowHeight = 200.f;
-    tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.showsVerticalScrollIndicator = NO;
+    tableView.rowHeight = UITableViewAutomaticDimension;
     NSMutableArray *mutableSections = [[NSMutableArray alloc] init];
     [sectionsWithCells enumerateObjectsUsingBlock:^(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
@@ -83,11 +82,11 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    id<PRTableSectionUI> sectionUI = sections[indexPath.section];
-//    UITableViewCell *cell = [sectionUI cellForIndex:indexPath.row];
-//    return CGRectGetHeight(cell.frame);
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id<PRTableSectionUI> sectionUI = sections[indexPath.section];
+    UITableViewCell *cell = [sectionUI cellForIndex:indexPath.row];
+    return CGRectGetHeight(cell.frame);
+}
 
 @end

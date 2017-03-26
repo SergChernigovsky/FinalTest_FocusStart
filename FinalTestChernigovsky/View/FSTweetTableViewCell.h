@@ -10,6 +10,17 @@
 
 @interface FSTweetTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *viewUserIcon;
+@property (weak, nonatomic) IBOutlet UIView *viewRetweet;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
+@property (weak, nonatomic) IBOutlet UILabel *labelName;
+@property (weak, nonatomic) IBOutlet UILabel *labelScreenName;
+@property (weak, nonatomic) IBOutlet UILabel *labelDate;
+@property (weak, nonatomic) IBOutlet UILabel *labelRetweet;
+@property (weak, nonatomic) IBOutlet UILabel *labelLike;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageRetweetStatus;
+@property (weak, nonatomic) IBOutlet UIImageView *imageUserIcon;
 
 @end

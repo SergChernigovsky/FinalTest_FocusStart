@@ -13,8 +13,6 @@
 #import "PRTableUI.h"
 #import "FSColors.h"
 
-CGFloat const navigationBarHeight = 60.f;
-
 @implementation FSTweetsScreenUI
 {
     FSAnimationController *animationController;
@@ -46,7 +44,7 @@ CGFloat const navigationBarHeight = 60.f;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                   0,
                                                                   CGRectGetWidth(self.rootView.bounds),
-                                                                  60.f)];
+                                                                  64.f)];
     headerView.backgroundColor = [FSColors blueTwitterColor];
     table.tableView.tableHeaderView = headerView;
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,

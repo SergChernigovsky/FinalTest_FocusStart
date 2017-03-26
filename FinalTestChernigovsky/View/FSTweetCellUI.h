@@ -11,14 +11,14 @@
 
 @interface FSTweetCellUI : NSObject<PRCellUI>
 
-@property (nonatomic, assign, readonly) BOOL retweeted_status;
-@property (nonatomic, strong, readonly) NSNumber *favorite_count;
-@property (nonatomic, strong, readonly) NSNumber *retweet_count;
+@property (nonatomic, assign, readonly) BOOL retweetedStatus;
+@property (nonatomic, strong, readonly) NSNumber *favoriteCount;
+@property (nonatomic, strong, readonly) NSNumber *retweetCount;
 @property (nonatomic, copy, readonly) NSString *text;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *screen_name;
-@property (nonatomic, copy, readonly) NSString *created_at;
-@property (nonatomic, strong, readonly) UIImage *user_image;
+@property (nonatomic, copy, readonly) NSString *screenName;
+@property (nonatomic, copy, readonly) NSString *createdAt;
+@property (nonatomic, strong, readonly) UIImage *userImage;
 
 - (instancetype)initWithKeys:(NSDictionary<NSString *, id> *)keys NS_DESIGNATED_INITIALIZER;
 

@@ -51,11 +51,12 @@
     FSTwitterUser *user = ( nil != post.retweeted_status ) ? post.retweeted_status.user : post.user;
     NSString *text = ( nil != post.retweeted_status ) ? post.retweeted_status.text : post.text;
     return @{@"name" : user.name,
-             @"screen_name" : user.screen_name,
-             @"retweet_count" : post.retweet_count,
-             @"favorite_count" : post.favorite_count,
+             @"screenName" : user.screen_name,
+             @"retweetedStatus" : @( nil == post.retweeted_status),
+             @"retweetCount" : post.retweet_count,
+             @"favoriteCount" : post.favorite_count,
              @"text" : text,
-             @"created_at" : [NSDate fs_stringFromDate:post.created_at]};
+             @"createdAt" : [NSDate fs_stringFromDate:post.created_at]};
 }
 
 #pragma mark - FSBasePresenter
