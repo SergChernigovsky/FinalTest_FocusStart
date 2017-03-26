@@ -15,6 +15,7 @@
     UIView *view;
 }
 @synthesize installFinalUIHandler;
+@synthesize topBarHeight;
 
 #pragma mark - init
 

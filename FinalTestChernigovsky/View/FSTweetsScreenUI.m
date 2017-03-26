@@ -44,7 +44,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                   0,
                                                                   CGRectGetWidth(self.rootView.bounds),
-                                                                  64.f)];
+                                                                  self.topBarHeight)];
     headerView.backgroundColor = [UIColor grayColor];
     table.tableView.tableHeaderView = headerView;
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,

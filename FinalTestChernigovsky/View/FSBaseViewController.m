@@ -29,6 +29,9 @@
 {
     assert( nil != self.screenPresenter );
     self.view = self.screenPresenter.screenUI.rootView;
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat navigationBarHeight = self.navigationController.navigationBar.frame.size.height;
+    self.screenPresenter.screenUI.topBarHeight = statusBarHeight + navigationBarHeight;
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent
