@@ -29,6 +29,7 @@
 
 - (void)errorResponse:(NSError *)error
 {
+    assert( nil != self.errorHandler );
     self.errorHandler(error);
 }
 

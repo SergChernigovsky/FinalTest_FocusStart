@@ -101,4 +101,9 @@
     [FSObjectArchiver archiveString:name forKey:self.accountNameKey];
 }
 
+- (NSString *)accountName
+{
+    return [FSObjectArchiver stringForKey:self.accountNameKey];
+}
+
 @end

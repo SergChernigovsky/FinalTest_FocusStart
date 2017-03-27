@@ -11,6 +11,7 @@
 
 @protocol PRBaseScreenUI <NSObject>
 
+@property (nonatomic, copy, readwrite, nullable) NSString *screenName;
 @property (nonatomic, strong, readonly, nonnull) UIView *rootView;
 @property (nonatomic, assign, readwrite) CGFloat topBarHeight;
 @property (nonatomic, strong, readonly, nullable) id<UIViewControllerAnimatedTransitioning> transitionController;

@@ -18,6 +18,8 @@
 
 - (void)saveAccountName:(NSString *)name;
 
+- (NSString *)accountName;
+
 - (void)authRequestWithCompletion:(void(^)(id data))completion;
 
 - (void)userRequestWithCompletion:(void(^)(id data))completion;

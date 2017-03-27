@@ -26,4 +26,6 @@
 
 - (void)saveAccountName:(NSString *)name;
 
+- (NSString *)accountName;
+
 @end

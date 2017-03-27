@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong, readwrite) id<PRBaseScreenUI> screenUI;
 @property (nonatomic, strong, readonly) FSNetworkHelper *networkHelper;
-@property (nonatomic, copy, readwrite) void(^errorHandler)(NSError *errorr);
+@property (nonatomic, copy, readwrite) void(^errorHandler)(NSError *error);
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory NS_DESIGNATED_INITIALIZER;
 

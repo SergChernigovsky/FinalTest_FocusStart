@@ -9,6 +9,7 @@
 #import "FSAppController.h"
 #import "FSScreenUIFactory.h"
 #import "FSStartViewController.h"
+#import "FSColors.h"
 #import <UIKit/UIKit.h>
 
 @implementation FSAppController
@@ -23,7 +24,12 @@
     self = [super init];
     [self makeWindow];
     FSStartViewController *vc = [[FSStartViewController alloc] initWithScreenUIFactory:factory];
+    
     navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName : [FSColors blueTwitterColor]};
+    [navigationController.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
+    [navigationController.navigationBar setTintColor:[FSColors blueTwitterColor]];
+    
     window.rootViewController = navigationController;
     [window makeKeyAndVisible];
     return self;

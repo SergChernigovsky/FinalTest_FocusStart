@@ -11,6 +11,7 @@
 #import "PRBaseScreenUI.h"
 #import "FSBaseScreenUI.h"
 #import "FSTransitionDelegate.h"
+#import "FSColors.h"
 
 @interface FSBaseViewController ()<UINavigationControllerDelegate>
 
@@ -29,9 +30,15 @@
 {
     assert( nil != self.screenPresenter );
     self.view = self.screenPresenter.screenUI.rootView;
+    
     CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     CGFloat navigationBarHeight = self.navigationController.navigationBar.frame.size.height;
     self.screenPresenter.screenUI.topBarHeight = statusBarHeight + navigationBarHeight;
+    
+    if ( nil != self.screenPresenter.screenUI.screenName )
+    {
+        [self.navigationItem setTitle:self.screenPresenter.screenUI.screenName];
+    }
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent

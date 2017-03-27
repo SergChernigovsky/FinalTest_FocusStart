@@ -16,6 +16,7 @@
 }
 @synthesize startFinalUIHandler;
 @synthesize topBarHeight;
+@synthesize screenName;
 
 #pragma mark - init
 

@@ -43,6 +43,11 @@
     [networkConfigure saveAccountName:name];
 }
 
+- (NSString *)accountName
+{
+    return [networkConfigure accountName];
+}
+
 - (void)authRequestWithCompletion:(void(^)(id data))completion
 {
     typeof(self) __weak weakSelf = self;

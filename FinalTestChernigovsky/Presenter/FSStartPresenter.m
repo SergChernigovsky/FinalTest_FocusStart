@@ -22,22 +22,15 @@
     self = [super initWithScreenFactory:factory];
     typeof(self) __weak weakSelf = self;
     screenUI = [factory makeStartScreenUI];
+    screenUI.screenName = @"Twitter";
     screenUI.buttonClickHandler = ^(NSString *accountName)
     {
         [weakSelf completeButtonClick:accountName];
     };
     [self.networkHelper authRequestWithCompletion:^(id data) {
-        [weakSelf successResponseWithData:data];
+        [weakSelf completeAuthRequestWithData:data];
     }];
     return self;
-}
-
-- (void)successResponseWithData:(id)data
-{
-    twitterAuth = (FSTwitterAuth *)data;
-    NSLog(@"%@", twitterAuth.description);
-    [self.networkHelper saveAccessToken:twitterAuth.access_token];
-    screenUI.startFinalUIHandler(YES);
 }
 
 #pragma mark - FSBasePresenter
@@ -50,15 +43,23 @@
 - (void)errorResponse:(NSError *)error
 {
     [super errorResponse:error];
-    screenUI.startFinalUIHandler(YES);
+    [self handleFinalUI:YES];
 }
 
 - (void)transition
 {
-    screenUI.startFinalUIHandler(YES);
+    [self handleFinalUI:YES];
 }
 
 #pragma mark - Completions
+
+- (void)completeAuthRequestWithData:(id)data
+{
+    twitterAuth = (FSTwitterAuth *)data;
+    NSLog(@"%@", twitterAuth.description);
+    [self.networkHelper saveAccessToken:twitterAuth.access_token];
+    [self handleFinalUI:YES];
+}
 
 - (void)completeButtonClick:(NSString *)accountName
 {
@@ -71,7 +72,7 @@
     typeof(self) __weak weakSelf = self;
     [self.networkHelper authRequestWithCompletion:^(id data)
     {
-        [weakSelf successResponseWithData:data];
+        [weakSelf completeAuthRequestWithData:data];
         [self handlePushToTweets];
     }];
 }
@@ -82,6 +83,12 @@
 {
     assert( nil != self.pushToTweetsHandler );
     self.pushToTweetsHandler();
+}
+
+- (void)handleFinalUI:(BOOL) isFinal
+{
+    assert( nil != screenUI.startFinalUIHandler );
+    screenUI.startFinalUIHandler(isFinal);
 }
 
 @end

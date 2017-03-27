@@ -11,10 +11,13 @@
 #import "FSColors.h"
 #import "FSElementUIFactory.h"
 
-CGFloat const buttonHeight = 30.f;
+CGFloat const buttonHeight = 35.f;
 CGFloat const buttonWidth = 70.f;
-CGFloat const textFieldHeight = 30.f;
-CGFloat const textFieldWidth = 200.f;
+CGFloat const textFieldHeight = 35.f;
+CGFloat const textFieldWidth = 250.f;
+
+@interface FSStartScreenUI()<UITextFieldDelegate>
+@end
 
 @implementation FSStartScreenUI
 {
@@ -30,6 +33,7 @@ CGFloat const textFieldWidth = 200.f;
     self.rootView.backgroundColor = [UIColor grayColor];
     animationController = [[FSAnimationController alloc] init];
     textField = [self makeTextField];
+    textField.delegate = self;
     [self addFinalElement:textField];
     [self addFinalElement:[self makeButtonSearch]];
     [self addLoadingElement:[self makeActivityIndicator]];
@@ -94,6 +98,14 @@ CGFloat const textFieldWidth = 200.f;
         self.startFinalUIHandler(NO);
         self.buttonClickHandler(textField.text);
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self buttonSearchClick];
+    return YES;
 }
 
 @end
