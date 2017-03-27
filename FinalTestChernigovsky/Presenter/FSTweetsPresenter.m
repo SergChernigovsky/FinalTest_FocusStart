@@ -43,7 +43,7 @@
         [section addObject:cellUI];
     }];
     tableUI = [screenUI tableWithSections:[NSArray arrayWithObject:[section copy]]];
-    screenUI.installFinalUIHandler(YES);
+    screenUI.startFinalUIHandler(YES);
 }
 
 - (NSDictionary *)dictionaryFromPost:(FSTwitterPost *)post
@@ -51,8 +51,7 @@
     FSTwitterUser *tweetUser = ( nil != post.retweeted_status ) ? post.retweeted_status.user : post.user;
     NSString *text = ( nil != post.retweeted_status ) ? post.retweeted_status.text : post.text;
     NSNumber *favoriteCount = ( nil != post.retweeted_status ) ? post.retweeted_status.favorite_count : post.favorite_count;
-    return @{@"retweetedUserName" : post.user.name,
-             @"tweetUserName" : tweetUser.name,
+    return @{@"tweetUserName" : tweetUser.name,
              @"tweetUserScreenName" : tweetUser.screen_name,
              @"retweetedStatus" : @( nil == post.retweeted_status),
              @"retweetCount" : post.retweet_count,
@@ -66,7 +65,7 @@
 - (void)errorResponse:(NSError *)error
 {
     [super errorResponse:error];
-    screenUI.installFinalUIHandler(YES);
+    screenUI.startFinalUIHandler(YES);
 }
 
 - (id<PRBaseScreenUI>)screenUI

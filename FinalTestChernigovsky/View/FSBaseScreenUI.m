@@ -14,7 +14,7 @@
     NSArray *arrayLoadingElements;
     UIView *view;
 }
-@synthesize installFinalUIHandler;
+@synthesize startFinalUIHandler;
 @synthesize topBarHeight;
 
 #pragma mark - init
@@ -33,9 +33,9 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [view addGestureRecognizer:tapGesture];
     typeof(self) __weak weakSelf = self;
-    installFinalUIHandler = ^(BOOL isNormal)
+    startFinalUIHandler = ^(BOOL isFinal)
     {
-        [weakSelf installUIInteraction:isNormal];
+        [weakSelf installUIInteraction:isFinal];
     };
     arrayFinalElements = [[NSArray alloc] init];
     arrayLoadingElements = [[NSArray alloc] init];
@@ -43,7 +43,7 @@
 
 #pragma mark - UIStates
 
-- (void)enumerateNormalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
+- (void)enumerateFinalElementsWithComletion:(void(^)(UIView *elementView))comletionNormalElements
 {
     assert( arrayFinalElements );
     [arrayFinalElements enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
@@ -61,20 +61,20 @@
     }];
 }
 
-- (void)installUIInteraction:(BOOL)isNormal
+- (void)installUIInteraction:(BOOL)isFinal
 {
-    [self enumerateNormalElementsWithComletion:^(UIView *elementView)
+    [self enumerateFinalElementsWithComletion:^(UIView *elementView)
     {
         dispatch_async(dispatch_get_main_queue(), ^
         {
-            elementView.userInteractionEnabled = ( NO != isNormal );
+            elementView.userInteractionEnabled = ( NO != isFinal );
         });
     }];
     [self enumerateLoadingElementsComletion:^(UIView *elementView)
     {
         dispatch_async(dispatch_get_main_queue(), ^
         {
-            if( NO != isNormal )
+            if( NO != isFinal )
             {
                 [elementView removeFromSuperview];
                 return;

@@ -8,17 +8,18 @@
 
 #import "FSBaseTableSectionUI.h"
 
+@interface FSBaseTableSectionUI()
+@property (nonatomic, copy, readwrite) NSArray<id<PRCellUI>> *cellsUI;
+@end
+
 @implementation FSBaseTableSectionUI
-{
-    NSArray<id<PRCellUI>> *cellsUI;
-}
 @synthesize cellsNumber;
 
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
 {
     self = [super init];
     assert( nil != cells);
-    cellsUI = [cells copy];
+    self.cellsUI = cells;
     return self;
 }
 
@@ -32,13 +33,13 @@
 
 - (UITableViewCell *)cellForIndex:(NSUInteger)index
 {
-    id<PRCellUI> cellUI = cellsUI[index];
+    id<PRCellUI> cellUI = self.cellsUI[index];
     return cellUI.cell;
 }
 
 - (NSUInteger)cellsNumber
 {
-    return cellsUI.count;
+    return self.cellsUI.count;
 }
 
 @end

@@ -31,7 +31,7 @@ CGFloat const textFieldWidth = 200.f;
     animationController = [[FSAnimationController alloc] init];
     [self makeNormalElements];
     [self makeLoadingElements];
-    self.installFinalUIHandler(NO);
+    self.startFinalUIHandler(NO);
     return self;
 }
 
@@ -85,7 +85,7 @@ CGFloat const textFieldWidth = 200.f;
 {
     if( nil != self.buttonClickHandler )
     {
-        self.installFinalUIHandler(NO);
+        self.startFinalUIHandler(NO);
         self.buttonClickHandler(textField.text);
     }
 }

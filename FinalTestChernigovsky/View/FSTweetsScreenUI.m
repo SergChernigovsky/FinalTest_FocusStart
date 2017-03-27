@@ -24,7 +24,7 @@
     self.rootView.backgroundColor = [UIColor grayColor];
     [self makeLoadingElements];
     animationController = [[FSAnimationController alloc] init];
-    self.installFinalUIHandler(NO);
+    self.startFinalUIHandler(NO);
     return self;
 }
 

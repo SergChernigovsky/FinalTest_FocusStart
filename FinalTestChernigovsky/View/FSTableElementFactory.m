@@ -8,6 +8,7 @@
 
 #import "FSTableElementFactory.h"
 #import "FSTweetCellUI.h"
+#import "FSTweetsTableSectionUI.h"
 #import "FSBaseTableUI.h"
 
 @implementation FSTableElementFactory
@@ -25,6 +26,14 @@
 {
     id<PRCellUI> cellUI = [[FSTweetCellUI alloc] initWithKeys:keys];
     return cellUI;
+}
+
++ (id<PRTableSectionUI>)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
+                                          keys:(NSDictionary<NSString *, id> *)keys
+{
+    id<PRTableSectionUI> sectionUI = [[FSTweetsTableSectionUI alloc] initWithCells:cellsUI
+                                                                              keys:keys];
+    return sectionUI;
 }
 
 @end

@@ -14,31 +14,14 @@
 @property (nonatomic, strong, readwrite) NSNumber *favoriteCount;
 @property (nonatomic, strong, readwrite) NSNumber *retweetCount;
 @property (nonatomic, copy, readwrite) NSString *text;
-@property (nonatomic, copy, readwrite) NSString *retweetedUserName;
+@property (nonatomic, copy, readwrite) NSString *userName;
 @property (nonatomic, copy, readwrite) NSString *tweetUserName;
 @property (nonatomic, copy, readwrite) NSString *tweetUserScreenName;
 @property (nonatomic, copy, readwrite) NSString *createdAt;
-@property (nonatomic, strong, readwrite) UIImage *userImage;
+@property (nonatomic, strong, readwrite) UIImage *userIcon;
 @end
 
 @implementation FSTweetCellUI
-@synthesize cell;
-
-- (instancetype)initWithKeys:(NSDictionary<NSString *, id> *)keys
-{
-    self = [super init];
-    [keys enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop)
-    {
-        [self setValue:obj forKey:key];
-    }];
-    return self;
-}
-
-- (instancetype)init
-{
-    assert( NO );
-    return nil;
-}
 
 - (UITableViewCell *)cell
 {
@@ -59,7 +42,7 @@
         tweetCell.imageRetweet.image = nil;
         return tweetCell;
     }
-    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.retweetedUserName];
+    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.userName];
     return tweetCell;
 }
 

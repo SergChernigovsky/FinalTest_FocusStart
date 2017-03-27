@@ -11,6 +11,7 @@
 
 @protocol PRCellUI;
 @protocol PRTableUI;
+@protocol PRTableSectionUI;
 
 @interface FSTableElementFactory : NSObject
 
@@ -18,5 +19,8 @@
               sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells;
 
 + (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
+
++ (id<PRTableSectionUI>)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
+                                          keys:(NSDictionary<NSString *, id> *)keys;
 
 @end

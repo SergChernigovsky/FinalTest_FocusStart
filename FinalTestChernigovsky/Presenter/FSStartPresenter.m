@@ -37,7 +37,7 @@
     twitterAuth = (FSTwitterAuth *)data;
     NSLog(@"%@", twitterAuth.description);
     [self.networkHelper saveAccessToken:twitterAuth.access_token];
-    screenUI.installFinalUIHandler(YES);
+    screenUI.startFinalUIHandler(YES);
 }
 
 #pragma mark - FSBasePresenter
@@ -50,12 +50,12 @@
 - (void)errorResponse:(NSError *)error
 {
     [super errorResponse:error];
-    screenUI.installFinalUIHandler(YES);
+    screenUI.startFinalUIHandler(YES);
 }
 
 - (void)transition
 {
-    screenUI.installFinalUIHandler(YES);
+    screenUI.startFinalUIHandler(YES);
 }
 
 #pragma mark - Completions
