@@ -11,7 +11,10 @@
 @protocol PRTableSectionUI <NSObject>
 
 @property (nonatomic, assign, readonly) NSUInteger cellsNumber;
+@property (nonatomic, copy, readonly) NSString *cellsIdentifier;
 
 - (UITableViewCell *)cellForIndex:(NSUInteger)index;
+
+- (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell index:(NSUInteger)index;
 
 @end

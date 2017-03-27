@@ -12,5 +12,8 @@
 @protocol PRCellUI <NSObject>
 
 @property (nonatomic, strong, readonly) UITableViewCell *cell;
+@property (nonatomic, copy, readonly) NSString *cellIdentifier;
+
+- (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell;
 
 @end

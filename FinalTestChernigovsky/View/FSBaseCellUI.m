@@ -10,20 +10,36 @@
 
 @implementation FSBaseCellUI
 @synthesize cell;
+@synthesize cellIdentifier;
 
 - (instancetype)initWithKeys:(NSDictionary<NSString *, id> *)keys
 {
     self = [super init];
     [keys enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop)
-     {
-         [self setValue:obj forKey:key];
-     }];
+    {
+        [self setValue:obj forKey:key];
+    }];
     return self;
 }
 
 - (instancetype)init
 {
     assert( NO );
+    return nil;
+}
+
+- (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell
+{
+    return nil;
+}
+
+- (UITableViewCell *)cell
+{
+    return nil;
+}
+
+- (NSString *)cellIdentifier
+{
     return nil;
 }
 

@@ -22,28 +22,55 @@
 @end
 
 @implementation FSTweetCellUI
-
-- (UITableViewCell *)cell
 {
-    FSTweetTableViewCell *tweetCell;
-    tweetCell = (FSTweetTableViewCell *)[[[NSBundle mainBundle] loadNibNamed:@"FSTweetTableViewCell"
-                                                                       owner:self
-                                                                     options:nil] lastObject];
+    NSString *cellIdentifier;
+}
+
+- (instancetype)initWithKeys:(NSDictionary<NSString *,id> *)keys
+{
+    self = [super initWithKeys:keys];
+    cellIdentifier = [self tweetCell].reuseIdentifier;
+    return self;
+}
+
+- (FSTweetTableViewCell *)tweetCell
+{
+    return (FSTweetTableViewCell *)[[[NSBundle mainBundle] loadNibNamed:@"FSTweetTableViewCell"
+                                                                  owner:self
+                                                                options:nil] lastObject];
+}
+
+- (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell
+{
+    assert( NO != [cell isKindOfClass:[FSTweetTableViewCell class]]);
     assert( nil != self.text );
+    
+    FSTweetTableViewCell *tweetCell = (FSTweetTableViewCell *)cell;
     tweetCell.labelText.text = self.text;
     tweetCell.labelDate.text = self.createdAt;
     tweetCell.labelName.text = self.tweetUserName;
     tweetCell.labelRetweet.text = [NSString stringWithFormat:@"%@", self.retweetCount];
     tweetCell.labelLike.text = [NSString stringWithFormat:@"%@", self.favoriteCount];
     tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.tweetUserScreenName];
-    
     if ( NO != self.retweetedStatus )
     {
         tweetCell.imageRetweet.image = nil;
+        tweetCell.labelRetweetUser.text = nil;
         return tweetCell;
     }
+    tweetCell.imageRetweet.image = [UIImage imageNamed:@"iconRetweet"];
     tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.userName];
     return tweetCell;
+}
+
+- (UITableViewCell *)cell
+{
+    return [self makeCellWithCell:[self tweetCell]];
+}
+
+- (NSString *)cellIdentifier
+{
+    return cellIdentifier;
 }
 
 @end

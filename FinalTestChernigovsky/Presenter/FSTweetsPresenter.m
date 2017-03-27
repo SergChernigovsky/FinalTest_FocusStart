@@ -40,6 +40,12 @@
 - (void)completeUserRequestWithData:(id)data
 {
     NSArray<FSTwitterPost *> *twitterPosts = (NSArray<FSTwitterPost *> *)data;
+    if ( 0 == twitterPosts.count )
+    {
+        tableUI = [screenUI tableWithSections:@[]];
+        [self handleFinalUI:YES];
+        return;
+    }
     NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
     FSTweetsTableSectionUI *twitterSection = [self twitterSectionWithCells:tweetCells posts:twitterPosts];
     tableUI = [screenUI tableWithSections:@[twitterSection]];

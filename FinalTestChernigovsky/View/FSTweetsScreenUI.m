@@ -21,6 +21,7 @@
 - (instancetype)init
 {
     self = [super init];
+    self.rootView.backgroundColor = [FSColors blueTwitterColor];
     [self addLoadingElement:[self makeActivityIndicator]];
     animationController = [[FSAnimationController alloc] init];
     self.startFinalUIHandler(NO);
@@ -45,21 +46,21 @@
                                                                   CGRectGetWidth(self.rootView.bounds),
                                                                   self.topBarHeight)];
     headerView.backgroundColor = [UIColor grayColor];
-    table.tableView.tableHeaderView = headerView;
+    table.aTableView.tableHeaderView = headerView;
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                   0,
                                                                   CGRectGetWidth(self.rootView.bounds),
                                                                   40.f)];
     footerView.backgroundColor = [UIColor grayColor];
-    table.tableView.tableFooterView = footerView;
-    table.tableView.backgroundColor = [UIColor grayColor];
+    table.aTableView.tableFooterView = footerView;
+    table.aTableView.backgroundColor = [UIColor grayColor];
     return table;
 }
 
 - (id<PRTableUI>)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections
 {   
     id<PRTableUI> table = [self makeTableWithSections:sections];
-    [self addFinalElement:table.tableView];
+    [self addFinalElement:table.aTableView];
     return table;
 }
 

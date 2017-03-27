@@ -16,7 +16,7 @@
 
 @implementation FSBaseTableUI
 @synthesize sections;
-@synthesize tableView;
+@synthesize aTableView;
 
 - (instancetype)initWithFrame:(CGRect)frame
             sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
@@ -24,11 +24,11 @@
     self = [super init];
     assert( nil != sectionsWithCells );
     sections = sectionsWithCells;
-    tableView = [[UITableView alloc] initWithFrame:frame];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.showsVerticalScrollIndicator = NO;
-    tableView.rowHeight = UITableViewAutomaticDimension;
+    aTableView = [[UITableView alloc] initWithFrame:frame];
+    aTableView.delegate = self;
+    aTableView.dataSource = self;
+    aTableView.showsVerticalScrollIndicator = NO;
+    aTableView.rowHeight = UITableViewAutomaticDimension;
     //    const NSUInteger path[] = {0, index};
     //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:path inSection:2];
     return self;
@@ -45,7 +45,7 @@
     sections = [mutableSections copy];
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        [tableView reloadData];
+        [aTableView reloadData];
     });
 }
 
@@ -74,8 +74,16 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<PRTableSectionUI> sectionUI = sections[indexPath.section];
-    UITableViewCell *cell = [sectionUI cellForIndex:indexPath.row];
-    assert( nil != cell );
+    UITableViewCell *reusableCell = [tableView dequeueReusableCellWithIdentifier:sectionUI.cellsIdentifier];
+    UITableViewCell *cell;
+    if ( nil == reusableCell )
+    {
+        cell = [sectionUI cellForIndex:indexPath.row];
+        assert( nil != cell);
+        return cell;
+    }
+    cell = [sectionUI makeCellWithCell:reusableCell index:indexPath.row];
+    assert( nil != cell);
     return cell;
 }
 

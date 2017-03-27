@@ -14,12 +14,15 @@
 
 @implementation FSBaseTableSectionUI
 @synthesize cellsNumber;
+@synthesize cellsIdentifier;
 
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
 {
     self = [super init];
     assert( nil != cells);
     self.cellsUI = cells;
+    id<PRCellUI> cellUI = [self.cellsUI firstObject];
+    cellsIdentifier = cellUI.cellIdentifier;
     return self;
 }
 
@@ -30,6 +33,13 @@
 }
 
 #pragma mark - PRTableSectionUI
+
+- (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell
+                                index:(NSUInteger)index
+{
+    id<PRCellUI> cellUI = self.cellsUI[index];
+    return [cellUI makeCellWithCell:cell];
+}
 
 - (UITableViewCell *)cellForIndex:(NSUInteger)index
 {
