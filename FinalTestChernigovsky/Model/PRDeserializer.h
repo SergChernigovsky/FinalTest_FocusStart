@@ -12,5 +12,6 @@
 @protocol PRDeserializer <NSObject>
 
 -(id)parseResponse:(id)json expectedClass:(Class)class;
+-(NSError *)parseErrors:(id)json;
 
 @end

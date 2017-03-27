@@ -76,9 +76,7 @@
         }
         else if( nil != json[@"errors"] )
         {
-            completion([[NSError alloc] initWithDomain:json[@"errors"][0][@"message"]
-                                                  code:[json[@"errors"][0][@"code"] integerValue]
-                                              userInfo:nil], nil);
+            completion([responseParser parseErrors:json[@"errors"]], nil);
             return;
         }
     }

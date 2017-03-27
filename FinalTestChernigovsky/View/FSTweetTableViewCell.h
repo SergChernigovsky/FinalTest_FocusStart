@@ -25,4 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageMedia;
 @property (weak, nonatomic) IBOutlet UIImageView *imageRetweet;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end

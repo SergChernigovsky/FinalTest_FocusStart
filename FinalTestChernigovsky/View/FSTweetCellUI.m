@@ -46,12 +46,23 @@
     assert( nil != self.text );
     
     FSTweetTableViewCell *tweetCell = (FSTweetTableViewCell *)cell;
+    
+    if ( nil != self.userIcon)
+    {
+        [tweetCell.activityIndicator stopAnimating];
+    }
+    else
+    {
+        [tweetCell.activityIndicator startAnimating];
+    }
+    
     tweetCell.labelText.text = self.text;
     tweetCell.labelDate.text = self.createdAt;
     tweetCell.labelName.text = self.tweetUserName;
     tweetCell.labelRetweet.text = [NSString stringWithFormat:@"%@", self.retweetCount];
     tweetCell.labelLike.text = [NSString stringWithFormat:@"%@", self.favoriteCount];
     tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.tweetUserScreenName];
+    
     if ( NO != self.retweetedStatus )
     {
         tweetCell.imageRetweet.image = nil;

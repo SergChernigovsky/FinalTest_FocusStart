@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="105.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-cp-kNX" userLabel="userIcon">
@@ -95,13 +95,13 @@
                         <rect key="frame" x="80" y="80" width="235" height="25"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A24-Q0-OyB">
-                                <rect key="frame" x="135.5" y="2" width="8" height="14.5"/>
+                                <rect key="frame" x="136" y="2" width="8" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99S-qC-HxP">
-                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="118" height="25"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconRetweet" translatesAutoresizingMaskIntoConstraints="NO" id="ebP-vp-7OG">
                                         <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
@@ -111,7 +111,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkf-kM-Ba2">
-                                        <rect key="frame" x="22" y="2" width="8" height="14.5"/>
+                                        <rect key="frame" x="22" y="2" width="8" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -125,7 +125,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLike" translatesAutoresizingMaskIntoConstraints="NO" id="0ZJ-td-p7B">
-                                <rect key="frame" x="117.5" y="2" width="14" height="14"/>
+                                <rect key="frame" x="118" y="2" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="lwW-wo-UOc"/>
                                     <constraint firstAttribute="height" constant="14" id="tat-Cy-Naw"/>
@@ -219,6 +219,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="activityIndicator" destination="djn-ag-yaG" id="7IT-eK-roU"/>
                 <outlet property="imageMedia" destination="V8k-R0-bWt" id="YrX-zi-EeH"/>
                 <outlet property="imageRetweet" destination="LY1-Tk-PH4" id="lQ3-ZC-smE"/>
                 <outlet property="imageUserIcon" destination="61P-ni-nYd" id="Tri-17-iD1"/>
