@@ -34,6 +34,7 @@
 - (UITableViewCell *)cellForIndex:(NSUInteger)index
 {
     id<PRCellUI> cellUI = self.cellsUI[index];
+    assert( NO != [cellUI conformsToProtocol:@protocol(PRCellUI)]);
     return cellUI.cell;
 }
 

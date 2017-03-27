@@ -12,6 +12,7 @@
 #import "FSTwitterUser.h"
 #import "NSDate+FSDate.h"
 #import "PRTableUI.h"
+#import "FSTweetCellUI.h"
 
 @implementation FSTweetsPresenter
 {
@@ -39,8 +40,8 @@
     NSMutableArray *section = [[NSMutableArray alloc] init];
     [twitterPosts enumerateObjectsUsingBlock:^(FSTwitterPost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
-        id<PRCellUI> cellUI = [screenUI tweetCellWithKeys:[self dictionaryFromPost:obj]];
-        [section addObject:cellUI];
+        FSTweetCellUI *tweetCellUI = [screenUI tweetCellWithKeys:[self dictionaryFromPost:obj]];
+        [section addObject:tweetCellUI];
     }];
     tableUI = [screenUI tableWithSections:[NSArray arrayWithObject:[section copy]]];
     screenUI.startFinalUIHandler(YES);

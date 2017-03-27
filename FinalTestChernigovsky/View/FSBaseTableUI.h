@@ -11,7 +11,7 @@
 @interface FSBaseTableUI : NSObject<PRTableUI>
 
 - (instancetype)initWithFrame:(CGRect)frame
-            sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells NS_DESIGNATED_INITIALIZER;
+            sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;
 

@@ -12,12 +12,11 @@
 #import "FSTweetsTableSectionUI.h"
 
 @protocol PRTableUI;
-@protocol PRTableSectionUI;
 
 @interface FSTableElementFactory : NSObject
 
 + (id<PRTableUI>)tableWithFrame:(CGRect)frame
-              sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells;
+              sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells;
 
 + (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
                                               keys:(NSDictionary<NSString *, id> *)keys;

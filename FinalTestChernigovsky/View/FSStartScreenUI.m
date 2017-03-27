@@ -29,42 +29,48 @@ CGFloat const textFieldWidth = 200.f;
     self = [super init];
     self.rootView.backgroundColor = [UIColor grayColor];
     animationController = [[FSAnimationController alloc] init];
-    [self makeNormalElements];
-    [self makeLoadingElements];
+    textField = [self makeTextField];
+    [self addFinalElement:textField];
+    [self addFinalElement:[self makeButtonSearch]];
+    [self addLoadingElement:[self makeActivityIndicator]];
     self.startFinalUIHandler(NO);
     return self;
 }
 
 //@"chucknorris"
-- (void)makeNormalElements
+- (UITextField *)makeTextField
 {
-    CGRect fieldRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - textFieldWidth/2,
+    CGRect textFieldRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - textFieldWidth/2,
                                   CGRectGetMidY(self.rootView.bounds) - textFieldHeight/2 - 50.f,
                                   textFieldWidth,
                                   textFieldHeight);
+    UITextField *aTextField = [FSElementUIFactory fieldWithFrame:textFieldRect
+                                              text:@"sergeymeza"
+                                         textColor:[UIColor blackColor]
+                                        fieldColor:[UIColor whiteColor]];
+    return aTextField;
+}
+
+- (UIButton *)makeButtonSearch
+{
     CGRect buttonRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - buttonWidth/2,
                                    CGRectGetMidY(self.rootView.bounds) - buttonHeight/2,
                                    buttonWidth,
                                    buttonHeight);
-    textField = [FSElementUIFactory fieldWithFrame:fieldRect
-                                              text:@"sergeymeza"
-                                         textColor:[UIColor blackColor]
-                                        fieldColor:[UIColor whiteColor]];
     UIButton *button = [FSElementUIFactory buttonWithFrame:buttonRect
                                                       text:@"Search"
                                                  textColor:[UIColor whiteColor]
                                                buttonColor:[FSColors blueTwitterColor]];
-    [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    [self addFinalElement:textField];
-    [self addFinalElement:button];
+    [button addTarget:self action:@selector(buttonSearchClick) forControlEvents:UIControlEventTouchUpInside];
+    return button;
 }
 
-- (void)makeLoadingElements
+- (UIActivityIndicatorView *)makeActivityIndicator
 {
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          170.f);
-    [self addLoadingElement:[FSElementUIFactory indicatorWithCenter:indicatorPoint
-                                                              style:UIActivityIndicatorViewStyleWhiteLarge]];
+    return [FSElementUIFactory indicatorWithCenter:indicatorPoint
+                                             style:UIActivityIndicatorViewStyleWhiteLarge];
 }
 
 #pragma mark - PRBaseScreenUI
@@ -81,7 +87,7 @@ CGFloat const textFieldWidth = 200.f;
 
 #pragma mark - UIActions
 
-- (void)buttonClick
+- (void)buttonSearchClick
 {
     if( nil != self.buttonClickHandler )
     {

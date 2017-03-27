@@ -14,7 +14,7 @@
 @implementation FSTableElementFactory
 
 + (id<PRTableUI>)tableWithFrame:(CGRect)frame
-              sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells
+              sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
 {
     assert( nil != sectionsWithCells );
     id<PRTableUI> table = [[FSBaseTableUI alloc] initWithFrame:frame
@@ -22,7 +22,7 @@
     return table;
 }
 
-+ (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
++ (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<FSTweetCellUI *> *)cellsUI
                                               keys:(NSDictionary<NSString *, id> *)keys
 {
     FSTweetsTableSectionUI *tweetSectionUI = [[FSTweetsTableSectionUI alloc] initWithCells:cellsUI

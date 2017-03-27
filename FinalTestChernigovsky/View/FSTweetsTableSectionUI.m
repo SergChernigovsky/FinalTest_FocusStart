@@ -16,7 +16,7 @@
 
 @implementation FSTweetsTableSectionUI
 
-- (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
+- (instancetype)initWithCells:(NSArray<FSTweetCellUI *> *)cells
                          keys:(NSDictionary<NSString *, id> *)keys
 {
     self = [super initWithCells:cells];
@@ -26,6 +26,7 @@
     }];
     [self.cellsUI enumerateObjectsUsingBlock:^(id<PRCellUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
+        assert( nil != self.userName);
         [tweetCell setValue:self.userName forKey:NSStringFromSelector(@selector(userName))];
     }];
     return self;

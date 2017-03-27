@@ -8,6 +8,7 @@
 
 #import "FSBaseTableUI.h"
 #import "PRTableSectionUI.h"
+#import "PRCellUI.h"
 #import "FSBaseTableSectionUI.h"
 
 @interface FSBaseTableUI() <UITableViewDelegate, UITableViewDataSource>
@@ -18,22 +19,18 @@
 @synthesize tableView;
 
 - (instancetype)initWithFrame:(CGRect)frame
-            sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells
+            sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
 {
     self = [super init];
     assert( nil != sectionsWithCells );
+    sections = sectionsWithCells;
     tableView = [[UITableView alloc] initWithFrame:frame];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.showsVerticalScrollIndicator = NO;
     tableView.rowHeight = UITableViewAutomaticDimension;
-    NSMutableArray *mutableSections = [[NSMutableArray alloc] init];
-    [sectionsWithCells enumerateObjectsUsingBlock:^(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-    {
-        id<PRTableSectionUI> section = [[FSBaseTableSectionUI alloc] initWithCells:obj];
-        [mutableSections addObject:section];
-    }];
-    sections = [mutableSections copy];
+    //    const NSUInteger path[] = {0, index};
+    //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:path inSection:2];
     return self;
 }
 

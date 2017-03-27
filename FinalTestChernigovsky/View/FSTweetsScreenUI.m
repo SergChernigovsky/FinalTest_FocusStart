@@ -21,23 +21,22 @@
 - (instancetype)init
 {
     self = [super init];
-    self.rootView.backgroundColor = [UIColor grayColor];
-    [self makeLoadingElements];
+    [self addLoadingElement:[self makeActivityIndicator]];
     animationController = [[FSAnimationController alloc] init];
     self.startFinalUIHandler(NO);
     return self;
 }
 
-- (void)makeLoadingElements
+- (UIActivityIndicatorView *)makeActivityIndicator
 {
     CGPoint indicatorPoint = CGPointMake(CGRectGetMidX(self.rootView.bounds),
                                          CGRectGetMidY(self.rootView.bounds));
-    [self addLoadingElement:[FSElementUIFactory indicatorWithCenter:indicatorPoint
-                                                              style:UIActivityIndicatorViewStyleWhiteLarge]];
+    return [FSElementUIFactory indicatorWithCenter:indicatorPoint
+                                             style:UIActivityIndicatorViewStyleWhiteLarge];
 }
 
-- (id<PRTableUI>)tableWithSections:(NSArray<NSArray *> *)sections
-{   
+- (id<PRTableUI>)makeTableWithSections:(NSArray<id<PRTableSectionUI>> *)sections
+{
     assert( nil != sections);
     id<PRTableUI> table = [FSTableElementFactory tableWithFrame:self.rootView.bounds
                                               sectionsWithCells:sections];
@@ -54,11 +53,23 @@
     footerView.backgroundColor = [UIColor grayColor];
     table.tableView.tableFooterView = footerView;
     table.tableView.backgroundColor = [UIColor grayColor];
+    return table;
+}
+
+- (id<PRTableUI>)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections
+{   
+    id<PRTableUI> table = [self makeTableWithSections:sections];
     [self addFinalElement:table.tableView];
     return table;
 }
 
-- (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
+- (FSTweetsTableSectionUI *)tweetSectionWithCells:(NSArray<FSTweetCellUI *> *)cells
+                                             keys:(NSDictionary<NSString *,id> *)keys
+{
+    return [FSTableElementFactory tweetsSectionWithCells:cells keys:keys];
+}
+
+- (FSTweetCellUI *)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
 {
     return [FSTableElementFactory tweetCellWithKeys:keys];
 }

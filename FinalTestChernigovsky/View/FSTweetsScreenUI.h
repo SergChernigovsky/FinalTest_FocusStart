@@ -8,14 +8,21 @@
 
 #import "FSBaseScreenUI.h"
 
+@class FSTweetCellUI;
+@class FSTweetsTableSectionUI;
+
 @protocol PRTableUI;
-@protocol PRCellUI;
+@protocol PRTableSectionUI;
 
 @interface FSTweetsScreenUI : FSBaseScreenUI
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
-- (id<PRTableUI>)tableWithSections:(NSArray<NSArray *> *)sections;
-- (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
+- (id<PRTableUI>)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections;
+
+- (FSTweetCellUI *)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
+
+- (FSTweetsTableSectionUI *)tweetSectionWithCells:(NSArray<FSTweetCellUI *> *)cells
+                                             keys:(NSDictionary<NSString *,id> *)keys;
 
 @end
