@@ -22,18 +22,19 @@
     return table;
 }
 
-+ (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
++ (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
+                                              keys:(NSDictionary<NSString *, id> *)keys
 {
-    id<PRCellUI> cellUI = [[FSTweetCellUI alloc] initWithKeys:keys];
-    return cellUI;
+    FSTweetsTableSectionUI *tweetSectionUI = [[FSTweetsTableSectionUI alloc] initWithCells:cellsUI
+                                                                                      keys:keys];
+    return tweetSectionUI;
 }
 
-+ (id<PRTableSectionUI>)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
-                                          keys:(NSDictionary<NSString *, id> *)keys
+
++ (FSTweetCellUI *)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
 {
-    id<PRTableSectionUI> sectionUI = [[FSTweetsTableSectionUI alloc] initWithCells:cellsUI
-                                                                              keys:keys];
-    return sectionUI;
+    FSTweetCellUI *tweetCellUI = [[FSTweetCellUI alloc] initWithKeys:keys];
+    return tweetCellUI;
 }
 
 @end

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "FSTweetCellUI.h"
+#import "FSTweetsTableSectionUI.h"
 
-@protocol PRCellUI;
 @protocol PRTableUI;
 @protocol PRTableSectionUI;
 
@@ -18,9 +19,9 @@
 + (id<PRTableUI>)tableWithFrame:(CGRect)frame
               sectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells;
 
-+ (id<PRCellUI>)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
++ (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
+                                              keys:(NSDictionary<NSString *, id> *)keys;
 
-+ (id<PRTableSectionUI>)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
-                                          keys:(NSDictionary<NSString *, id> *)keys;
++ (FSTweetCellUI *)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
 
 @end
