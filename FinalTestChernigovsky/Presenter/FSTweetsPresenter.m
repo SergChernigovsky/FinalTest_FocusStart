@@ -47,8 +47,7 @@
         return;
     }
     NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
-    FSTweetsTableSectionUI *twitterSection = [self twitterSectionWithCells:tweetCells posts:twitterPosts];
-    tableUI = [screenUI tableWithSections:@[twitterSection]];
+    tableUI = [screenUI tableWithSections:@[[self twitterSectionWithCells:tweetCells posts:twitterPosts]]];
     [self handleFinalUI:YES];
 }
 
@@ -57,13 +56,18 @@
 - (FSTweetsTableSectionUI *)twitterSectionWithCells:(NSArray<FSTweetCellUI *> *)cells
                                               posts:(NSArray<FSTwitterPost *> *)posts
 {
-    return [screenUI tweetSectionWithCells:cells
-                                      keys:[self sectionDictionaryFromPosts:posts]];
+    FSTwitterPost *post = (FSTwitterPost *)[posts firstObject];
+    FSTweetsTableSectionUI *twitterSection = [screenUI tweetSectionWithCells:cells
+                                                                        keys:[self sectionDictionaryFromPost:post]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+    {
+        [twitterSection installIconWithData:[self.networkHelper dataWithUrl:post.user.profile_image_url]];
+    });
+    return twitterSection;
 }
 
-- (NSDictionary *)sectionDictionaryFromPosts:(NSArray<FSTwitterPost *> *)posts
+- (NSDictionary *)sectionDictionaryFromPost:(FSTwitterPost *)post
 {
-    FSTwitterPost *post = (FSTwitterPost *)[posts firstObject];
     assert( nil != post.user.name);
     assert( nil != post.user.screen_name);
     return @{@"userName":post.user.name,
@@ -78,6 +82,12 @@
     [posts enumerateObjectsUsingBlock:^(FSTwitterPost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
         FSTweetCellUI *tweetCellUI = [screenUI tweetCellWithKeys:[self cellDictionaryFromPost:obj]];
+        if ( nil != obj.retweeted_status ) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+            {
+               [tweetCellUI installIconWithData:[self.networkHelper dataWithUrl:obj.retweeted_status.user.profile_image_url]];
+            });
+        }
         [cellsArray addObject:tweetCellUI];
     }];
     return [cellsArray copy];

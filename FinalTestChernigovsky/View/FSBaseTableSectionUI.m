@@ -15,6 +15,8 @@
 @implementation FSBaseTableSectionUI
 @synthesize cellsNumber;
 @synthesize cellsIdentifier;
+@synthesize updateSectionHandler;
+@synthesize index;
 
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
 {
@@ -23,6 +25,15 @@
     self.cellsUI = cells;
     id<PRCellUI> cellUI = [self.cellsUI firstObject];
     cellsIdentifier = cellUI.cellIdentifier;
+    typeof(self) __weak weakSelf = self;
+    [cells enumerateObjectsUsingBlock:^(id<PRCellUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        obj.cellIndex = idx;
+        obj.updateCellHandler = ^(NSInteger cellIndex)
+        {
+            [weakSelf handleUpdateCell:cellIndex];
+        };
+    }];
     return self;
 }
 
@@ -32,18 +43,26 @@
     return nil;
 }
 
+- (void)handleUpdateCell:(NSInteger)cellIndex
+{
+    if ( nil != self.updateSectionHandler )
+    {
+        self.updateSectionHandler(self.index, cellIndex);
+    }
+}
+
 #pragma mark - PRTableSectionUI
 
 - (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell
-                                index:(NSUInteger)index
+                                index:(NSUInteger)cellIndex
 {
-    id<PRCellUI> cellUI = self.cellsUI[index];
+    id<PRCellUI> cellUI = self.cellsUI[cellIndex];
     return [cellUI makeCellWithCell:cell];
 }
 
-- (UITableViewCell *)cellForIndex:(NSUInteger)index
+- (UITableViewCell *)cellForIndex:(NSUInteger)cellIndex
 {
-    id<PRCellUI> cellUI = self.cellsUI[index];
+    id<PRCellUI> cellUI = self.cellsUI[cellIndex];
     assert( NO != [cellUI conformsToProtocol:@protocol(PRCellUI)]);
     return cellUI.cell;
 }

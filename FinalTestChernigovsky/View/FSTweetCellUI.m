@@ -18,7 +18,6 @@
 @property (nonatomic, copy, readwrite) NSString *tweetUserName;
 @property (nonatomic, copy, readwrite) NSString *tweetUserScreenName;
 @property (nonatomic, copy, readwrite) NSString *createdAt;
-@property (nonatomic, strong, readwrite) UIImage *userIcon;
 @end
 
 @implementation FSTweetCellUI
@@ -40,6 +39,26 @@
                                                                 options:nil] lastObject];
 }
 
+- (void)installIconWithData:(NSData *)userIcon
+{
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        self.userIcon = [UIImage imageWithData:userIcon];
+        
+    });
+}
+
+- (void) setUserIcon:(UIImage *)userIcon
+{
+    _userIcon = userIcon;
+    if ( nil != self.updateCellHandler)
+    {
+        self.updateCellHandler(self.cellIndex);
+    }
+}
+
+#pragma mark - PRCellUI
+
 - (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell
 {
     assert( NO != [cell isKindOfClass:[FSTweetTableViewCell class]]);
@@ -47,6 +66,7 @@
     
     FSTweetTableViewCell *tweetCell = (FSTweetTableViewCell *)cell;
     
+    tweetCell.imageUserIcon.image = self.userIcon;
     if ( nil != self.userIcon)
     {
         [tweetCell.activityIndicator stopAnimating];

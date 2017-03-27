@@ -11,6 +11,8 @@
 @implementation FSBaseCellUI
 @synthesize cell;
 @synthesize cellIdentifier;
+@synthesize cellIndex;
+@synthesize updateCellHandler;
 
 - (instancetype)initWithKeys:(NSDictionary<NSString *, id> *)keys
 {

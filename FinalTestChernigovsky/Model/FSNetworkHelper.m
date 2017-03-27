@@ -33,6 +33,12 @@
     self.errorHandler(error);
 }
 
+- (NSData *)dataWithUrl:(NSURL *)url
+{
+    assert( nil != url);
+    return [NSData dataWithContentsOfURL:url];
+}
+
 - (void)saveAccessToken:(NSString *)string
 {
     [networkConfigure saveAccessToken:string];

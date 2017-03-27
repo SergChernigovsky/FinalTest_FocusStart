@@ -14,6 +14,7 @@
     [super awakeFromNib];
     // Initialization code
     self.viewUserIcon.layer.cornerRadius = 4.f;
+    self.imageUserIcon.layer.cornerRadius = 4.f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -12,9 +12,10 @@
 
 @property (nonatomic, copy, readonly) NSString *userName;
 @property (nonatomic, copy, readonly) NSString *userScreenName;
-@property (nonatomic, strong, readwrite) UIImage *userIcon;
 
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
                          keys:(NSDictionary<NSString *, id> *)keys;
+
+- (void)installIconWithData:(NSData *)userIcon;
 
 @end

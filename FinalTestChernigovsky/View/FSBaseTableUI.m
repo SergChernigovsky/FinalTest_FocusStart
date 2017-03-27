@@ -24,14 +24,32 @@
     self = [super init];
     assert( nil != sectionsWithCells );
     sections = sectionsWithCells;
+    typeof(self) __weak weakSelf = self;
+    [sections enumerateObjectsUsingBlock:^(id<PRTableSectionUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        obj.index = idx;
+        obj.updateSectionHandler = ^(NSInteger sectionIndex, NSInteger cellIndex)
+        {
+            [weakSelf reloadCell:cellIndex inSection:sectionIndex];
+        };
+    }];
     aTableView = [[UITableView alloc] initWithFrame:frame];
     aTableView.delegate = self;
     aTableView.dataSource = self;
     aTableView.showsVerticalScrollIndicator = NO;
     aTableView.rowHeight = UITableViewAutomaticDimension;
-    //    const NSUInteger path[] = {0, index};
-    //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:path inSection:2];
     return self;
+}
+
+- (void)reloadCell:(NSInteger)cellIndex inSection:(NSInteger)sectionIndex
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cellIndex inSection:sectionIndex];
+    if( NO != [[aTableView indexPathsForVisibleRows] containsObject:indexPath] )
+    {
+        [aTableView beginUpdates];
+        [aTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [aTableView endUpdates];
+    }
 }
 
 - (void)rewriteSectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells
@@ -49,12 +67,6 @@
     });
 }
 
-- (instancetype)init
-{
-    assert( NO );
-    return nil;
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -65,7 +77,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id<PRTableSectionUI> sectionUI = sections[section];
-    assert( nil !=  sectionUI);
+    assert( nil != sectionUI);
     assert( NO != [sectionUI conformsToProtocol:@protocol(PRTableSectionUI)]);
     return sectionUI.cellsNumber;
 }
@@ -93,5 +105,14 @@
     UITableViewCell *cell = [sectionUI cellForIndex:indexPath.row];
     return CGRectGetHeight(cell.frame);
 }
+
+#pragma mark -
+
+- (instancetype)init
+{
+    assert( NO );
+    return nil;
+}
+
 
 @end

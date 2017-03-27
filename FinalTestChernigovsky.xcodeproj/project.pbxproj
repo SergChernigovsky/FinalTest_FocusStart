@@ -507,9 +507,9 @@
 				D527A1E11E801E5A00524A10 /* Deserializeable */,
 				D5B82A851E7D1D2E00435BC4 /* FSBaseObject.h */,
 				D5B82A861E7D1D2E00435BC4 /* FSBaseObject.m */,
-				D527A1E01E800B2500524A10 /* TwitterPost */,
 				D5B8F01E1E76F59800A3D7BF /* FSTwitterAuth.h */,
 				D5B8F01F1E76F59800A3D7BF /* FSTwitterAuth.m */,
+				D527A1E01E800B2500524A10 /* TwitterPost */,
 			);
 			name = Objects;
 			sourceTree = "<group>";

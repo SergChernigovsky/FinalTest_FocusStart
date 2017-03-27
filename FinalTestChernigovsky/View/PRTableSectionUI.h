@@ -10,8 +10,10 @@
 
 @protocol PRTableSectionUI <NSObject>
 
+@property (nonatomic, assign, readwrite) NSUInteger index;
 @property (nonatomic, assign, readonly) NSUInteger cellsNumber;
 @property (nonatomic, copy, readonly) NSString *cellsIdentifier;
+@property (nonatomic, copy, readwrite) void(^updateSectionHandler)(NSInteger sectionIndex, NSInteger cellIndex);
 
 - (UITableViewCell *)cellForIndex:(NSUInteger)index;
 

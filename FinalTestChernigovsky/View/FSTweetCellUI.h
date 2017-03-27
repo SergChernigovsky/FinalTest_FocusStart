@@ -18,6 +18,8 @@
 @property (nonatomic, copy, readonly) NSString *tweetUserName;
 @property (nonatomic, copy, readonly) NSString *tweetUserScreenName;
 @property (nonatomic, copy, readonly) NSString *createdAt;
-@property (nonatomic, strong, readonly) UIImage *userIcon;
+@property (nonatomic, strong, readwrite) UIImage *userIcon;
+
+- (void)installIconWithData:(NSData *)userIcon;
 
 @end

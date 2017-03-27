@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong, readonly) UITableViewCell *cell;
 @property (nonatomic, copy, readonly) NSString *cellIdentifier;
+@property (nonatomic, assign, readwrite) NSInteger cellIndex;
+@property (nonatomic, copy, readwrite) void(^updateCellHandler)(NSInteger index);
 
 - (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell;
 

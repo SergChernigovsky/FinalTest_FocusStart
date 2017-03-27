@@ -14,6 +14,8 @@
 
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
 
+- (NSData *)dataWithUrl:(NSURL *)url;
+
 - (void)saveAccessToken:(NSString *)string;
 
 - (void)saveAccountName:(NSString *)name;

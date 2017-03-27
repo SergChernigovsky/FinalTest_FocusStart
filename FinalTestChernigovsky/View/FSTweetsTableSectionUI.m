@@ -33,17 +33,21 @@
     return self;
 }
 
-- (void)setUserIcon:(UIImage *)userIcon
+- (void)installIconWithData:(NSData *)userIcon
 {
-    _userIcon = userIcon;
-    [self.cellsUI enumerateObjectsUsingBlock:^(id<PRCellUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    dispatch_async(dispatch_get_main_queue(), ^
     {
-        FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
-        if ( NO == tweetCell.retweetedStatus )
+        UIImage *icon = [UIImage imageWithData:userIcon];
+        [self.cellsUI enumerateObjectsUsingBlock:^(id<PRCellUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
         {
-            [tweetCell setValue:userIcon forKey:NSStringFromSelector(@selector(userIcon))];
-        }
-    }];
+            assert( NO != [obj isKindOfClass:[FSTweetCellUI class]]);
+            FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
+            if ( NO != tweetCell.retweetedStatus )
+            {
+                [tweetCell setValue:icon forKey:NSStringFromSelector(@selector(userIcon))];
+            }
+        }];
+    });
 }
 
 @end
