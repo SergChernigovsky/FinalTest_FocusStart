@@ -22,6 +22,8 @@
 
 - (NSURL *)contentUrlWithNumberPosts:(NSUInteger)numberPosts;
 
+- (NSURL *)contentUrlSinceID:(NSUInteger)id numberPosts:(NSUInteger)numberPosts;
+
 - (NSDictionary *)contentHttpHeaders;
 
 - (void)saveAccessToken:(NSString *)string;

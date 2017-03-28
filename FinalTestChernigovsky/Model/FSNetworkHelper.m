@@ -15,6 +15,8 @@
 #import "FSTwitterPost.h"
 #import "NSURL+FSURL.h"
 
+NSUInteger const postsLimit = 20;
+
 @implementation FSNetworkHelper
 {
     FSNetwork *network;
@@ -100,6 +102,22 @@
      }];
 }
 
+- (void)userRequestWithSinceID:(NSUInteger)sinceID Completion:(void(^)(id data))completion
+{
+    typeof(self) __weak weakSelf = self;
+    FSRequestContext *requestContext = [self userRequestContextWithConfigure:networkConfigure sinceID:sinceID];
+    [network requestWithContext:requestContext
+                     completion:^(NSError *error, id data)
+     {
+         if( nil != error )
+         {
+             [weakSelf handleError:error];
+             return;
+         }
+         completion(data);
+     }];
+}
+
 - (FSRequestContext *)authRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
 {
     FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
@@ -114,7 +132,18 @@
 - (FSRequestContext *)userRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
 {
     FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:20] forKey:@"URL"];
+    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:postsLimit] forKey:@"URL"];
+    [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
+    [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
+    return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder
+                                             expectedClass:[FSTwitterPost class]];
+}
+
+- (FSRequestContext *)userRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
+                                              sinceID:(NSUInteger)sinceID
+{
+    FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
+    [aKeyHolder addObject:[aNetworkConfigure contentUrlSinceID:sinceID numberPosts:postsLimit] forKey:@"URL"];
     [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
     [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
     return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder

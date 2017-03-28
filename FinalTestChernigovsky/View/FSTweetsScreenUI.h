@@ -10,6 +10,7 @@
 
 @class FSTweetCellUI;
 @class FSTweetsTableSectionUI;
+@class FSTwitterTableUI;
 
 @protocol PRTableUI;
 @protocol PRTableSectionUI;
@@ -18,7 +19,7 @@
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
-- (id<PRTableUI>)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections;
+- (FSTwitterTableUI *)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections;
 
 - (FSTweetCellUI *)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys;
 

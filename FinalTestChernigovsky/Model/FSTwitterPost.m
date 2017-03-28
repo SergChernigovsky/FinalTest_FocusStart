@@ -69,7 +69,8 @@
              NSStringFromSelector(@selector(retweet_count)) : self.retweet_count,
              NSStringFromSelector(@selector(favorite_count)) : favorite_count,
              NSStringFromSelector(@selector(text)) : text,
-             NSStringFromSelector(@selector(created_at)) : [NSDate fs_stringFromDate:self.created_at]
+             NSStringFromSelector(@selector(created_at)) : [NSDate fs_stringFromDate:self.created_at],
+             NSStringFromSelector(@selector(id)) : self.id
              };
 }
 

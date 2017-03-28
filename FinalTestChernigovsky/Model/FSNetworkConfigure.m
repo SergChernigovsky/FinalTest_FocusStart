@@ -86,6 +86,17 @@
     return url;
 }
 
+- (NSURL *)contentUrlSinceID:(NSUInteger)id numberPosts:(NSUInteger)numberPosts
+{
+    assert( 0 != numberPosts );
+    NSString *params = [NSString stringWithFormat:@"since_id=%ld&count=%ld&screen_name=%@", (unsigned long)id,
+                        (unsigned long)numberPosts, [FSObjectArchiver stringForKey:self.accountNameKey]];
+    NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", self.baseUrl, self.userUrl, params];
+    NSURL *url = [NSURL fs_URLWithString:stringUrl];
+    assert( nil != url );
+    return url;
+}
+
 - (NSDictionary *)contentHttpHeaders
 {
     NSString *accessToken = [FSObjectArchiver stringForKey:self.accessTokenKey];

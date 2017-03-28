@@ -15,8 +15,8 @@
     UIView *view;
 }
 @synthesize startFinalUIHandler;
-@synthesize topBarHeight;
 @synthesize screenName;
+@synthesize topBarHeight;
 
 #pragma mark - init
 

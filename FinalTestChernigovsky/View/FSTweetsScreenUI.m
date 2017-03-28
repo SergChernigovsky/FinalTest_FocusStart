@@ -37,30 +37,12 @@
                                              style:UIActivityIndicatorViewStyleWhiteLarge];
 }
 
-- (id<PRTableUI>)makeTableWithSections:(NSArray<id<PRTableSectionUI>> *)sections
-{
-    assert( nil != sections);
-    id<PRTableUI> table = [FSTableElementFactory tableWithFrame:self.rootView.bounds
-                                              sectionsWithCells:sections];
-    dispatch_async(dispatch_get_main_queue(), ^
-    {
-        CGRect headerRect = CGRectMake(0, 0, CGRectGetWidth(self.rootView.bounds), self.topBarHeight);
-        UIView *headerView = [[UIView alloc] initWithFrame:headerRect];
-        headerView.backgroundColor = [UIColor grayColor];
-        table.aTableView.tableHeaderView = headerView;
-        CGRect footerRect = CGRectMake(0, 0, CGRectGetWidth(self.rootView.bounds), 40.f);
-        UIView *footerView = [[UIView alloc] initWithFrame:footerRect];
-        footerView.backgroundColor = [UIColor grayColor];
-        table.aTableView.tableFooterView = footerView;
-        table.aTableView.backgroundColor = [UIColor grayColor];
-        table.aTableView.backgroundView.backgroundColor = [UIColor grayColor];
-    });
-    return table;
-}
-
-- (id<PRTableUI>)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections
+- (FSTwitterTableUI *)tableWithSections:(NSArray<id<PRTableSectionUI>> *)sections
 {   
-    id<PRTableUI> table = [self makeTableWithSections:sections];
+    assert( nil != sections);
+    FSTwitterTableUI *table = [FSTableElementFactory twitterTableWithFrame:self.rootView.bounds
+                                                     sectionsWithCells:sections
+                                                              topBarHeight:self.topBarHeight];
     [self addFinalElement:table.aTableView];
     return table;
 }

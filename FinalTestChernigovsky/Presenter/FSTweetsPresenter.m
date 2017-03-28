@@ -13,11 +13,12 @@
 #import "PRTableUI.h"
 #import "FSTweetCellUI.h"
 #import "FSTweetsTableSectionUI.h"
+#import "FSTwitterTableUI.h"
 
 @implementation FSTweetsPresenter
 {
     FSTweetsScreenUI *screenUI;
-    id<PRTableUI> tableUI;
+    FSTwitterTableUI *tableUI;
     FSTweetsTableSectionUI *sectionUI;
 }
 
@@ -32,6 +33,12 @@
     {
         [weakSelf completeUserRequestWithData:data];
     }];
+    /*
+    [self.networkHelper userRequestWithSinceID:846440414773219328 Completion:^(id data)
+    {
+        [weakSelf completeUserRequestWithData:data];
+    }];
+     */
     return self;
 }
 

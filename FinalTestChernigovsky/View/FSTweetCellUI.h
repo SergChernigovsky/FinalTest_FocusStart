@@ -13,6 +13,7 @@
 @property (nonatomic, assign, readonly) BOOL retweeted_status;
 @property (nonatomic, strong, readonly) NSNumber *favorite_count;
 @property (nonatomic, strong, readonly) NSNumber *retweet_count;
+@property (nonatomic, strong, readonly) NSNumber *id;
 @property (nonatomic, copy, readonly) NSString *text;
 @property (nonatomic, copy, readonly) NSString *user_name;
 @property (nonatomic, copy, readonly) NSString *name;

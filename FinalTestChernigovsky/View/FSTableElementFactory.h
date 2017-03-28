@@ -10,13 +10,15 @@
 #import <UIKit/UIKit.h>
 #import "FSTweetCellUI.h"
 #import "FSTweetsTableSectionUI.h"
+#import "FSTwitterTableUI.h"
 
 @protocol PRTableUI;
 
 @interface FSTableElementFactory : NSObject
 
-+ (id<PRTableUI>)tableWithFrame:(CGRect)frame
-              sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells;
++ (FSTwitterTableUI *)twitterTableWithFrame:(CGRect)frame
+                          sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
+                               topBarHeight:(CGFloat)topBarHeight;
 
 + (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<id<PRCellUI>> *)cellsUI
                                               keys:(NSDictionary<NSString *, id> *)keys;

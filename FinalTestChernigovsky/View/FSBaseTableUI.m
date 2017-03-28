@@ -11,7 +11,7 @@
 #import "PRCellUI.h"
 #import "FSBaseTableSectionUI.h"
 
-@interface FSBaseTableUI() <UITableViewDelegate, UITableViewDataSource>
+@interface FSBaseTableUI() <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @end
 
 @implementation FSBaseTableUI
@@ -37,8 +37,6 @@
     aTableView = [[UITableView alloc] initWithFrame:frame];
     aTableView.delegate = self;
     aTableView.dataSource = self;
-    aTableView.showsVerticalScrollIndicator = NO;
-    aTableView.allowsMultipleSelection = NO;
     return self;
 }
 
@@ -117,14 +115,5 @@
     UITableViewCell *cell = [sectionUI cellForIndex:indexPath.row];
     return CGRectGetHeight(cell.frame);
 }
-
-#pragma mark -
-
-- (instancetype)init
-{
-    assert( NO );
-    return nil;
-}
-
 
 @end

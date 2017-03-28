@@ -13,28 +13,27 @@
 
 @implementation FSTableElementFactory
 
-+ (id<PRTableUI>)tableWithFrame:(CGRect)frame
-              sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
++ (FSTwitterTableUI *)twitterTableWithFrame:(CGRect)frame
+                          sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
+                               topBarHeight:(CGFloat)topBarHeight
 {
     assert( nil != sectionsWithCells );
-    id<PRTableUI> table = [[FSBaseTableUI alloc] initWithFrame:frame
-                                             sectionsWithCells:sectionsWithCells];
-    return table;
+    return [[FSTwitterTableUI alloc] initWithFrame:frame
+                                 sectionsWithCells:sectionsWithCells
+                                      topBarHeight:topBarHeight];
 }
 
 + (FSTweetsTableSectionUI *)tweetsSectionWithCells:(NSArray<FSTweetCellUI *> *)cellsUI
                                               keys:(NSDictionary<NSString *, id> *)keys
 {
-    FSTweetsTableSectionUI *tweetSectionUI = [[FSTweetsTableSectionUI alloc] initWithCells:cellsUI
-                                                                                      keys:keys];
-    return tweetSectionUI;
+    return [[FSTweetsTableSectionUI alloc] initWithCells:cellsUI
+                                                    keys:keys];
 }
 
 
 + (FSTweetCellUI *)tweetCellWithKeys:(NSDictionary<NSString *, id> *)keys
 {
-    FSTweetCellUI *tweetCellUI = [[FSTweetCellUI alloc] initWithKeys:keys];
-    return tweetCellUI;
+    return [[FSTweetCellUI alloc] initWithKeys:keys];
 }
 
 @end
