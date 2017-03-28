@@ -38,6 +38,7 @@
     aTableView.delegate = self;
     aTableView.dataSource = self;
     aTableView.showsVerticalScrollIndicator = NO;
+    aTableView.allowsMultipleSelection = NO;
     aTableView.rowHeight = UITableViewAutomaticDimension;
     return self;
 }
@@ -70,15 +71,13 @@
 
 #pragma mark - UITableViewDelegate
 
-- (nullable NSIndexPath *)tableView:(UITableView *)tableView
-           willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( nil != self.cellClickHandler)
     {
         id<PRTableSectionUI> sectionUI = sections[indexPath.section];
         self.cellClickHandler(sectionUI.cellsUI[indexPath.row]);
     }
-    return nil;
 }
 
 #pragma mark - UITableViewDataSource

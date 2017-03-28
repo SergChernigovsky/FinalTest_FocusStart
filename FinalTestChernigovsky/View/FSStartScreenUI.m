@@ -41,7 +41,6 @@ CGFloat const textFieldWidth = 250.f;
     return self;
 }
 
-//@"chucknorris"
 - (UITextField *)makeTextField
 {
     CGRect textFieldRect = CGRectMake(CGRectGetMidX(self.rootView.bounds) - textFieldWidth/2,
@@ -49,7 +48,7 @@ CGFloat const textFieldWidth = 250.f;
                                   textFieldWidth,
                                   textFieldHeight);
     UITextField *aTextField = [FSElementUIFactory fieldWithFrame:textFieldRect
-                                              text:@"sergeymeza"
+                                              text:@"chucknorris"
                                          textColor:[UIColor blackColor]
                                         fieldColor:[UIColor whiteColor]];
     return aTextField;
