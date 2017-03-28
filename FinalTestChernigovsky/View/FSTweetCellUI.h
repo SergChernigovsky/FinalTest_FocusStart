@@ -21,8 +21,10 @@
 @property (nonatomic, copy, readonly) NSString *display_url;
 @property (nonatomic, strong, readonly) NSURL *url;
 @property (nonatomic, strong, readwrite) UIImage *user_icon;
-
+@property (nonatomic, strong, readwrite) UIImage *media;
 
 - (void)installIconWithData:(NSData *)userIcon;
+
+- (void)installMediaWithData:(NSData *)media;
 
 @end

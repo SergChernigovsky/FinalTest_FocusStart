@@ -25,6 +25,7 @@
     [self addLoadingElement:[self makeActivityIndicator]];
     animationController = [[FSAnimationController alloc] init];
     self.startFinalUIHandler(NO);
+    self.rootView.gestureRecognizers = @[];
     return self;
 }
 
@@ -43,16 +44,12 @@
                                               sectionsWithCells:sections];
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                      0,
-                                                                      CGRectGetWidth(self.rootView.bounds),
-                                                                      self.topBarHeight)];
+        CGRect headerRect = CGRectMake(0, 0, CGRectGetWidth(self.rootView.bounds), self.topBarHeight);
+        UIView *headerView = [[UIView alloc] initWithFrame:headerRect];
         headerView.backgroundColor = [UIColor grayColor];
         table.aTableView.tableHeaderView = headerView;
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                      0,
-                                                                      CGRectGetWidth(self.rootView.bounds),
-                                                                      40.f)];
+        CGRect footerRect = CGRectMake(0, 0, CGRectGetWidth(self.rootView.bounds), 40.f);
+        UIView *footerView = [[UIView alloc] initWithFrame:footerRect];
         footerView.backgroundColor = [UIColor grayColor];
         table.aTableView.tableFooterView = footerView;
         table.aTableView.backgroundColor = [UIColor grayColor];

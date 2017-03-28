@@ -40,18 +40,36 @@
                                                                 options:nil] lastObject];
 }
 
-- (void)installIconWithData:(NSData *)user_icon
+- (void)installIconWithData:(NSData *)userIconData
 {
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        self.user_icon = [UIImage imageWithData:user_icon];
-        
+        self.user_icon = [UIImage imageWithData:userIconData];
+    });
+}
+
+- (void)installMediaWithData:(NSData *)media
+{
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+       self.media = [UIImage imageWithData:media];
     });
 }
 
 - (void) setUser_icon:(UIImage *)userIcon
 {
     _user_icon = userIcon;
+    [self hanleUpdateCell];
+}
+
+- (void)setMedia:(UIImage *)media
+{
+    _media = media;
+    [self hanleUpdateCell];
+}
+
+- (void)hanleUpdateCell
+{
     if ( nil != self.updateCellHandler)
     {
         self.updateCellHandler(self.cellIndex);
@@ -67,6 +85,7 @@
     
     FSTweetTableViewCell *tweetCell = (FSTweetTableViewCell *)cell;
     
+    tweetCell.imageMedia.image = self.media;
     tweetCell.imageUserIcon.image = self.user_icon;
     if ( nil != self.user_icon)
     {

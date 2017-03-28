@@ -94,6 +94,13 @@
                [tweetCellUI installIconWithData:[self.networkHelper dataWithUrl:obj.retweeted_status.user.profile_image_url]];
             });
         }
+        FSTwitterMedia *media = [obj.entities.media firstObject];
+        if ( nil != media.media_url_https ) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+            {
+                [tweetCellUI installMediaWithData:[self.networkHelper dataWithUrl:media.media_url_https]];
+            });
+        }
         [cellsArray addObject:tweetCellUI];
     }];
     return [cellsArray copy];
