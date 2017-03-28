@@ -13,11 +13,12 @@
 {
     UIActivityIndicatorView *headerIndicator;
     UIActivityIndicatorView *footerIndicator;
+    CGFloat topBarHeight;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
             sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
-                 topBarHeight:(CGFloat)topBarHeight
+                 topBarHeight:(CGFloat)aTopBarHeight
 {
     self = [super initWithFrame:frame sectionsWithCells:sectionsWithCells];
     self.aTableView.showsVerticalScrollIndicator = NO;
@@ -25,6 +26,7 @@
     self.aTableView.backgroundColor = [UIColor grayColor];
     self.aTableView.backgroundView.backgroundColor = [UIColor grayColor];
     
+    topBarHeight = aTopBarHeight;
     UIView *headerView = [self makeHeaderViewWithHeight:topBarHeight];
     UIView *footerView = [self makeFooterViewWithHeight:40.f];
     headerIndicator = [self makeIndicatorWithRect:headerView.bounds alpha:1.f];
@@ -66,13 +68,16 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat currentOffsetX = scrollView.contentOffset.x;
-    CGFloat currentOffsetY = scrollView.contentOffset.y;
-    NSLog(@"(%f, %f)", currentOffsetX, currentOffsetY);
-    if( currentOffsetY > -self.aTableView.tableHeaderView.frame.size.height )
-    {
-        
-    }
+//    CGFloat currentOffsetX = scrollView.contentOffset.x;
+//    CGFloat currentOffsetY = scrollView.contentOffset.y;
+//    if( currentOffsetY > -topBarHeight )
+//    {
+//        dispatch_async(dispatch_get_main_queue(), ^
+//        {
+//            self.aTableView.userInteractionEnabled = NO;
+//            scrollView.contentOffset = CGPointMake(currentOffsetX, topBarHeight);
+//        });
+//    }
 }
 
 @end
