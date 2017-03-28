@@ -16,7 +16,6 @@
     CGFloat cornerRadius = 4.f;
     self.viewUserIcon.layer.cornerRadius = cornerRadius;
     self.imageUserIcon.layer.cornerRadius = cornerRadius;
-    self.imageMedia.layer.cornerRadius = cornerRadius;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -104,14 +104,14 @@
     tweetCell.labelLike.text = [NSString stringWithFormat:@"%@", self.favorite_count];
     tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.screen_name];
     
-    if ( NO != self.retweeted_status )
+    if ( NO == self.retweeted_status )
     {
         tweetCell.imageRetweet.image = nil;
         tweetCell.labelRetweetUser.text = nil;
         return tweetCell;
     }
     tweetCell.imageRetweet.image = [UIImage imageNamed:@"iconRetweet"];
-    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.name];
+    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.user_name];
     return tweetCell;
 }
 

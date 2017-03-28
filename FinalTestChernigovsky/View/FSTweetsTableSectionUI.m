@@ -28,7 +28,10 @@
     {
         FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
         assert( nil != self.name );
-        [tweetCell setValue:self.name forKey:NSStringFromSelector(@selector(name))];
+        if ( NO != tweetCell.retweeted_status )
+        {
+            [tweetCell setValue:self.name forKey:NSStringFromSelector(@selector(user_name))];
+        }
     }];
     return self;
 }
@@ -42,7 +45,7 @@
         {
             assert( NO != [obj isKindOfClass:[FSTweetCellUI class]]);
             FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
-            if ( NO != tweetCell.retweeted_status )
+            if ( NO == tweetCell.retweeted_status )
             {
                 [tweetCell setValue:icon forKey:NSStringFromSelector(@selector(user_icon))];
             }

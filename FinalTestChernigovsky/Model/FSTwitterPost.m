@@ -65,7 +65,7 @@
              NSStringFromSelector(@selector(screen_name)) : tweetUser.screen_name,
              NSStringFromSelector(@selector(display_url)) :  display_url,
              NSStringFromSelector(@selector(url)) :  url,
-             NSStringFromSelector(@selector(retweeted_status)) : @( nil == self.retweeted_status),
+             NSStringFromSelector(@selector(retweeted_status)) : @( nil != self.retweeted_status),
              NSStringFromSelector(@selector(retweet_count)) : self.retweet_count,
              NSStringFromSelector(@selector(favorite_count)) : favorite_count,
              NSStringFromSelector(@selector(text)) : text,
