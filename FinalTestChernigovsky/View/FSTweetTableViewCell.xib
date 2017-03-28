@@ -14,14 +14,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="105.5" id="KGk-i7-Jjw" customClass="FSTweetTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="244.5"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="334.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" tag="1" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="334"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-cp-kNX" userLabel="userIcon">
-                        <rect key="frame" x="0.0" y="28" width="80" height="216"/>
+                        <rect key="frame" x="0.0" y="28" width="80" height="306"/>
                         <subviews>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9i-8s-v70">
                                 <rect key="frame" x="15" y="0.0" width="51" height="51"/>
@@ -92,7 +92,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWw-oQ-l3c" userLabel="likesView">
-                        <rect key="frame" x="80" y="219" width="235" height="25"/>
+                        <rect key="frame" x="80" y="309" width="235" height="25"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A24-Q0-OyB">
                                 <rect key="frame" x="136" y="2" width="8" height="15"/>
@@ -151,9 +151,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8k-R0-bWt">
-                        <rect key="frame" x="80" y="71" width="235" height="145"/>
+                        <rect key="frame" x="80" y="71" width="235" height="235"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="145" id="pwb-tI-bp9"/>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="235" id="TNu-eQ-4lr"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZE6-xX-ngW">
