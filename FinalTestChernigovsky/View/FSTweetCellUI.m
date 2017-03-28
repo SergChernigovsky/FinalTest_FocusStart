@@ -85,7 +85,6 @@
     
     FSTweetTableViewCell *tweetCell = (FSTweetTableViewCell *)cell;
     
-    tweetCell.imageMedia.image = self.media;
     tweetCell.imageUserIcon.image = self.user_icon;
     if ( nil != self.user_icon)
     {
@@ -97,6 +96,7 @@
     }
     
     tweetCell.labelUrl.text = self.display_url;
+    tweetCell.imageMedia.image = self.media;
     tweetCell.labelText.text = self.text;
     tweetCell.labelDate.text = self.created_at;
     tweetCell.labelName.text = self.name;
@@ -112,7 +112,6 @@
     }
     tweetCell.imageRetweet.image = [UIImage imageNamed:@"iconRetweet"];
     tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.name];
-    
     return tweetCell;
 }
 

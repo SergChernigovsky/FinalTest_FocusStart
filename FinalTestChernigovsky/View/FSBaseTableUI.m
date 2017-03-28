@@ -39,7 +39,6 @@
     aTableView.dataSource = self;
     aTableView.showsVerticalScrollIndicator = NO;
     aTableView.allowsMultipleSelection = NO;
-    aTableView.rowHeight = UITableViewAutomaticDimension;
     return self;
 }
 
