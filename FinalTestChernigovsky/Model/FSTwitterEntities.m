@@ -8,9 +8,11 @@
 
 #import "FSTwitterEntities.h"
 #import "FSTwitterUrls.h"
+#import "FSTwitterMedia.h"
 
 @interface FSTwitterEntities()
-@property (nonatomic, strong, readwrite) NSArray<FSTwitterUrls *> *urls;
+@property (nonatomic, copy, readwrite) NSArray<FSTwitterUrls *> *urls;
+@property (nonatomic, copy, readwrite) NSArray<FSTwitterMedia *> *media;
 @end
 
 @implementation FSTwitterEntities
@@ -20,6 +22,9 @@
     
     return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(urls))
                                                        class:[FSTwitterUrls class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(media))
+                                                       class:[FSTwitterMedia class]
                                                        keyId:nil]];
 }
 

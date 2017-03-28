@@ -41,20 +41,23 @@
     assert( nil != sections);
     id<PRTableUI> table = [FSTableElementFactory tableWithFrame:self.rootView.bounds
                                               sectionsWithCells:sections];
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                  0,
-                                                                  CGRectGetWidth(self.rootView.bounds),
-                                                                  self.topBarHeight)];
-    headerView.backgroundColor = [UIColor grayColor];
-    table.aTableView.tableHeaderView = headerView;
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                  0,
-                                                                  CGRectGetWidth(self.rootView.bounds),
-                                                                  40.f)];
-    footerView.backgroundColor = [UIColor grayColor];
-    table.aTableView.tableFooterView = footerView;
-    table.aTableView.backgroundColor = [UIColor grayColor];
-    table.aTableView.backgroundView.backgroundColor = [UIColor grayColor];
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                      0,
+                                                                      CGRectGetWidth(self.rootView.bounds),
+                                                                      self.topBarHeight)];
+        headerView.backgroundColor = [UIColor grayColor];
+        table.aTableView.tableHeaderView = headerView;
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                      0,
+                                                                      CGRectGetWidth(self.rootView.bounds),
+                                                                      40.f)];
+        footerView.backgroundColor = [UIColor grayColor];
+        table.aTableView.tableFooterView = footerView;
+        table.aTableView.backgroundColor = [UIColor grayColor];
+        table.aTableView.backgroundView.backgroundColor = [UIColor grayColor];
+    });
     return table;
 }
 

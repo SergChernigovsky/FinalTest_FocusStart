@@ -12,6 +12,7 @@
 
 @interface FSTwitterUrls : FSBaseObject
 
-@property (nonatomic, strong, readonly) FSTwitterUrl *twitterUrls;
+@property (nonatomic, copy, readonly) NSString *display_url;
+@property (nonatomic, strong, readonly) NSURL *url;
 
 @end

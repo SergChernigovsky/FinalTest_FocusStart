@@ -24,7 +24,11 @@
                                     @"FSTwitterAuth" : [[FSDeserializerDictionary alloc] init],
                                     @"FSTwitterPost" : [[FSDeserializerArray alloc] init],
                                     @"FSTwitterUser" : [[FSDeserializerDictionary alloc] init],
-                                    @"FSRetweetedStatus" : [[FSDeserializerDictionary alloc] init]};
+                                    @"FSRetweetedStatus" : [[FSDeserializerDictionary alloc] init],
+                                    @"FSTwitterEntities" : [[FSDeserializerDictionary alloc] init],
+                                    @"FSTwitterUrls" : [[FSDeserializerArray alloc] init],
+                                    @"FSTwitterMedia" : [[FSDeserializerArray alloc] init]
+                                   };
     return deserializers[NSStringFromClass(class)];
 }
 

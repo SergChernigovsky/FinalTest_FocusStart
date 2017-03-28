@@ -7,10 +7,10 @@
 //
 
 #import "FSTwitterUrls.h"
-#import "FSTwitterUrl.h"
 
 @interface FSTwitterUrls()
-@property (nonatomic, strong, readwrite) FSTwitterUrl *twitterUrls;
+@property (nonatomic, copy, readwrite) NSString *display_url;
+@property (nonatomic, strong, readwrite) NSURL *url;
 @end
 
 @implementation FSTwitterUrls
@@ -18,8 +18,11 @@
 + (NSArray<FSDeserializeableProperty *> *)deserializeableProperties
 {
     
-    return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(twitterUrls))
-                                                       class:[FSTwitterUrl class]
+    return @[[[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(display_url))
+                                                       class:[NSString class]
+                                                       keyId:nil],
+             [[FSDeserializeableProperty alloc] initWithName:NSStringFromSelector(@selector(url))
+                                                       class:[NSURL class]
                                                        keyId:nil]];
 }
 
