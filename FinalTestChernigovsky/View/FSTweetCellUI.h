@@ -10,15 +10,18 @@
 
 @interface FSTweetCellUI : FSBaseCellUI
 
-@property (nonatomic, assign, readonly) BOOL retweetedStatus;
-@property (nonatomic, strong, readonly) NSNumber *favoriteCount;
-@property (nonatomic, strong, readonly) NSNumber *retweetCount;
+@property (nonatomic, assign, readonly) BOOL retweeted_status;
+@property (nonatomic, strong, readonly) NSNumber *favorite_count;
+@property (nonatomic, strong, readonly) NSNumber *retweet_count;
 @property (nonatomic, copy, readonly) NSString *text;
-@property (nonatomic, copy, readonly) NSString *userName;
-@property (nonatomic, copy, readonly) NSString *tweetUserName;
-@property (nonatomic, copy, readonly) NSString *tweetUserScreenName;
-@property (nonatomic, copy, readonly) NSString *createdAt;
-@property (nonatomic, strong, readwrite) UIImage *userIcon;
+@property (nonatomic, copy, readonly) NSString *user_name;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *screen_name;
+@property (nonatomic, copy, readonly) NSString *created_at;
+@property (nonatomic, copy, readonly) NSString *display_url;
+@property (nonatomic, strong, readonly) NSURL *url;
+@property (nonatomic, strong, readwrite) UIImage *user_icon;
+
 
 - (void)installIconWithData:(NSData *)userIcon;
 

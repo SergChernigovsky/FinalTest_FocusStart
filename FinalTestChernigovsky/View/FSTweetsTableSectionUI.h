@@ -10,8 +10,8 @@
 
 @interface FSTweetsTableSectionUI : FSBaseTableSectionUI
 
-@property (nonatomic, copy, readonly) NSString *userName;
-@property (nonatomic, copy, readonly) NSString *userScreenName;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *screen_name;
 
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
                          keys:(NSDictionary<NSString *, id> *)keys;

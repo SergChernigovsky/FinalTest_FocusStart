@@ -10,6 +10,8 @@
 
 @interface FSNetworkConfigure : NSObject
 
+@property (nonatomic, copy, readonly) NSString *twitterUrl;
+
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 - (NSURL *)authUrl;

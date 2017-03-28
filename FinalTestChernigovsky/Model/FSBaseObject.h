@@ -14,4 +14,8 @@
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
+- (NSDictionary *)dictionary;
+
+- (NSString *)description;
+
 @end

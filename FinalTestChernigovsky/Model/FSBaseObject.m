@@ -30,4 +30,9 @@
     return dictionary.description;
 }
 
+- (NSDictionary *)dictionary
+{
+    return nil;
+}
+
 @end

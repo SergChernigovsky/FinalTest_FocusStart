@@ -13,6 +13,7 @@
 #import "FSKeyHolder.h"
 #import "FSTwitterAuth.h"
 #import "FSTwitterPost.h"
+#import "NSURL+FSURL.h"
 
 @implementation FSNetworkHelper
 {
@@ -31,6 +32,19 @@
 - (void)handleError:(NSError *)error
 {
     self.errorHandler(error);
+}
+
+- (void)openUrlWithString:(NSURL *)url
+               screenName:(NSString *)screenName
+{
+    if ( NO != [@"" isEqualToString:url.absoluteString] )
+    {
+        NSString *screenUrl = [NSString stringWithFormat:@"%@%@", [networkConfigure twitterUrl], screenName];
+        url = [NSURL fs_URLWithString:screenUrl];
+    }
+    [[UIApplication sharedApplication] openURL:url
+                                       options:@{}
+                             completionHandler:nil];
 }
 
 - (NSData *)dataWithUrl:(NSURL *)url

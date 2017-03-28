@@ -10,7 +10,6 @@
 #import "FSTweetsScreenUI.h"
 #import "FSTwitterPost.h"
 #import "FSTwitterUser.h"
-#import "NSDate+FSDate.h"
 #import "PRTableUI.h"
 #import "FSTweetCellUI.h"
 #import "FSTweetsTableSectionUI.h"
@@ -19,6 +18,7 @@
 {
     FSTweetsScreenUI *screenUI;
     id<PRTableUI> tableUI;
+    FSTweetsTableSectionUI *sectionUI;
 }
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory
@@ -47,7 +47,13 @@
         return;
     }
     NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
-    tableUI = [screenUI tableWithSections:@[[self twitterSectionWithCells:tweetCells posts:twitterPosts]]];
+    sectionUI = [self twitterSectionWithCells:tweetCells posts:twitterPosts];
+    tableUI = [screenUI tableWithSections:@[sectionUI]];
+    typeof(self) __weak weakSelf = self;
+    tableUI.cellClickHandler = ^(id<PRCellUI> cell)
+    {
+        [weakSelf handleCellClick:cell];
+    };
     [self handleFinalUI:YES];
 }
 
@@ -70,8 +76,8 @@
 {
     assert( nil != post.user.name);
     assert( nil != post.user.screen_name);
-    return @{@"userName":post.user.name,
-             @"userScreenName":post.user.screen_name};
+    return @{NSStringFromSelector(@selector(name)):post.user.name,
+             NSStringFromSelector(@selector(screen_name)):post.user.screen_name};
 }
 
 #pragma mark - FSTweetCellUI
@@ -81,7 +87,7 @@
     NSMutableArray *cellsArray = [[NSMutableArray alloc] init];
     [posts enumerateObjectsUsingBlock:^(FSTwitterPost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
-        FSTweetCellUI *tweetCellUI = [screenUI tweetCellWithKeys:[self cellDictionaryFromPost:obj]];
+        FSTweetCellUI *tweetCellUI = [screenUI tweetCellWithKeys:[obj dictionary]];
         if ( nil != obj.retweeted_status ) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
             {
@@ -91,20 +97,6 @@
         [cellsArray addObject:tweetCellUI];
     }];
     return [cellsArray copy];
-}
-
-- (NSDictionary *)cellDictionaryFromPost:(FSTwitterPost *)post
-{
-    FSTwitterUser *tweetUser = ( nil != post.retweeted_status ) ? post.retweeted_status.user : post.user;
-    NSString *text = ( nil != post.retweeted_status ) ? post.retweeted_status.text : post.text;
-    NSNumber *favoriteCount = ( nil != post.retweeted_status ) ? post.retweeted_status.favorite_count : post.favorite_count;
-    return @{@"tweetUserName" : tweetUser.name,
-             @"tweetUserScreenName" : tweetUser.screen_name,
-             @"retweetedStatus" : @( nil == post.retweeted_status),
-             @"retweetCount" : post.retweet_count,
-             @"favoriteCount" : favoriteCount,
-             @"text" : text,
-             @"createdAt" : [NSDate fs_stringFromDate:post.created_at]};
 }
 
 #pragma mark - FSBasePresenter
@@ -126,6 +118,13 @@
 {
     assert( nil != screenUI.startFinalUIHandler );
     screenUI.startFinalUIHandler(isFinal);
+}
+
+- (void)handleCellClick:(id<PRCellUI>) cell
+{
+    FSTweetCellUI *tweetCell = (FSTweetCellUI *)cell;
+    assert( nil != tweetCell.url );
+    [self.networkHelper openUrlWithString:tweetCell.url screenName:sectionUI.screen_name];
 }
 
 @end

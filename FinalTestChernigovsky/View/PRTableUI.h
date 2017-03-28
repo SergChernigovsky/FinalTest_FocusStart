@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong, readonly) UITableView *aTableView;
 @property (nonatomic, copy, readonly) NSArray<id<PRTableSectionUI>> *sections;
+@property (nonatomic, copy, readwrite) void(^cellClickHandler)(id<PRCellUI> cell);
 
 - (void)rewriteSectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells;
 

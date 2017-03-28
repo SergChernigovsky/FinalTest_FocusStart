@@ -9,11 +9,12 @@
 #import "FSBaseObject.h"
 #import "FSRetweetedStatus.h"
 #import "FSTwitterUser.h"
+#import "FSTwitterEntities.h"
 
 @interface FSTwitterPost : FSBaseObject
 
 @property (nonatomic, strong, readonly) FSRetweetedStatus *retweeted_status;
-//@property (nonatomic, strong, readonly, nullable) FSTwitterEntities *entities;
+@property (nonatomic, strong, readonly) FSTwitterEntities *entities;
 @property (nonatomic, strong, readonly) NSNumber *retweet_count;
 @property (nonatomic, strong, readonly) NSNumber *favorite_count;
 @property (nonatomic, strong, readonly) NSNumber *id;

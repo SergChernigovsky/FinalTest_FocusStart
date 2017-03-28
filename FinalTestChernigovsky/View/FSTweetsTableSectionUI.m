@@ -10,8 +10,8 @@
 #import "FSTweetCellUI.h"
 
 @interface FSTweetsTableSectionUI()
-@property (nonatomic, copy, readwrite) NSString *userName;
-@property (nonatomic, copy, readwrite) NSString *userScreenName;
+@property (nonatomic, copy, readwrite) NSString *name;
+@property (nonatomic, copy, readwrite) NSString *screen_name;
 @end
 
 @implementation FSTweetsTableSectionUI
@@ -27,8 +27,8 @@
     [self.cellsUI enumerateObjectsUsingBlock:^(id<PRCellUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
         FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
-        assert( nil != self.userName );
-        [tweetCell setValue:self.userName forKey:NSStringFromSelector(@selector(userName))];
+        assert( nil != self.name );
+        [tweetCell setValue:self.name forKey:NSStringFromSelector(@selector(name))];
     }];
     return self;
 }
@@ -42,9 +42,9 @@
         {
             assert( NO != [obj isKindOfClass:[FSTweetCellUI class]]);
             FSTweetCellUI *tweetCell = (FSTweetCellUI *)obj;
-            if ( NO != tweetCell.retweetedStatus )
+            if ( NO != tweetCell.retweeted_status )
             {
-                [tweetCell setValue:icon forKey:NSStringFromSelector(@selector(userIcon))];
+                [tweetCell setValue:icon forKey:NSStringFromSelector(@selector(user_icon))];
             }
         }];
     });

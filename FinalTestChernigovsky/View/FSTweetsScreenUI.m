@@ -57,6 +57,7 @@
         table.aTableView.tableFooterView = footerView;
         table.aTableView.backgroundColor = [UIColor grayColor];
         table.aTableView.backgroundView.backgroundColor = [UIColor grayColor];
+        table.aTableView.allowsMultipleSelection = NO;
     });
     return table;
 }

@@ -7,7 +7,6 @@
 //
 
 #import "FSTwitterEntities.h"
-#import "FSTwitterUrls.h"
 #import "FSTwitterMedia.h"
 
 @interface FSTwitterEntities()

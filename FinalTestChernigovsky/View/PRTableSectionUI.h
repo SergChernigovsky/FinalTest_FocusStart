@@ -10,6 +10,7 @@
 
 @protocol PRTableSectionUI <NSObject>
 
+@property (nonatomic, copy, readonly) NSArray<id<PRCellUI>> *cellsUI;
 @property (nonatomic, assign, readwrite) NSUInteger index;
 @property (nonatomic, assign, readonly) NSUInteger cellsNumber;
 @property (nonatomic, copy, readonly) NSString *cellsIdentifier;

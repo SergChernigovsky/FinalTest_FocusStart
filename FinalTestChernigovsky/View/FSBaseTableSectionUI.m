@@ -8,22 +8,19 @@
 
 #import "FSBaseTableSectionUI.h"
 
-@interface FSBaseTableSectionUI()
-@property (nonatomic, copy, readwrite) NSArray<id<PRCellUI>> *cellsUI;
-@end
-
 @implementation FSBaseTableSectionUI
 @synthesize cellsNumber;
 @synthesize cellsIdentifier;
 @synthesize updateSectionHandler;
 @synthesize index;
+@synthesize cellsUI;
 
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
 {
     self = [super init];
     assert( nil != cells);
-    self.cellsUI = cells;
-    id<PRCellUI> cellUI = [self.cellsUI firstObject];
+    cellsUI = cells;
+    id<PRCellUI> cellUI = [cellsUI firstObject];
     cellsIdentifier = cellUI.cellIdentifier;
     typeof(self) __weak weakSelf = self;
     [cells enumerateObjectsUsingBlock:^(id<PRCellUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
@@ -56,20 +53,20 @@
 - (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell
                                 index:(NSUInteger)cellIndex
 {
-    id<PRCellUI> cellUI = self.cellsUI[cellIndex];
+    id<PRCellUI> cellUI = cellsUI[cellIndex];
     return [cellUI makeCellWithCell:cell];
 }
 
 - (UITableViewCell *)cellForIndex:(NSUInteger)cellIndex
 {
-    id<PRCellUI> cellUI = self.cellsUI[cellIndex];
+    id<PRCellUI> cellUI = cellsUI[cellIndex];
     assert( NO != [cellUI conformsToProtocol:@protocol(PRCellUI)]);
     return cellUI.cell;
 }
 
 - (NSUInteger)cellsNumber
 {
-    return self.cellsUI.count;
+    return cellsUI.count;
 }
 
 @end

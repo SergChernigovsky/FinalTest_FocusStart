@@ -17,6 +17,7 @@
 @implementation FSBaseTableUI
 @synthesize sections;
 @synthesize aTableView;
+@synthesize cellClickHandler;
 
 - (instancetype)initWithFrame:(CGRect)frame
             sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
@@ -65,6 +66,19 @@
     {
         [aTableView reloadData];
     });
+}
+
+#pragma mark - UITableViewDelegate
+
+- (nullable NSIndexPath *)tableView:(UITableView *)tableView
+           willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ( nil != self.cellClickHandler)
+    {
+        id<PRTableSectionUI> sectionUI = sections[indexPath.section];
+        self.cellClickHandler(sectionUI.cellsUI[indexPath.row]);
+    }
+    return nil;
 }
 
 #pragma mark - UITableViewDataSource

@@ -10,8 +10,6 @@
 
 @interface FSBaseTableSectionUI : NSObject<PRTableSectionUI>
 
-@property (nonatomic, copy, readonly) NSArray<id<PRCellUI>> *cellsUI;
-
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;

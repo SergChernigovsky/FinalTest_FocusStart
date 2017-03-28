@@ -10,14 +10,15 @@
 #import "FSTweetTableViewCell.h"
 
 @interface FSTweetCellUI()
-@property (nonatomic, assign, readwrite) BOOL retweetedStatus;
-@property (nonatomic, strong, readwrite) NSNumber *favoriteCount;
-@property (nonatomic, strong, readwrite) NSNumber *retweetCount;
+@property (nonatomic, assign, readwrite) BOOL retweeted_status;
+@property (nonatomic, strong, readwrite) NSNumber *favorite_count;
+@property (nonatomic, strong, readwrite) NSNumber *retweet_count;
 @property (nonatomic, copy, readwrite) NSString *text;
-@property (nonatomic, copy, readwrite) NSString *userName;
-@property (nonatomic, copy, readwrite) NSString *tweetUserName;
-@property (nonatomic, copy, readwrite) NSString *tweetUserScreenName;
-@property (nonatomic, copy, readwrite) NSString *createdAt;
+@property (nonatomic, copy, readwrite) NSString *user_name;
+@property (nonatomic, copy, readwrite) NSString *name;
+@property (nonatomic, copy, readwrite) NSString *screen_name;
+@property (nonatomic, copy, readwrite) NSString *created_at;
+@property (nonatomic, copy, readwrite) NSString *display_url;
 @end
 
 @implementation FSTweetCellUI
@@ -39,18 +40,18 @@
                                                                 options:nil] lastObject];
 }
 
-- (void)installIconWithData:(NSData *)userIcon
+- (void)installIconWithData:(NSData *)user_icon
 {
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        self.userIcon = [UIImage imageWithData:userIcon];
+        self.user_icon = [UIImage imageWithData:user_icon];
         
     });
 }
 
-- (void) setUserIcon:(UIImage *)userIcon
+- (void) setUser_icon:(UIImage *)userIcon
 {
-    _userIcon = userIcon;
+    _user_icon = userIcon;
     if ( nil != self.updateCellHandler)
     {
         self.updateCellHandler(self.cellIndex);
@@ -66,8 +67,8 @@
     
     FSTweetTableViewCell *tweetCell = (FSTweetTableViewCell *)cell;
     
-    tweetCell.imageUserIcon.image = self.userIcon;
-    if ( nil != self.userIcon)
+    tweetCell.imageUserIcon.image = self.user_icon;
+    if ( nil != self.user_icon)
     {
         [tweetCell.activityIndicator stopAnimating];
     }
@@ -76,21 +77,23 @@
         [tweetCell.activityIndicator startAnimating];
     }
     
+    tweetCell.labelUrl.text = self.display_url;
     tweetCell.labelText.text = self.text;
-    tweetCell.labelDate.text = self.createdAt;
-    tweetCell.labelName.text = self.tweetUserName;
-    tweetCell.labelRetweet.text = [NSString stringWithFormat:@"%@", self.retweetCount];
-    tweetCell.labelLike.text = [NSString stringWithFormat:@"%@", self.favoriteCount];
-    tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.tweetUserScreenName];
+    tweetCell.labelDate.text = self.created_at;
+    tweetCell.labelName.text = self.name;
+    tweetCell.labelRetweet.text = [NSString stringWithFormat:@"%@", self.retweet_count];
+    tweetCell.labelLike.text = [NSString stringWithFormat:@"%@", self.favorite_count];
+    tweetCell.labelScreenName.text = [NSString stringWithFormat:@"@%@", self.screen_name];
     
-    if ( NO != self.retweetedStatus )
+    if ( NO != self.retweeted_status )
     {
         tweetCell.imageRetweet.image = nil;
         tweetCell.labelRetweetUser.text = nil;
         return tweetCell;
     }
     tweetCell.imageRetweet.image = [UIImage imageNamed:@"iconRetweet"];
-    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.userName];
+    tweetCell.labelRetweetUser.text = [NSString stringWithFormat:@"%@ Retweeted", self.name];
+    
     return tweetCell;
 }
 

@@ -7,9 +7,8 @@
 //
 
 #import "FSBaseObject.h"
-
-@class FSTwitterUrls;
-@class FSTwitterMedia;
+#import "FSTwitterUrls.h"
+#import "FSTwitterMedia.h"
 
 @interface FSTwitterEntities : FSBaseObject
 

@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FSNetworkHelper : NSObject
 
 @property (nonatomic, copy, readwrite) void (^errorHandler)(NSError *errorr);
 
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
+
+- (void)openUrlWithString:(NSURL *)url
+               screenName:(NSString *)screenName;
 
 - (NSData *)dataWithUrl:(NSURL *)url;
 

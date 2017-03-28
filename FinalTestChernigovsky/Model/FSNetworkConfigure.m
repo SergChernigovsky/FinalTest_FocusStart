@@ -21,6 +21,7 @@
 @property (nonatomic, copy, readwrite, nonnull) NSString *headerKey;
 @property (nonatomic, copy, readwrite, nonnull) NSString *accessTokenKey;
 @property (nonatomic, copy, readwrite, nonnull) NSString *accountNameKey;
+@property (nonatomic, copy, readwrite, nonnull) NSString *twitterUrl;
 @end
 
 @implementation FSNetworkConfigure
