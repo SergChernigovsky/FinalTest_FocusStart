@@ -91,7 +91,7 @@
     {
         element.alpha = 0.f;
         [view addSubview:element];
-        [UIView animateWithDuration:1.f animations:^{
+        [UIView animateWithDuration:0.5f animations:^{
             element.alpha = 1.f;
         }];
     });
