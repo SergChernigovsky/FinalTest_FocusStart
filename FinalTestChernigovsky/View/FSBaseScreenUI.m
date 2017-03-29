@@ -89,7 +89,11 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^
     {
+        element.alpha = 0.f;
         [view addSubview:element];
+        [UIView animateWithDuration:0.5f animations:^{
+            element.alpha = 1.f;
+        }];
     });
     NSMutableArray *mutableElements = [arrayFinalElements mutableCopy];
     [mutableElements addObject:element];
