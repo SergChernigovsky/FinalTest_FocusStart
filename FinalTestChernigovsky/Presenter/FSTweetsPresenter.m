@@ -33,12 +33,6 @@
     {
         [weakSelf completeUserRequestWithData:data];
     }];
-    /*
-    [self.networkHelper userRequestWithSinceID:846440414773219328 Completion:^(id data)
-    {
-        [weakSelf completeUserRequestWithData:data];
-    }];
-     */
     return self;
 }
 
@@ -61,7 +55,29 @@
     {
         [weakSelf handleCellClick:cell];
     };
+    tableUI.sinceIDHander = ^(NSNumber *sinceID)
+    {
+        [weakSelf handleRequestSinseID:sinceID];
+    };
     [self handleFinalUI:YES];
+}
+
+- (void)completeSinceIDRequestWithData:(id)data
+{
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        [tableUI enableTable];
+    });
+    NSArray<FSTwitterPost *> *twitterPosts = (NSArray<FSTwitterPost *> *)data;
+    if ( 0 != twitterPosts.count )
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            assert( nil != tableUI );
+            NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
+            [tableUI insertCellsOnTop:tweetCells inSection:sectionUI.index];
+        });
+    }
 }
 
 #pragma mark - FSTweetsTableSectionUI
@@ -127,6 +143,15 @@
 }
 
 #pragma mark - Handlers
+
+- (void)handleRequestSinseID:(NSNumber *)sinceID
+{
+    typeof(self) __weak weakSelf = self;
+    [self.networkHelper userRequestWithSinceID:sinceID Completion:^(id data)
+    {
+        [weakSelf completeSinceIDRequestWithData:data];
+    }];
+}
 
 - (void)handleFinalUI:(BOOL) isFinal
 {

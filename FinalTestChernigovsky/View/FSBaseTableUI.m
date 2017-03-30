@@ -51,19 +51,17 @@
     }
 }
 
-- (void)rewriteSectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells
+- (void)insertCellsOnTop:(NSArray<id<PRCellUI>> *)cells inSection:(NSInteger)sectionIndex
 {
-    NSMutableArray *mutableSections = [[NSMutableArray alloc] init];
-    [sectionsWithCells enumerateObjectsUsingBlock:^(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-     {
-         id<PRTableSectionUI> section = [[FSBaseTableSectionUI alloc] initWithCells:obj];
-         [mutableSections addObject:section];
-     }];
-    sections = [mutableSections copy];
-    dispatch_async(dispatch_get_main_queue(), ^
+    id<PRTableSectionUI> section = sections[sectionIndex];
+    NSMutableArray *indexes = [[NSMutableArray alloc] init];
+    for( int i = cells.count-1 ; i >= 0 ; i-- )
     {
-        [aTableView reloadData];
-    });
+        id<PRCellUI> cell = cells[i];
+        [section insertCellOnTop:cell];
+        [indexes addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
+    }
+    [aTableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate

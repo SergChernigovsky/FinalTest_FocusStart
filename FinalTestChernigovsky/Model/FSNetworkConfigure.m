@@ -86,11 +86,10 @@
     return url;
 }
 
-- (NSURL *)contentUrlSinceID:(NSUInteger)id numberPosts:(NSUInteger)numberPosts
+- (NSURL *)contentUrlSinceID:(NSNumber *)sinceID
 {
-    assert( 0 != numberPosts );
-    NSString *params = [NSString stringWithFormat:@"since_id=%ld&count=%ld&screen_name=%@", (unsigned long)id,
-                        (unsigned long)numberPosts, [FSObjectArchiver stringForKey:self.accountNameKey]];
+    assert( 0 != sinceID );
+    NSString *params = [NSString stringWithFormat:@"since_id=%@&screen_name=%@", sinceID, [FSObjectArchiver stringForKey:self.accountNameKey]];
     NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", self.baseUrl, self.userUrl, params];
     NSURL *url = [NSURL fs_URLWithString:stringUrl];
     assert( nil != url );

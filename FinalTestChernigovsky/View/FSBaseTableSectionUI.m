@@ -64,6 +64,13 @@
     return cellUI.cell;
 }
 
+- (void)insertCellOnTop:(id<PRCellUI>)cell
+{
+    NSMutableArray *mutableCells = [cellsUI mutableCopy];
+    [mutableCells insertObject:cell atIndex:0];
+    cellsUI = [mutableCells copy];
+}
+
 - (NSUInteger)cellsNumber
 {
     return cellsUI.count;

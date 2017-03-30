@@ -14,6 +14,8 @@
 @property (nonatomic, copy, readonly) NSArray<id<PRTableSectionUI>> *sections;
 @property (nonatomic, copy, readwrite) void(^cellClickHandler)(id<PRCellUI> cell);
 
-- (void)rewriteSectionsWithCells:(NSArray<NSArray *> *)sectionsWithCells;
+- (void)reloadCell:(NSInteger)cellIndex inSection:(NSInteger)sectionIndex;
+
+- (void)insertCellsOnTop:(NSArray<id<PRCellUI>> *)cells inSection:(NSInteger)sectionNumber;
 
 @end

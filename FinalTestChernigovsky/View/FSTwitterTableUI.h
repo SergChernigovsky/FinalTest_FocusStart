@@ -10,8 +10,12 @@
 
 @interface FSTwitterTableUI : FSBaseTableUI
 
+@property (nonatomic, copy, readwrite) void(^sinceIDHander)(NSNumber *sinceID);
+
 - (instancetype)initWithFrame:(CGRect)frame
             sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells
                  topBarHeight:(CGFloat)topBarHeight;
+
+- (void)enableTable;
 
 @end

@@ -30,6 +30,6 @@
 
 - (void)userRequestWithCompletion:(void(^)(id data))completion;
 
-- (void)userRequestWithSinceID:(NSUInteger)sinceID Completion:(void(^)(id data))completion;
+- (void)userRequestWithSinceID:(NSNumber *)sinceID Completion:(void(^)(id data))completion;
 
 @end

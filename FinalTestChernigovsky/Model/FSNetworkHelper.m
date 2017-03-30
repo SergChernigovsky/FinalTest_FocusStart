@@ -102,7 +102,7 @@ NSUInteger const postsLimit = 20;
      }];
 }
 
-- (void)userRequestWithSinceID:(NSUInteger)sinceID Completion:(void(^)(id data))completion
+- (void)userRequestWithSinceID:(NSNumber *)sinceID Completion:(void(^)(id data))completion
 {
     typeof(self) __weak weakSelf = self;
     FSRequestContext *requestContext = [self userRequestContextWithConfigure:networkConfigure sinceID:sinceID];
@@ -140,10 +140,10 @@ NSUInteger const postsLimit = 20;
 }
 
 - (FSRequestContext *)userRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
-                                              sinceID:(NSUInteger)sinceID
+                                              sinceID:(NSNumber *)sinceID
 {
     FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure contentUrlSinceID:sinceID numberPosts:postsLimit] forKey:@"URL"];
+    [aKeyHolder addObject:[aNetworkConfigure contentUrlSinceID:sinceID] forKey:@"URL"];
     [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
     [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
     return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder

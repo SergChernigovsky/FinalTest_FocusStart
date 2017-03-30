@@ -21,7 +21,7 @@
     return nil;
 }
 
--(NSError *)parseErrors:(id)json
+- (NSError *)parseErrors:(id)json
 {
     NSArray *errors = (NSArray *)json;
     if ( nil == errors || 0 == errors.count)

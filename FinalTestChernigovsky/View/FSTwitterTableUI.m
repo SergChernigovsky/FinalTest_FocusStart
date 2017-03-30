@@ -8,6 +8,8 @@
 
 #import "FSTwitterTableUI.h"
 #import "FSElementUIFactory.h"
+#import "FSTweetCellUI.h"
+#import "FSTweetsTableSectionUI.h"
 
 @implementation FSTwitterTableUI
 {
@@ -38,6 +40,8 @@
     return self;
 }
 
+#pragma mark - UI
+
 - (UIActivityIndicatorView *)makeIndicatorWithRect:(CGRect)rect alpha:(CGFloat)alpha
 {
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
@@ -64,20 +68,48 @@
     return footerView;
 }
 
+#pragma mark - Handlers
+
+- (void)handleTopTweets
+{
+    FSTweetsTableSectionUI __block *sectionUI;
+    [self.sections enumerateObjectsUsingBlock:^(id<PRTableSectionUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        if ( NO != [obj isKindOfClass:[FSTweetsTableSectionUI class]]) {
+            sectionUI = (FSTweetsTableSectionUI *)obj;
+        }
+    }];
+    assert( nil != sectionUI );
+    FSTweetCellUI *cellUI = sectionUI.cellsUI[1];
+    if( nil != self.sinceIDHander )
+    {
+        self.sinceIDHander(cellUI.id);
+    }
+}
+
+- (void)enableTable
+{
+    self.aTableView.userInteractionEnabled = YES;
+    self.aTableView.scrollEnabled = YES;
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    CGFloat currentOffsetX = scrollView.contentOffset.x;
-//    CGFloat currentOffsetY = scrollView.contentOffset.y;
-//    if( currentOffsetY > -topBarHeight )
-//    {
-//        dispatch_async(dispatch_get_main_queue(), ^
-//        {
+    CGFloat currentOffsetX = scrollView.contentOffset.x;
+    CGFloat currentOffsetY = scrollView.contentOffset.y;
+    if( currentOffsetY < -topBarHeight )
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+//            headerIndicator.alpha = currentOffsetY/-topBarHeight;
 //            self.aTableView.userInteractionEnabled = NO;
-//            scrollView.contentOffset = CGPointMake(currentOffsetX, topBarHeight);
-//        });
-//    }
+//            self.aTableView.scrollEnabled = NO;
+//            scrollView.contentOffset = CGPointMake(currentOffsetX, -topBarHeight);
+//            [self handleTopTweets];
+        });
+    }
 }
 
 @end

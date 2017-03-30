@@ -20,4 +20,6 @@
 
 - (UITableViewCell *)makeCellWithCell:(UITableViewCell *)cell index:(NSUInteger)index;
 
+- (void)insertCellOnTop:(id<PRCellUI>)cell;
+
 @end

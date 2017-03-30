@@ -22,7 +22,7 @@
 
 - (NSURL *)contentUrlWithNumberPosts:(NSUInteger)numberPosts;
 
-- (NSURL *)contentUrlSinceID:(NSUInteger)id numberPosts:(NSUInteger)numberPosts;
+- (NSURL *)contentUrlSinceID:(NSNumber *)sinceID;
 
 - (NSDictionary *)contentHttpHeaders;
 
