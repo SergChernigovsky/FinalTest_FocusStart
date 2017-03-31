@@ -28,8 +28,6 @@
 
 - (void)authRequestWithCompletion:(void(^)(id data))completion;
 
-- (void)userRequestWithCompletion:(void(^)(id data))completion;
-
-- (void)userRequestWithSinceID:(NSNumber *)sinceID Completion:(void(^)(id data))completion;
+- (void)userRequestWithPostsNumber:(NSUInteger)postsNumber completion:(void(^)(id data))completion;
 
 @end

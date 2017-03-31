@@ -72,25 +72,19 @@
 
 - (void)handleTopTweets
 {
-    FSTweetsTableSectionUI __block *sectionUI;
-    [self.sections enumerateObjectsUsingBlock:^(id<PRTableSectionUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    if( nil != self.updateTopHandler )
     {
-        if ( NO != [obj isKindOfClass:[FSTweetsTableSectionUI class]]) {
-            sectionUI = (FSTweetsTableSectionUI *)obj;
-        }
-    }];
-    assert( nil != sectionUI );
-    FSTweetCellUI *cellUI = sectionUI.cellsUI[1];
-    if( nil != self.sinceIDHander )
-    {
-        self.sinceIDHander(cellUI.id);
+        self.updateTopHandler();
     }
 }
 
 - (void)enableTable
 {
-    self.aTableView.userInteractionEnabled = YES;
-    self.aTableView.scrollEnabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        self.aTableView.userInteractionEnabled = YES;
+        self.aTableView.scrollEnabled = YES;
+    });
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -103,11 +97,14 @@
     {
         dispatch_async(dispatch_get_main_queue(), ^
         {
-//            headerIndicator.alpha = currentOffsetY/-topBarHeight;
-//            self.aTableView.userInteractionEnabled = NO;
-//            self.aTableView.scrollEnabled = NO;
-//            scrollView.contentOffset = CGPointMake(currentOffsetX, -topBarHeight);
-//            [self handleTopTweets];
+            headerIndicator.alpha = currentOffsetY/-topBarHeight;
+            self.aTableView.userInteractionEnabled = NO;
+            self.aTableView.scrollEnabled = NO;
+            scrollView.contentOffset = CGPointMake(currentOffsetX, -topBarHeight);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+            {
+                [self handleTopTweets];
+            });
         });
     }
 }

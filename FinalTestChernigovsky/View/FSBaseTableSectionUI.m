@@ -18,7 +18,7 @@
 - (instancetype)initWithCells:(NSArray<id<PRCellUI>> *)cells
 {
     self = [super init];
-    assert( nil != cells);
+    assert( nil != cells );
     cellsUI = cells;
     id<PRCellUI> cellUI = [cellsUI firstObject];
     cellsIdentifier = cellUI.cellIdentifier;

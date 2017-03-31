@@ -15,8 +15,6 @@
 #import "FSTwitterPost.h"
 #import "NSURL+FSURL.h"
 
-NSUInteger const postsLimit = 20;
-
 @implementation FSNetworkHelper
 {
     FSNetwork *network;
@@ -86,26 +84,10 @@ NSUInteger const postsLimit = 20;
      }];
 }
 
-- (void)userRequestWithCompletion:(void(^)(id data))completion
+- (void)userRequestWithPostsNumber:(NSUInteger)postsNumber completion:(void(^)(id data))completion
 {
     typeof(self) __weak weakSelf = self;
-    FSRequestContext *requestContext = [self userRequestContextWithConfigure:networkConfigure];
-    [network requestWithContext:requestContext
-                     completion:^(NSError *error, id data)
-     {
-         if( nil != error )
-         {
-             [weakSelf handleError:error];
-             return;
-         }
-         completion(data);
-     }];
-}
-
-- (void)userRequestWithSinceID:(NSNumber *)sinceID Completion:(void(^)(id data))completion
-{
-    typeof(self) __weak weakSelf = self;
-    FSRequestContext *requestContext = [self userRequestContextWithConfigure:networkConfigure sinceID:sinceID];
+    FSRequestContext *requestContext = [self userRequestContextWithConfigure:networkConfigure postsNumber:postsNumber];
     [network requestWithContext:requestContext
                      completion:^(NSError *error, id data)
      {
@@ -130,20 +112,10 @@ NSUInteger const postsLimit = 20;
 }
 
 - (FSRequestContext *)userRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
+                                          postsNumber:(NSUInteger)postsNumber
 {
     FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:postsLimit] forKey:@"URL"];
-    [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
-    [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
-    return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder
-                                             expectedClass:[FSTwitterPost class]];
-}
-
-- (FSRequestContext *)userRequestContextWithConfigure:(FSNetworkConfigure *)aNetworkConfigure
-                                              sinceID:(NSNumber *)sinceID
-{
-    FSKeyHolder<PRKeyEnumerator> *aKeyHolder = [[FSKeyHolder alloc] init];
-    [aKeyHolder addObject:[aNetworkConfigure contentUrlSinceID:sinceID] forKey:@"URL"];
+    [aKeyHolder addObject:[aNetworkConfigure contentUrlWithNumberPosts:postsNumber] forKey:@"URL"];
     [aKeyHolder addObject:[aNetworkConfigure contentHttpHeaders] forKey:@"allHTTPHeaderFields"];
     [aKeyHolder addObject:@"GET" forKey:@"HTTPMethod"];
     return [[FSRequestContext alloc] initWithKeyEnumerator:aKeyHolder

@@ -10,7 +10,7 @@
 
 @interface FSTwitterTableUI : FSBaseTableUI
 
-@property (nonatomic, copy, readwrite) void(^sinceIDHander)(NSNumber *sinceID);
+@property (nonatomic, copy, readwrite) void(^updateTopHandler)(void);
 
 - (instancetype)initWithFrame:(CGRect)frame
             sectionsWithCells:(NSArray<id<PRTableSectionUI>> *)sectionsWithCells

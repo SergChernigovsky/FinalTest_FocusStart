@@ -16,6 +16,6 @@
 
 - (void)reloadCell:(NSInteger)cellIndex inSection:(NSInteger)sectionIndex;
 
-- (void)insertCellsOnTop:(NSArray<id<PRCellUI>> *)cells inSection:(NSInteger)sectionNumber;
+- (void)rewriteSection:(id<PRTableSectionUI>)section index:(NSInteger)index;
 
 @end

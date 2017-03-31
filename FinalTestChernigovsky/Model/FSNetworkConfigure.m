@@ -86,16 +86,6 @@
     return url;
 }
 
-- (NSURL *)contentUrlSinceID:(NSNumber *)sinceID
-{
-    assert( 0 != sinceID );
-    NSString *params = [NSString stringWithFormat:@"since_id=%@&screen_name=%@", sinceID, [FSObjectArchiver stringForKey:self.accountNameKey]];
-    NSString *stringUrl = [NSString stringWithFormat:@"%@%@%@", self.baseUrl, self.userUrl, params];
-    NSURL *url = [NSURL fs_URLWithString:stringUrl];
-    assert( nil != url );
-    return url;
-}
-
 - (NSDictionary *)contentHttpHeaders
 {
     NSString *accessToken = [FSObjectArchiver stringForKey:self.accessTokenKey];

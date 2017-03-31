@@ -15,11 +15,13 @@
 #import "FSTweetsTableSectionUI.h"
 #import "FSTwitterTableUI.h"
 
+NSUInteger const postsLimit = 20;
+
 @implementation FSTweetsPresenter
 {
     FSTweetsScreenUI *screenUI;
-    FSTwitterTableUI *tableUI;
-    FSTweetsTableSectionUI *sectionUI;
+    FSTwitterTableUI *tableTwitterUI;
+    FSTweetsTableSectionUI *sectionTweetsUI;
 }
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory
@@ -29,7 +31,7 @@
     typeof(self) __weak weakSelf = self;
     screenUI = [factory makeTweetsScreenUI];
     screenUI.screenName = [NSString stringWithFormat:@"@%@", [self.networkHelper accountName]];
-    [self.networkHelper userRequestWithCompletion:^(id data)
+    [self.networkHelper userRequestWithPostsNumber:postsLimit completion:^(id data)
     {
         [weakSelf completeUserRequestWithData:data];
     }];
@@ -43,41 +45,33 @@
     NSArray<FSTwitterPost *> *twitterPosts = (NSArray<FSTwitterPost *> *)data;
     if ( 0 == twitterPosts.count )
     {
-        tableUI = [screenUI tableWithSections:@[]];
+        tableTwitterUI = [screenUI tableWithSections:@[]];
         [self handleFinalUI:YES];
         return;
     }
     NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
-    sectionUI = [self twitterSectionWithCells:tweetCells posts:twitterPosts];
-    tableUI = [screenUI tableWithSections:@[sectionUI]];
+    sectionTweetsUI = [self twitterSectionWithCells:tweetCells posts:twitterPosts];
+    tableTwitterUI = [screenUI tableWithSections:@[sectionTweetsUI]];
     typeof(self) __weak weakSelf = self;
-    tableUI.cellClickHandler = ^(id<PRCellUI> cell)
+    tableTwitterUI.cellClickHandler = ^(id<PRCellUI> cell)
     {
         [weakSelf handleCellClick:cell];
     };
-    tableUI.sinceIDHander = ^(NSNumber *sinceID)
+    tableTwitterUI.updateTopHandler = ^
     {
-        [weakSelf handleRequestSinseID:sinceID];
+        [weakSelf handleRewriteRequest];
     };
     [self handleFinalUI:YES];
 }
 
-- (void)completeSinceIDRequestWithData:(id)data
+- (void)completeRewriteRequestWithData:(id)data
 {
-    dispatch_async(dispatch_get_main_queue(), ^
-    {
-        [tableUI enableTable];
-    });
+    assert( nil != tableTwitterUI );
+    [tableTwitterUI enableTable];
     NSArray<FSTwitterPost *> *twitterPosts = (NSArray<FSTwitterPost *> *)data;
-    if ( 0 != twitterPosts.count )
-    {
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            assert( nil != tableUI );
-            NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
-            [tableUI insertCellsOnTop:tweetCells inSection:sectionUI.index];
-        });
-    }
+    NSArray<FSTweetCellUI *> *tweetCells = [self cellsWithPosts:twitterPosts];
+    [tableTwitterUI rewriteSection:[self twitterSectionWithCells:tweetCells
+                                                           posts:twitterPosts] index:sectionTweetsUI.index];
 }
 
 #pragma mark - FSTweetsTableSectionUI
@@ -144,12 +138,12 @@
 
 #pragma mark - Handlers
 
-- (void)handleRequestSinseID:(NSNumber *)sinceID
+- (void)handleRewriteRequest
 {
     typeof(self) __weak weakSelf = self;
-    [self.networkHelper userRequestWithSinceID:sinceID Completion:^(id data)
+    [self.networkHelper userRequestWithPostsNumber:sectionTweetsUI.cellsNumber completion:^(id data)
     {
-        [weakSelf completeSinceIDRequestWithData:data];
+        [weakSelf completeRewriteRequestWithData:data];
     }];
 }
 
@@ -163,7 +157,7 @@
 {
     FSTweetCellUI *tweetCell = (FSTweetCellUI *)cell;
     assert( nil != tweetCell.url );
-    [self.networkHelper openUrlWithString:tweetCell.url screenName:sectionUI.screen_name];
+    [self.networkHelper openUrlWithString:tweetCell.url screenName:sectionTweetsUI.screen_name];
 }
 
 @end

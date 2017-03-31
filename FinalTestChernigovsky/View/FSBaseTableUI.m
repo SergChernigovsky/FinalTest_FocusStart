@@ -25,6 +25,15 @@
     self = [super init];
     assert( nil != sectionsWithCells );
     sections = sectionsWithCells;
+    [self signSections:sections];
+    aTableView = [[UITableView alloc] initWithFrame:frame];
+    aTableView.delegate = self;
+    aTableView.dataSource = self;
+    return self;
+}
+
+-(void)signSections:(NSArray<id<PRTableSectionUI>> *)aSections
+{
     typeof(self) __weak weakSelf = self;
     [sections enumerateObjectsUsingBlock:^(id<PRTableSectionUI>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
@@ -34,10 +43,6 @@
             [weakSelf reloadCell:cellIndex inSection:sectionIndex];
         };
     }];
-    aTableView = [[UITableView alloc] initWithFrame:frame];
-    aTableView.delegate = self;
-    aTableView.dataSource = self;
-    return self;
 }
 
 - (void)reloadCell:(NSInteger)cellIndex inSection:(NSInteger)sectionIndex
@@ -51,17 +56,16 @@
     }
 }
 
-- (void)insertCellsOnTop:(NSArray<id<PRCellUI>> *)cells inSection:(NSInteger)sectionIndex
+- (void)rewriteSection:(id<PRTableSectionUI>)section index:(NSInteger)index
 {
-    id<PRTableSectionUI> section = sections[sectionIndex];
-    NSMutableArray *indexes = [[NSMutableArray alloc] init];
-    for( int i = cells.count-1 ; i >= 0 ; i-- )
+    NSMutableArray *mutableSections = [sections mutableCopy];
+    [mutableSections replaceObjectAtIndex:index withObject:section];
+    sections = [mutableSections copy];
+    [self signSections:sections];
+    dispatch_async(dispatch_get_main_queue(), ^
     {
-        id<PRCellUI> cell = cells[i];
-        [section insertCellOnTop:cell];
-        [indexes addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
-    }
-    [aTableView reloadData];
+        [aTableView reloadData];
+    });
 }
 
 #pragma mark - UITableViewDelegate
