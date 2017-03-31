@@ -68,6 +68,15 @@
     return footerView;
 }
 
+- (void)enableTable
+{
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       self.aTableView.userInteractionEnabled = YES;
+                       self.aTableView.scrollEnabled = YES;
+                   });
+}
+
 #pragma mark - Handlers
 
 - (void)handleTopTweets
@@ -76,15 +85,6 @@
     {
         self.updateTopHandler();
     }
-}
-
-- (void)enableTable
-{
-    dispatch_async(dispatch_get_main_queue(), ^
-    {
-        self.aTableView.userInteractionEnabled = YES;
-        self.aTableView.scrollEnabled = YES;
-    });
 }
 
 #pragma mark - UIScrollViewDelegate
