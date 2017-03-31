@@ -45,7 +45,7 @@ NSUInteger const postsLimit = 20;
 - (void)completeUserRequestWithData:(id)data
 {
     NSArray<FSTwitterPost *> *twitterPosts = (NSArray<FSTwitterPost *> *)data;
-    if ( 0 == twitterPosts.count )
+    if( 0 == twitterPosts.count )
     {
         tableTwitterUI = [screenUI tableWithSections:@[]];
         [self handleFinalUI:YES];
@@ -84,7 +84,8 @@ NSUInteger const postsLimit = 20;
     FSTwitterPost *post = (FSTwitterPost *)[posts firstObject];
     FSTweetsTableSectionUI *twitterSection = [screenUI tweetSectionWithCells:cells
                                                                         keys:[self sectionDictionaryFromPost:post]];
-    [backgroundOperations addOperationWithBlock:^{
+    [backgroundOperations addOperationWithBlock:^
+    {
         [twitterSection installIconWithData:[self.networkHelper dataWithUrl:post.user.profile_image_url]];
     }];
     return twitterSection;
@@ -106,14 +107,18 @@ NSUInteger const postsLimit = 20;
     [posts enumerateObjectsUsingBlock:^(FSTwitterPost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
     {
         FSTweetCellUI *tweetCellUI = [screenUI tweetCellWithKeys:[obj dictionary]];
-        if ( nil != obj.retweeted_status ) {
-            [backgroundOperations addOperationWithBlock:^{
+        if( nil != obj.retweeted_status )
+        {
+            [backgroundOperations addOperationWithBlock:^
+            {
                 [tweetCellUI installIconWithData:[self.networkHelper dataWithUrl:obj.retweeted_status.user.profile_image_url]];
             }];
         }
         FSTwitterMedia *media = [obj.entities.media firstObject];
-        if ( nil != media.media_url_https ) {
-            [backgroundOperations addOperationWithBlock:^{
+        if( nil != media.media_url_https )
+        {
+            [backgroundOperations addOperationWithBlock:^
+            {
                 [tweetCellUI installMediaWithData:[self.networkHelper dataWithUrl:media.media_url_https]];
             }];
         }

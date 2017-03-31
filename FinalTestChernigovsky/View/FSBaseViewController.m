@@ -37,7 +37,6 @@
     {
         [self.navigationItem setTitle:self.screenPresenter.screenUI.screenName];
     }
-    self.navigationController.navigationBar.userInteractionEnabled = NO;
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent
