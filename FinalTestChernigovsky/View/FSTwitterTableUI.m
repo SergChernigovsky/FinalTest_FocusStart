@@ -11,6 +11,8 @@
 #import "FSTweetCellUI.h"
 #import "FSTweetsTableSectionUI.h"
 
+CGFloat const footerHeight = 40.f;
+
 @implementation FSTwitterTableUI
 {
     UIActivityIndicatorView *headerIndicator;
@@ -30,7 +32,7 @@
     
     topBarHeight = aTopBarHeight;
     UIView *headerView = [self makeHeaderViewWithHeight:topBarHeight];
-    UIView *footerView = [self makeFooterViewWithHeight:40.f];
+    UIView *footerView = [self makeFooterViewWithHeight:footerHeight];
     headerIndicator = [self makeIndicatorWithRect:headerView.bounds alpha:1.f];
     footerIndicator = [self makeIndicatorWithRect:footerView.bounds alpha:1.f];
     [headerView addSubview:headerIndicator];
@@ -71,10 +73,10 @@
 - (void)enableTable
 {
     dispatch_async(dispatch_get_main_queue(), ^
-                   {
-                       self.aTableView.userInteractionEnabled = YES;
-                       self.aTableView.scrollEnabled = YES;
-                   });
+    {
+        self.aTableView.userInteractionEnabled = YES;
+        self.aTableView.scrollEnabled = YES;
+    });
 }
 
 #pragma mark - Handlers
@@ -106,6 +108,10 @@
                 [self handleTopTweets];
             });
         });
+    }
+    else if ( currentOffsetY > scrollView.frame.size.height+footerHeight )
+    {
+        
     }
 }
 

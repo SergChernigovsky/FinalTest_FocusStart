@@ -22,12 +22,14 @@ NSUInteger const postsLimit = 20;
     FSTweetsScreenUI *screenUI;
     FSTwitterTableUI *tableTwitterUI;
     FSTweetsTableSectionUI *sectionTweetsUI;
+    NSOperationQueue *backgroundOperations;
 }
 
 - (instancetype)initWithScreenFactory:(FSScreenUIFactory *)factory
 {
     assert( nil != factory );
     self = [super initWithScreenFactory:factory];
+    backgroundOperations = [[NSOperationQueue alloc] init];
     typeof(self) __weak weakSelf = self;
     screenUI = [factory makeTweetsScreenUI];
     screenUI.screenName = [NSString stringWithFormat:@"@%@", [self.networkHelper accountName]];
@@ -82,10 +84,9 @@ NSUInteger const postsLimit = 20;
     FSTwitterPost *post = (FSTwitterPost *)[posts firstObject];
     FSTweetsTableSectionUI *twitterSection = [screenUI tweetSectionWithCells:cells
                                                                         keys:[self sectionDictionaryFromPost:post]];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
-    {
+    [backgroundOperations addOperationWithBlock:^{
         [twitterSection installIconWithData:[self.networkHelper dataWithUrl:post.user.profile_image_url]];
-    });
+    }];
     return twitterSection;
 }
 
@@ -106,17 +107,15 @@ NSUInteger const postsLimit = 20;
     {
         FSTweetCellUI *tweetCellUI = [screenUI tweetCellWithKeys:[obj dictionary]];
         if ( nil != obj.retweeted_status ) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
-            {
-               [tweetCellUI installIconWithData:[self.networkHelper dataWithUrl:obj.retweeted_status.user.profile_image_url]];
-            });
+            [backgroundOperations addOperationWithBlock:^{
+                [tweetCellUI installIconWithData:[self.networkHelper dataWithUrl:obj.retweeted_status.user.profile_image_url]];
+            }];
         }
         FSTwitterMedia *media = [obj.entities.media firstObject];
         if ( nil != media.media_url_https ) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
-            {
+            [backgroundOperations addOperationWithBlock:^{
                 [tweetCellUI installMediaWithData:[self.networkHelper dataWithUrl:media.media_url_https]];
-            });
+            }];
         }
         [cellsArray addObject:tweetCellUI];
     }];
@@ -140,6 +139,7 @@ NSUInteger const postsLimit = 20;
 
 - (void)handleRewriteRequest
 {
+    [backgroundOperations cancelAllOperations];
     typeof(self) __weak weakSelf = self;
     [self.networkHelper userRequestWithPostsNumber:sectionTweetsUI.cellsNumber completion:^(id data)
     {
@@ -158,6 +158,11 @@ NSUInteger const postsLimit = 20;
     FSTweetCellUI *tweetCell = (FSTweetCellUI *)cell;
     assert( nil != tweetCell.url );
     [self.networkHelper openUrlWithString:tweetCell.url screenName:sectionTweetsUI.screen_name];
+}
+
+- (void)dealloc
+{
+    [backgroundOperations cancelAllOperations];
 }
 
 @end
