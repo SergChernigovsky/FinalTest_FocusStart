@@ -13,7 +13,6 @@
 
 @property (nonatomic, copy, readwrite, nullable) NSString *screenName;
 @property (nonatomic, strong, readonly, nonnull) UIView *rootView;
-@property (nonatomic, strong, readwrite, nullable) UINavigationController *navigationController;
 @property (nonatomic, assign, readwrite) CGFloat topBarHeight;
 @property (nonatomic, strong, readonly, nullable) id<UIViewControllerAnimatedTransitioning> transitionController;
 @property (nonatomic, copy, readonly, nonnull) void (^startFinalUIHandler)(BOOL isNormal);

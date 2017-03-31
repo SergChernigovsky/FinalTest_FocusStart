@@ -61,7 +61,7 @@ NSUInteger const postsLimit = 20;
     };
     tableTwitterUI.updateTopHandler = ^
     {
-        [weakSelf handleRewriteRequest];
+        [weakSelf handleTopRewriteRequest];
     };
     [self handleFinalUI:YES];
 }
@@ -142,7 +142,7 @@ NSUInteger const postsLimit = 20;
 
 #pragma mark - Handlers
 
-- (void)handleRewriteRequest
+- (void)handleTopRewriteRequest
 {
     [backgroundOperations cancelAllOperations];
     typeof(self) __weak weakSelf = self;
