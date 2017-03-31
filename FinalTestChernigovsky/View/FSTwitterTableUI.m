@@ -13,11 +13,15 @@
 
 CGFloat const footerHeight = 40.f;
 
+@interface FSTwitterTableUI()<UITableViewDelegate, UIScrollViewDelegate>
+@end
+
 @implementation FSTwitterTableUI
 {
     UIActivityIndicatorView *headerIndicator;
     UIActivityIndicatorView *footerIndicator;
     CGFloat topBarHeight;
+    NSOperationQueue *backgroundQueue;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -25,6 +29,7 @@ CGFloat const footerHeight = 40.f;
                  topBarHeight:(CGFloat)aTopBarHeight
 {
     self = [super initWithFrame:frame sectionsWithCells:sectionsWithCells];
+    backgroundQueue = [[NSOperationQueue alloc] init];
     self.aTableView.showsVerticalScrollIndicator = NO;
     self.aTableView.allowsMultipleSelection = NO;
     self.aTableView.backgroundColor = [UIColor grayColor];
@@ -89,6 +94,16 @@ CGFloat const footerHeight = 40.f;
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
+{
+    
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section
+{
+    
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -97,21 +112,18 @@ CGFloat const footerHeight = 40.f;
     CGFloat currentOffsetY = scrollView.contentOffset.y;
     if( currentOffsetY < -topBarHeight )
     {
-        dispatch_async(dispatch_get_main_queue(), ^
+        [backgroundQueue cancelAllOperations];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^
         {
             headerIndicator.alpha = currentOffsetY/-topBarHeight;
             self.aTableView.userInteractionEnabled = NO;
             self.aTableView.scrollEnabled = NO;
             scrollView.contentOffset = CGPointMake(currentOffsetX, -topBarHeight);
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+            [backgroundQueue addOperationWithBlock:^
             {
                 [self handleTopTweets];
-            });
-        });
-    }
-    else if ( currentOffsetY > scrollView.frame.size.height+footerHeight )
-    {
-        
+            }];
+        }];
     }
 }
 

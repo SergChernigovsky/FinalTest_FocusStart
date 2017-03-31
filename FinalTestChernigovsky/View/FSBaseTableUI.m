@@ -11,7 +11,7 @@
 #import "PRCellUI.h"
 #import "FSBaseTableSectionUI.h"
 
-@interface FSBaseTableUI() <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface FSBaseTableUI()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @end
 
 @implementation FSBaseTableUI
