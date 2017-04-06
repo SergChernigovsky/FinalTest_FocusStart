@@ -73,7 +73,7 @@
     [self.networkHelper authRequestWithCompletion:^(id data)
     {
         [weakSelf completeAuthRequestWithData:data];
-        [self handlePushToTweets];
+        [weakSelf handlePushToTweets];
     }];
 }
 
